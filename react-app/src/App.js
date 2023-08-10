@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn how to use React
         </a>
+        <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
       </header>
     </div>
   );
