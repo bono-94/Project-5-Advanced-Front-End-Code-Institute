@@ -1,17 +1,12 @@
-import React from 'react'
+import React from 'react';
+import css from "./css/Sidebar.module.css";
 
 function Sidebar() {
     return (
-        <div>
-            <div>
-                <a href = "#." target= "_blank">My Photos</a>
-            </div>
-            <div>
-                <a href = "#." target= "_blank">My Illustrations</a>
-            </div>
-            <div>
-                <a href = "#." target= "_blank">My Paintings</a>
-            </div>
+        <div className={css.sidebar}>
+            <a href = "#." target= "_blank">My Photos</a>
+            <a href = "#." target= "_blank">My Illustrations</a>
+            <a href = "#." target= "_blank">My Paintings</a>
         </div>
     )
 }
