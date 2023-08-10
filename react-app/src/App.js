@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn how to use React
         </a>
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
+        <Sidebar />
       </header>
     </div>
   );
