@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
+import NavbarStateful from "./components/NavbarStateful";
 import Sidebar from './components/Sidebar';
+import StatefulGreetingTwo from './components/StatefulGreetingTwo';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         <Sidebar />
       </header>
+      <StatefulGreetingTwo greeting="I'm a stateful class component"/>
+      <NavbarStateful />
     </div>
   );
 }
