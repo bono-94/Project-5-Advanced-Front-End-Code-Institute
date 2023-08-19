@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import StatefulGreetingTwo from './components/StatefulGreetingTwo';
 import EventsClass from './components/EventsClass';
 import EventsFunctional from './components/EventsFunctional';
+import EventsBinding from './components/EventsBinding';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
       <NavbarStateful />
       <EventsClass />
       <EventsFunctional />
-      <EventBinding />
+      <EventsBinding />
     </div>
   );
 }
