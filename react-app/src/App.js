@@ -4,8 +4,11 @@ import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProp
 import NavbarStateful from "./components/NavbarStateful";
 import Sidebar from './components/Sidebar';
 import StatefulGreetingTwo from './components/StatefulGreetingTwo';
+import EventsClass from './components/EventsClass';
+import EventsFunctional from './components/EventsFunctional';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,6 +29,9 @@ function App() {
       </header>
       <StatefulGreetingTwo greeting="I'm a stateful class component"/>
       <NavbarStateful />
+      <EventsClass />
+      <EventsFunctional />
+      <EventBinding />
     </div>
   );
 }
