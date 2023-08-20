@@ -12,6 +12,7 @@ import ConditionalRenderingFunctional from './components/ConditionalRenderingFun
 import NestingComponents from './components/NestingComponents';
 import MethodAsPropsChildFunctionalComponent from './components/MethodAsPropsChildFunctionalComponent';
 import MethodAsPropsParentClassComponent from './components/MethodAsPropsParentClassComponent';
+import NavBarForm from './components/NavBarForm';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
       <NestingComponents />
       <MethodAsPropsChildFunctionalComponent />
       <MethodAsPropsParentClassComponent />
+      <NavBarForm />
     </div>
   );
 }
