@@ -24,7 +24,7 @@ class EventsBinding extends React.Component {
                 <h1>
                     {this.state.introduction} {this.props.greeting}
                 </h1>
-                <button onClick={this.handleClick()}>
+                <button onClick={this.handleClick}>
                     {this.state.buttonText}
                 </button>
             </div>

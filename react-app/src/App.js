@@ -7,6 +7,8 @@ import StatefulGreetingTwo from './components/StatefulGreetingTwo';
 import EventsClass from './components/EventsClass';
 import EventsFunctional from './components/EventsFunctional';
 import EventsBinding from './components/EventsBinding';
+import ConditionalRenderingClass from './components/ConditionalRenderingClass';
+import ConditionalRenderingFunctional from './components/ConditionalRenderingFunctional';
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
       <EventsClass />
       <EventsFunctional />
       <EventsBinding />
+      <ConditionalRenderingClass />
+      <ConditionalRenderingFunctional connected={true} />
     </div>
   );
 }
