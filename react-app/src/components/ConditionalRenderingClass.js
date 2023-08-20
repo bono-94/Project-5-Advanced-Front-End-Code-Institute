@@ -7,7 +7,7 @@ export class ConditionalRenderingClass extends React.Component {
   
     this.state = {
        isLoaded: true,
-       isLoggedIn: false
+       isLoggedIn: true
     }
   }
   
