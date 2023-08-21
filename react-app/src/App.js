@@ -15,6 +15,9 @@ import MethodAsPropsParentClassComponent from './components/MethodAsPropsParentC
 import NavBarForm from './components/NavBarForm';
 import RenderingLists from './components/RenderingLists';
 import Content from "./components/Content";
+import LifeCyclesCWU from "./components/LifeCyclesCWU";
+import LifeCyclesCDM from "./components/LifeCyclesCDM";
+import LifeCyclesCDU from "./components/LifeCyclesCDU";
 
 
 function App() {
@@ -35,8 +38,11 @@ function App() {
           Learn how to use React
         </a>
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
-        <Sidebar />
+        
       </header>
+      <NavBarForm />
+      <Sidebar />
+      <Content />
       <StatefulGreetingTwo greeting="I'm a stateful class component"/>
       <NavbarStateful />
       <EventsClass />
@@ -47,8 +53,10 @@ function App() {
       <NestingComponents />
       <MethodAsPropsChildFunctionalComponent />
       <MethodAsPropsParentClassComponent />
-      <NavBarForm />
       <RenderingLists />
+      <LifeCyclesCDM />
+      <LifeCyclesCWU />
+      <LifeCyclesCDU />
       <Content />
     </div>
   );
