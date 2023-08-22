@@ -18,6 +18,8 @@ import Content from "./components/Content";
 import LifeCyclesCWU from "./components/LifeCyclesCWU";
 import LifeCyclesCDM from "./components/LifeCyclesCDM";
 import LifeCyclesCDU from "./components/LifeCyclesCDU";
+import ControlledForm from "./components/ControlledForm";
+import SearchBar from "./components/SearchBar";
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         
       </header>
+      <SearchBar />
+      <ControlledForm />
       <NavBarForm />
       <Sidebar />
       <Content />
@@ -58,6 +62,7 @@ function App() {
       <LifeCyclesCWU />
       <LifeCyclesCDU />
       <Content />
+
     </div>
   );
 }
