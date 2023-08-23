@@ -20,7 +20,15 @@ import LifeCyclesCDM from "./components/LifeCyclesCDM";
 import LifeCyclesCDU from "./components/LifeCyclesCDU";
 import ControlledForm from "./components/ControlledForm";
 import SearchBar from "./components/SearchBar";
-
+import HooksCounter from "./components/HooksCounter";
+import ClassCounter from "./components/ClassCounter";
+import ControlledFormHooks from "./components/ControlledFormHooks";
+import UseStateWithArrays from "./components/UseStateWithArrays";
+import StatefulGreetingWithPrevState from "./components/StatefulGreetingWithPrevState";
+import UseStateWithObjects from "./components/UseStateWithObjects";
+import UseEffectCounter from "./components/UseEffectCounter";
+import UseEffectCounterContainer from "./components/UseEffectCounter";
+import ContentHooks from "./components/ContentHooks";
 
 function App() {
 
@@ -42,6 +50,17 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         
       </header>
+      <ContentHooks />
+      <UseEffectCounterContainer />
+      <UseEffectCounter />
+      <ClassCounter />
+      <StatefulGreetingWithPrevState />
+      <HooksCounter />
+      <UseStateWithObjects />
+      <UseStateWithArrays />
+      <ControlledFormHooks />
+      <HooksCounter />
+      <ClassCounter />
       <SearchBar />
       <ControlledForm />
       <NavBarForm />
