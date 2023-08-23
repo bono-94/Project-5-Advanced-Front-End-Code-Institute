@@ -29,6 +29,11 @@ import UseStateWithObjects from "./components/UseStateWithObjects";
 import UseEffectCounter from "./components/UseEffectCounter";
 import UseEffectCounterContainer from "./components/UseEffectCounter";
 import ContentHooks from "./components/ContentHooks";
+import HTTPRequests from "./components/HTTPRequests";
+import HTTPPost from "./components/HTTPPost";
+import HTTPHooks from "./components/HTTPHooks";
+import ContentAPI from "./components/ContentAPI";
+import ContentAPIHooks from "./components/ContentAPIHooks";
 
 function App() {
 
@@ -50,6 +55,11 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         
       </header>
+      <ContentAPIHooks />
+      <ContentAPI />
+      <HTTPHooks />
+      <HTTPPost />
+      <HTTPRequests />
       <ContentHooks />
       <UseEffectCounterContainer />
       <UseEffectCounter />
