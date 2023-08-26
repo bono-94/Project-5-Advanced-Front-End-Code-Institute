@@ -1,5 +1,7 @@
+import Button from "react-bootstrap/Button";
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
 import NavbarStateful from "./components/NavbarStateful";
 import Sidebar from './components/Sidebar';
@@ -35,10 +37,13 @@ import HTTPHooks from "./components/HTTPHooks";
 import ContentAPI from "./components/ContentAPI";
 import ContentAPIHooks from "./components/ContentAPIHooks";
 
+
 function App() {
 
   return (
     <div className="App">
+      <Button variant="primary">Primary</Button>
+      <Button variant="primary">Primary</Button>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -55,7 +60,8 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         
       </header>
-      <ContentAPIHooks />
+      
+      {/* <ContentAPIHooks />
       <ContentAPI />
       <HTTPHooks />
       <HTTPPost />
@@ -90,7 +96,7 @@ function App() {
       <LifeCyclesCDM />
       <LifeCyclesCWU />
       <LifeCyclesCDU />
-      <Content />
+      <Content /> */}
 
     </div>
   );
