@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <Button variant="primary">Primary</Button>
-      <Button variant="primary">Primary</Button>
+      <Button variant="dark">Primary</Button>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -61,7 +61,7 @@ function App() {
         
       </header>
       
-      {/* <ContentAPIHooks />
+      <ContentAPIHooks />
       <ContentAPI />
       <HTTPHooks />
       <HTTPPost />
@@ -96,7 +96,7 @@ function App() {
       <LifeCyclesCDM />
       <LifeCyclesCWU />
       <LifeCyclesCDU />
-      <Content /> */}
+      <Content />
 
     </div>
   );
