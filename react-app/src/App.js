@@ -119,7 +119,7 @@ function App() {
         </Switch>
       </Container>
 
-{/*       
+      
       <Button variant="primary">Primary</Button>
       <Button variant="dark">Primary</Button>
       <header className="App-header">
@@ -174,7 +174,7 @@ function App() {
       <LifeCyclesCDM />
       <LifeCyclesCWU />
       <LifeCyclesCDU />
-      <Content /> */}
+      <Content /> 
 
     </div>
   );
