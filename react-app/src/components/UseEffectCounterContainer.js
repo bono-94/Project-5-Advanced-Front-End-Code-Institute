@@ -15,4 +15,4 @@ function UseEffectCounterContainer() {
     )
 }
 
-export default UseEffectCounterContainer
+export default UseEffectCounterContainer;

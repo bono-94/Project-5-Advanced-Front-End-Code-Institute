@@ -53,4 +53,4 @@ export class HTTPRequests extends Component {
   }
 }
 
-export default HTTPRequests
+export default HTTPRequests;

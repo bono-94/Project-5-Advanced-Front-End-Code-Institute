@@ -39,4 +39,4 @@ export class ConditionalRenderingClass extends React.Component {
   }
 }
 
-export default ConditionalRenderingClass
+export default ConditionalRenderingClass;

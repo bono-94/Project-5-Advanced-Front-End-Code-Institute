@@ -24,4 +24,4 @@ export class LifeCyclesCWU extends Component {
     }
 }
 
-export default LifeCyclesCWU
+export default LifeCyclesCWU;

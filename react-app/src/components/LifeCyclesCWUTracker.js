@@ -33,4 +33,4 @@ export class LifeCyclesCWUTracker extends Component {
   }
 }
 
-export default LifeCyclesCWUTracker
+export default LifeCyclesCWUTracker;

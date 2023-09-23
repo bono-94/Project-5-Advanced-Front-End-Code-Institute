@@ -39,4 +39,4 @@ export class LifeCyclesCDUChild extends Component {
     }
 }
 
-export default LifeCyclesCDUChild
+export default LifeCyclesCDUChild;

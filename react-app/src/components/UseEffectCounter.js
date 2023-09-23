@@ -31,4 +31,4 @@ function UseEffectCounter() {
     )
 }
 
-export default UseEffectCounter
+export default UseEffectCounter;

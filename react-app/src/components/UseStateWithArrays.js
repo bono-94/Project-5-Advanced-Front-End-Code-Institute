@@ -35,4 +35,4 @@ function UseStateWithArrays() {
     )
 }
 
-export default UseStateWithArrays
+export default UseStateWithArrays;

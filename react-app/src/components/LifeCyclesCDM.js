@@ -34,4 +34,4 @@ export class LifeCyclesCDM extends Component {
     }
 }
 
-export default LifeCyclesCDM
+export default LifeCyclesCDM;

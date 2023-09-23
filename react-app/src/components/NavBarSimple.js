@@ -33,4 +33,4 @@ class NavBarSimple extends Component {
     }
 }
 
-export default NavBarSimple
+export default NavBarSimple;

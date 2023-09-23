@@ -61,4 +61,4 @@ function HTTPHooks() {
     )
 }
 
-export default HTTPHooks
+export default HTTPHooks;

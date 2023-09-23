@@ -50,4 +50,4 @@ class NavBarForm extends Component {
     }
 }
 
-export default NavBarForm
+export default NavBarForm;

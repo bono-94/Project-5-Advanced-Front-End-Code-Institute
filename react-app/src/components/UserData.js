@@ -8,4 +8,4 @@ function UserData(props) {
   )
 }
 
-export default UserData
+export default UserData;

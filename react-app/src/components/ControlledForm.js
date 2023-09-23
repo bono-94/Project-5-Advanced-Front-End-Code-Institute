@@ -86,4 +86,4 @@ export class ControlledForm extends Component {
     }
 }
 
-export default ControlledForm
+export default ControlledForm;

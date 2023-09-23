@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import css from "./css/Content.module.css";
-import {savedPosts} from "../posts.json";
+import savedPosts from "../posts.json";
 import PostItem from "./PostItem";
 import LoaderTwo from "./LoaderTwo";
 
@@ -52,4 +52,4 @@ function ContentHooks() {
     )
 }
 
-export default ContentHooks
+export default ContentHooks;

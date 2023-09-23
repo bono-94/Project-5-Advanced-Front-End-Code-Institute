@@ -16,7 +16,7 @@ import MethodAsPropsChildFunctionalComponent from './components/MethodAsPropsChi
 import MethodAsPropsParentClassComponent from './components/MethodAsPropsParentClassComponent';
 import NavBarForm from './components/NavBarForm';
 import RenderingLists from './components/RenderingLists';
-import Content from "./components/Content";
+// import Content from "./components/Content";
 import LifeCyclesCWU from "./components/LifeCyclesCWU";
 import LifeCyclesCDM from "./components/LifeCyclesCDM";
 import LifeCyclesCDU from "./components/LifeCyclesCDU";
@@ -139,7 +139,7 @@ function App() {
         
       </header>
       
-      <ContentAPIHooks />
+      {/* <ContentAPIHooks />
       <ContentAPI />
       <HTTPHooks />
       <HTTPPost />
@@ -159,8 +159,8 @@ function App() {
       <ControlledForm />
       <NavBarForm />
       <Sidebar />
-      <Content />
-      <StatefulGreetingTwo greeting="I'm a stateful class component"/>
+      {/* <Content /> */}
+      {/* <StatefulGreetingTwo greeting="I'm a stateful class component"/>
       <NavbarStateful />
       <EventsClass />
       <EventsFunctional />
@@ -173,8 +173,8 @@ function App() {
       <RenderingLists />
       <LifeCyclesCDM />
       <LifeCyclesCWU />
-      <LifeCyclesCDU />
-      <Content /> 
+      <LifeCyclesCDU /> */}
+      {/* <Content />  */}
 
     </div>
   );

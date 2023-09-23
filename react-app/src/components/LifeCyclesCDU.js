@@ -31,4 +31,4 @@ export class LifeCyclesCDU extends Component {
     }
 }
 
-export default LifeCyclesCDU
+export default LifeCyclesCDU;

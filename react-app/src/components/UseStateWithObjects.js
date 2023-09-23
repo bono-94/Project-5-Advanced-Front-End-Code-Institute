@@ -28,4 +28,4 @@ function UseStateWithObjects() {
     )
 }
 
-export default UseStateWithObjects
+export default UseStateWithObjects;

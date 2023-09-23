@@ -9,4 +9,4 @@ function LoaderTwo() {
     )
 }
 
-export default LoaderTwo
+export default LoaderTwo;

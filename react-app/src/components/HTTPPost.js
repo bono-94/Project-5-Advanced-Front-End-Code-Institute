@@ -46,4 +46,4 @@ export class HTTPPost extends Component {
     }
 }
 
-export default HTTPPost
+export default HTTPPost;

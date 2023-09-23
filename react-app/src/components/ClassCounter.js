@@ -28,4 +28,4 @@ export class ClassCounter extends Component {
   }
 }
 
-export default ClassCounter
+export default ClassCounter;

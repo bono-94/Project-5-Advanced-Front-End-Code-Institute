@@ -52,4 +52,4 @@ function RenderingLists() {
     )
 }
 
-export default RenderingLists
+export default RenderingLists;

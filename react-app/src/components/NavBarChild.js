@@ -16,4 +16,4 @@ function NavBarChild(props) {
     )
 }
 
-export default NavBarChild
+export default NavBarChild;

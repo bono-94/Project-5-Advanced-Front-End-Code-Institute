@@ -24,4 +24,4 @@ function UserMessage(props) {
   )
 }
 
-export default UserMessage
+export default UserMessage;

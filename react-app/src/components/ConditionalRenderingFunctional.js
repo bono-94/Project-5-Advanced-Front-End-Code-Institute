@@ -10,4 +10,4 @@ function ConditionalRenderingFunctional(props) {
   )
 }
 
-export default ConditionalRenderingFunctional
+export default ConditionalRenderingFunctional;

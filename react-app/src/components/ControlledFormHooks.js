@@ -58,4 +58,4 @@ function ControlledFormHooks() {
     )
 }
 
-export default ControlledFormHooks
+export default ControlledFormHooks;

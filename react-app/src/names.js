@@ -101,4 +101,4 @@ const names = [
     "Reymundo Gleason"
 ]
 
-export default names
+export default names;

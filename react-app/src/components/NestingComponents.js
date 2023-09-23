@@ -27,4 +27,4 @@ export class NestingComponents extends React.Component {
   }
 }
 
-export default NestingComponents
+export default NestingComponents;

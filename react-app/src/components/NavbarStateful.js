@@ -35,4 +35,4 @@ class NavbarStateful extends React.Component {
     }
 }
 
-export default NavbarStateful
+export default NavbarStateful;
