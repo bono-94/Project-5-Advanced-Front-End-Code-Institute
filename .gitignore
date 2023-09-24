@@ -24,4 +24,3 @@ yarn-error.log*
 
 env.py
 secrets.js
-react-app/node_modules
