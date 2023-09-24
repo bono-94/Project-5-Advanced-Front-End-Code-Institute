@@ -25,7 +25,7 @@ import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProp
 import NotFound from "./components/NotFound";
 
 import NavBar from "./components/NavBar";
-import Sidebar from './components/Sidebar';
+
 
 // import ContentAPI from "./components/ContentAPI";
 // import ContentAPIHooks from "./components/ContentAPIHooks";
@@ -47,7 +47,9 @@ import Sidebar from './components/Sidebar';
 // import UseEffectCounterContainer from "./components/UseEffectCounter";
 
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 
 function App() {
@@ -57,15 +59,12 @@ function App() {
 
   return (
     <div className="styles.App">
-      <Sidebar />
-
+      
       {/* Knowledge */}
       {/* <ContentAPIHooks />
       <ContentAPI /> */}
       {/* <ConditionalRenderingClass />
       <ConditionalRenderingFunctional connected={true} /> */}
-      
-
 
       {/* Components */}
       {/* <SearchBar /> 
@@ -85,6 +84,9 @@ function App() {
       <UseEffectCounter /> */}
 
       <NavBar />
+
+
+      
       <Container className={styles.Main}>
         <Switch>
           <Route

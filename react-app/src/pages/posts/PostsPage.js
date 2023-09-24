@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 
 import Post from "./Post";
 import Asset from "../../components/Asset";
+import Sidebar from '../../components/Sidebar';
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsPage.module.css";
@@ -50,7 +51,11 @@ function PostsPage({ message, filter = "" }) {
   }, [filter, query, pathname, currentUser]);
 
   return (
-    <Row className="h-100">
+    <Container>
+        <Row>
+          <Col><Sidebar /></Col>
+          <Col xs={8}>
+          <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
         <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -95,6 +100,9 @@ function PostsPage({ message, filter = "" }) {
         <PopularProfiles />
       </Col>
     </Row>
+          </Col>
+        </Row>
+      </Container>
   );
 }
 
