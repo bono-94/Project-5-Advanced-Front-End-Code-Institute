@@ -1,47 +1,42 @@
-import Button from "react-bootstrap/Button";
-import logo from './logo.svg';
+import "./api/axiosDefaults";
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from './logo.svg';
+
 import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
-import NavbarStateful from "./components/NavbarStateful";
 import Sidebar from './components/Sidebar';
-import StatefulGreetingTwo from './components/StatefulGreetingTwo';
+
+import ContentAPI from "./components/ContentAPI";
+import ContentAPIHooks from "./components/ContentAPIHooks";
+import ConditionalRenderingClass from './components/ConditionalRenderingClass';
+import ConditionalRenderingFunctional from './components/ConditionalRenderingFunctional';
+
+import SearchBar from "./components/SearchBar";
+import RenderingLists from './components/RenderingLists';
 import EventsClass from './components/EventsClass';
 import EventsFunctional from './components/EventsFunctional';
 import EventsBinding from './components/EventsBinding';
-import ConditionalRenderingClass from './components/ConditionalRenderingClass';
-import ConditionalRenderingFunctional from './components/ConditionalRenderingFunctional';
-import NestingComponents from './components/NestingComponents';
-import MethodAsPropsChildFunctionalComponent from './components/MethodAsPropsChildFunctionalComponent';
-import MethodAsPropsParentClassComponent from './components/MethodAsPropsParentClassComponent';
-import NavBarForm from './components/NavBarForm';
-import RenderingLists from './components/RenderingLists';
-// import Content from "./components/Content";
-import LifeCyclesCWU from "./components/LifeCyclesCWU";
-import LifeCyclesCDM from "./components/LifeCyclesCDM";
-import LifeCyclesCDU from "./components/LifeCyclesCDU";
-import ControlledForm from "./components/ControlledForm";
-import SearchBar from "./components/SearchBar";
-import HooksCounter from "./components/HooksCounter";
-import ClassCounter from "./components/ClassCounter";
+
 import ControlledFormHooks from "./components/ControlledFormHooks";
+import ControlledForm from "./components/ControlledForm";
+
 import UseStateWithArrays from "./components/UseStateWithArrays";
-import StatefulGreetingWithPrevState from "./components/StatefulGreetingWithPrevState";
 import UseStateWithObjects from "./components/UseStateWithObjects";
 import UseEffectCounter from "./components/UseEffectCounter";
 import UseEffectCounterContainer from "./components/UseEffectCounter";
-import ContentHooks from "./components/ContentHooks";
-import HTTPRequests from "./components/HTTPRequests";
-import HTTPPost from "./components/HTTPPost";
-import HTTPHooks from "./components/HTTPHooks";
-import ContentAPI from "./components/ContentAPI";
-import ContentAPIHooks from "./components/ContentAPIHooks";
+
+import Button from "react-bootstrap/Button";
+
+
+
+
 
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
-import "./api/axiosDefaults";
+
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
@@ -63,6 +58,40 @@ function App() {
 
   return (
     <div className="styles.App">
+      <Sidebar />
+
+
+
+
+      
+    
+      
+      
+      {/* Knowledge */}
+      {/* <ContentAPIHooks />
+      <ContentAPI /> */}
+      {/* <ConditionalRenderingClass />
+      <ConditionalRenderingFunctional connected={true} /> */}
+      
+
+
+      {/* Components */}
+      {/* <SearchBar /> 
+      <RenderingLists /> */}
+      {/* <EventsClass />
+      <EventsFunctional />
+      <EventsBinding />
+
+      {/* Support */}
+      {/* <ControlledForm /> */}
+      {/* <ControlledFormHooks /> */}
+
+      {/* Extra */}
+      {/* <UseStateWithObjects />
+      <UseStateWithArrays />
+      <UseEffectCounterContainer />
+      <UseEffectCounter /> */}
+
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
@@ -118,7 +147,6 @@ function App() {
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>
-
       
       <Button variant="primary">Primary</Button>
       <Button variant="dark">Primary</Button>
@@ -138,44 +166,6 @@ function App() {
         <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
         
       </header>
-      
-      {/* <ContentAPIHooks />
-      <ContentAPI />
-      <HTTPHooks />
-      <HTTPPost />
-      <HTTPRequests />
-      <ContentHooks />
-      <UseEffectCounterContainer />
-      <UseEffectCounter />
-      <ClassCounter />
-      <StatefulGreetingWithPrevState />
-      <HooksCounter />
-      <UseStateWithObjects />
-      <UseStateWithArrays />
-      <ControlledFormHooks />
-      <HooksCounter />
-      <ClassCounter />
-      <SearchBar />
-      <ControlledForm />
-      <NavBarForm />
-      <Sidebar />
-      {/* <Content /> */}
-      {/* <StatefulGreetingTwo greeting="I'm a stateful class component"/>
-      <NavbarStateful />
-      <EventsClass />
-      <EventsFunctional />
-      <EventsBinding />
-      <ConditionalRenderingClass />
-      <ConditionalRenderingFunctional connected={true} />
-      <NestingComponents />
-      <MethodAsPropsChildFunctionalComponent />
-      <MethodAsPropsParentClassComponent />
-      <RenderingLists />
-      <LifeCyclesCDM />
-      <LifeCyclesCWU />
-      <LifeCyclesCDU /> */}
-      {/* <Content />  */}
-
     </div>
   );
 }
