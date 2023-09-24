@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import css from "./css/Content.module.css";
+import styles from "../styles/Content.module.css";
 import PostItemAPI from "./PostItemAPI";
 import LoaderTwo from "./LoaderTwo";
 import axios from "axios";
@@ -44,9 +44,9 @@ export class Content extends Component {
 
     render() {
         return (
-            <div className={css.Content}>
+            <div className={styles.Content}>
                 
-                <div className={css.TitleBar}>
+                <div className={styles.TitleBar}>
                     <h1>My Photos</h1>
                     <form>
                         <label htmlFor="searchinput">Search</label>
@@ -60,7 +60,7 @@ export class Content extends Component {
                     </form>
                 </div>
 
-                <div className={css.SearchResults}>
+                <div className={styles.SearchResults}>
                     {
                         this.state.isLoaded ?
                         <PostItemAPI savedPosts={this.state.posts} />

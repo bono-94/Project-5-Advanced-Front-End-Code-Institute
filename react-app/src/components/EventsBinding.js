@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./css/EventBinding.module.css";
+
 
 class EventsBinding extends React.Component {
     

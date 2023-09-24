@@ -1,9 +1,9 @@
 import React from 'react';
-import css from "./css/Sidebar.module.css";
+import styles from "../styles/Sidebar.module.css";
 
 function Sidebar() {
     return (
-        <div className={css.sidebar}>
+        <div className={styles.sidebar}>
             <h4>Knowledge</h4>
             <a href = "#." target= "_blank">My Knowledge</a>
             <a href = "#." target= "_blank">Live Knowledge</a>

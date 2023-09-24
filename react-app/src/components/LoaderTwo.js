@@ -1,9 +1,9 @@
 import React from "react";
-import css from "./css/LoaderTwo.module.css";
+import styles from "../styles/LoaderTwo.module.css";
 
 function LoaderTwo() {
     return (
-        <div className={css.Loader}>
+        <div className={styles.Loader}>
 
         </div>
     )
