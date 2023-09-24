@@ -3,7 +3,6 @@ import "./api/axiosDefaults";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./App.module.css";
-import logo from './logo.svg';
 
 import { Route, Switch } from "react-router-dom";
 
@@ -21,11 +20,11 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
-import FunctionalGreeting from './components/FunctionalGreeting';
-import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProps';
+
 import NotFound from "./components/NotFound";
 
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 
 
@@ -144,10 +143,12 @@ function App() {
         </Switch>
       </Container>
       
+      <Footer></Footer>
+
       <Button variant="primary">Primary</Button>
       <Button variant="dark">Primary</Button>
 
-      {/* FOOTER */}
+      {/* FOOTER
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -160,11 +161,11 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn how to use React
-        </a>
-        <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
-        <FunctionalGreeting/>
+        </a> */}
+        {/* <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
+        <FunctionalGreeting/> */}
         
-      </header>
+      {/* </header> */}
     </div>
   );
 }
