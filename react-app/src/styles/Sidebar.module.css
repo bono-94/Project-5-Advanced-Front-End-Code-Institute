@@ -1,5 +1,4 @@
 .sidebar {
-    margin-top: 200px;
     grid-row: 2;
     grid-column: 1;
     display: flex;

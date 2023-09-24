@@ -7,6 +7,7 @@ import logo from './logo.svg';
 
 import { Route, Switch } from "react-router-dom";
 
+import ContainerCreateForm from "./pages/containers/ContainerCreateForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostEditForm from "./pages/posts/PostEditForm";
 import PostPage from "./pages/posts/PostPage";
@@ -25,6 +26,7 @@ import FunctionalGreetingWithProps from './components/FunctionalGreetingWithProp
 import NotFound from "./components/NotFound";
 
 import NavBar from "./components/NavBar";
+
 
 
 // import ContentAPI from "./components/ContentAPI";
@@ -47,9 +49,8 @@ import NavBar from "./components/NavBar";
 // import UseEffectCounterContainer from "./components/UseEffectCounter";
 
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+
 
 
 function App() {
@@ -118,7 +119,8 @@ function App() {
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/container/create" render={() => <ContainerCreateForm />} />
+          <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
