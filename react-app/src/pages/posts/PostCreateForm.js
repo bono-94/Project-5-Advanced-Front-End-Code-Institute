@@ -25,11 +25,29 @@ function PostCreateForm() {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
-    title: "",
-    content: "",
+    containers: "",
+    post_category: "announcement",
     image: "",
+    title: "",
+    sub_title: "",
+    topic: "",
+    location: "",
+    content: "",
+    inspiration: "",
+    source: "",
   });
-  const { title, content, image } = postData;
+  const { 
+    containers,
+    post_category,
+    image,
+    title,
+    sub_title,
+    topic,
+    location,
+    content,
+    inspiration,
+    source,
+  } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -55,10 +73,17 @@ function PostCreateForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
+    formData.append("containers", containers);
+    formData.append("post_category", post_category);
     formData.append("image", imageInput.current.files[0]);
-
+    formData.append("title", title);
+    formData.append("sub_title", sub_title);
+    formData.append("topic", topic);
+    formData.append("location", location);
+    formData.append("content", content);
+    formData.append("inspiration", inspiration);
+    formData.append("source", source);
+    
     try {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
@@ -70,8 +95,31 @@ function PostCreateForm() {
     }
   };
 
-  const textFields = (
+  const allFields = (
     <div className="text-center">
+      <Form.Group>
+        <Form.Label>Select a Category</Form.Label>
+        <Form.Control
+          as="select"
+          name="post_category"
+          value={post_category}
+          onChange={handleChange}
+        >
+          <option value="announcement">Announcement</option>
+          <option value="answer">Answer</option>
+          <option value="blog">Blog</option>
+          <option value="event">Event</option>
+          <option value="idea">Idea</option>
+          <option value="interview">Interview</option>
+          <option value="journal">Journal</option>
+          <option value="news">News</option>
+          <option value="review">Review</option>
+          <option value="story">Story</option>
+          <option value="tutorial">Tutorial</option>
+          <option value="question">Question</option>
+        </Form.Control>
+      </Form.Group> 
+      
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -82,6 +130,20 @@ function PostCreateForm() {
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Subtitle</Form.Label>
+        <Form.Control
+          type="text"
+          name="sub_title"
+          value={sub_title}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.sub_title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -162,11 +224,11 @@ function PostCreateForm() {
               </Alert>
             ))}
 
-            <div className="d-md-none">{textFields}</div>
+            <div className="d-md-none">{allFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={appStyles.Content}>{allFields}</Container>
         </Col>
       </Row>
     </Form>

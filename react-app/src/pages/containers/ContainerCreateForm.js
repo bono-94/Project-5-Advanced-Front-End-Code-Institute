@@ -72,7 +72,7 @@ function ContainerCreateForm() {
     }
   };
 
-  const textFields = (
+  const allFields = (
     <div className="text-center">
       <Form.Group>
         <Form.Check
@@ -173,11 +173,11 @@ function ContainerCreateForm() {
               </Alert>
             ))} */}
 
-            <div className="d-md-none">{textFields}</div>
+            <div className="d-md-none">{allFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={appStyles.Content}>{allFields}</Container>
         </Col>
       </Row>
     </Form>
