@@ -13,6 +13,11 @@ function Sidebar() {
             <a href = "#." target= "_blank">Most Liked Knowledge</a>
             <a href = "#." target= "_blank">Most Commented Knowledge</a>
             <a href = "#." target= "_blank">Most Favourited Knowledge</a>
+            <h4>Containers</h4>
+            <a href = "#." target= "_blank">My Containers</a>
+            <a href = "#." target= "_blank">Public Containers</a>
+            <a href = "#." target= "_blank">Popular Containers</a>
+            <a href = "#." target= "_blank">Deepest Containers</a>
         </div>
     )
 }
