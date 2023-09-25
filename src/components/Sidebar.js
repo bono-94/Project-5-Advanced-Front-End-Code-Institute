@@ -26,10 +26,10 @@ const addPostIcon = (
 function Sidebar() {
     return (
         <div className={styles.sidebar}>
-            <h4>
-                Knowledge
-                {addPostIcon}
-            </h4>
+            <div className={styles.section}>
+              <h4>Knowledge</h4>
+              <div className={styles.icons}>{addPostIcon}</div>
+            </div>
             <a href = "#." target= "_blank">My Knowledge</a>
             <a href = "#." target= "_blank">Live Knowledge</a>
             <a href = "#." target= "_blank">Followed Knowledge</a>
@@ -38,10 +38,11 @@ function Sidebar() {
             <a href = "#." target= "_blank">Liked Knowledge</a>
             <a href = "#." target= "_blank">Most Commented Knowledge</a>
             <a href = "#." target= "_blank">Favourited Knowledge</a>
-            <h4>
-                Containers
-                {addContainerIcon}
-            </h4>
+            <hr></hr>
+            <div className={styles.section}>
+              <h4>Containers</h4>
+              <div className={styles.icons}>{addContainerIcon}</div>
+            </div>
             <a href = "#." target= "_blank">My Containers</a>
             <a href = "#." target= "_blank">Public Containers</a>
             <a href = "#." target= "_blank">Popular Containers</a>
