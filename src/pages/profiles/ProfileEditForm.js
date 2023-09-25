@@ -41,7 +41,7 @@ const ProfileEditForm = () => {
     location,
     age,
     bio,
-    website } = profileData;
+    website, } = profileData;
 
   const [errors, setErrors] = useState({});
 
