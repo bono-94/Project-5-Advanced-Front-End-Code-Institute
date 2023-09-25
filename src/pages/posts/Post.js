@@ -163,14 +163,7 @@ const Post = (props) => {
           )}
           {likes_count}
 
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't favourite your own post!</Tooltip>}
-            >
-              <i className="far fa-star" />
-            </OverlayTrigger>
-          ) : favourite_id ? (
+          {favourite_id ? (
             <span onClick={handleUnFavourite}>
               <i className={`fas fa-star ${styles.Heart}`} />
             </span>
