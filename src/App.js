@@ -15,6 +15,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import Support from "./pages/support/Support";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
@@ -123,6 +124,7 @@ function App() {
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/support" render={() => <Support />} />
           <Route
             exact
             path="/profiles/:id/edit/username"
