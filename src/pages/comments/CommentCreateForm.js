@@ -11,15 +11,22 @@ import { axiosRes } from "../../api/axiosDefaults";
 function CommentCreateForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [error, setError] = useState(null); // State to handle errors
 
   const handleChange = (event) => {
     setContent(event.target.value);
+  };
+
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axiosRes.post("/comments/", {
+        title,
         content,
         post,
       });
@@ -35,14 +42,24 @@ function CommentCreateForm(props) {
           },
         ],
       }));
+      setTitle("");
       setContent("");
     } catch (err) {
-      // console.log(err);
+      setError("An error occurred while posting your comment.");
     }
   };
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={handleChangeTitle}
+        />
+      </Form.Group>
       <Form.Group>
         <InputGroup>
           <Link to={`/profiles/${profile_id}`}>
@@ -50,7 +67,7 @@ function CommentCreateForm(props) {
           </Link>
           <Form.Control
             className={styles.Form}
-            placeholder="my comment..."
+            placeholder="Share your opinion here..."
             as="textarea"
             value={content}
             onChange={handleChange}
