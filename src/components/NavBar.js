@@ -51,41 +51,69 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/live-knowledge"
       >
-        <i className="fas fa-book"></i>Knowledge
+        <i className="fas fa-book"></i>
+        <span className="text-warning">
+          Knowledge
+        </span>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/public-containers"
       >
-        <i className="fas fa-box"></i>Containers
+        <i className="fas fa-box"></i>
+        <span className="text-warning">
+          Containers
+        </span>
       </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/support"
+      >
+        <i className="fas fa-headset"></i>
+        <span className="text-warning">
+          Support
+        </span>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <Avatar src={currentUser?.profile_image} height={40} />
+        <span className="text-warning">
+          Profile
+        </span>
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>
+        <span className="text-warning">
+          Logout
+        </span>
       </NavLink>
     </>
   );
   const loggedOutIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/signin"
-      >
-        <i className="fas fa-sign-in-alt"></i>Sign in
-      </NavLink>
-      <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fas fa-user-plus"></i>Sign up
+        <i className="fas fa-user-plus"></i>
+        <span className="text-warning">
+          Register
+        </span>
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/signin"
+      >
+        <i className="fas fa-sign-in-alt"></i>
+        <span className="text-warning">
+          Login
+        </span>
       </NavLink>
     </>
   );
@@ -107,6 +135,7 @@ const NavBar = () => {
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
+          className="bg-warning text-warning"
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">

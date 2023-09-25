@@ -145,8 +145,8 @@ function App() {
       
       <Footer></Footer>
 
-      <Button variant="primary">Primary</Button>
-      <Button variant="dark">Primary</Button>
+      {/* <Button variant="primary">Primary</Button>
+      <Button variant="dark">Primary</Button> */}
 
       {/* FOOTER
       <header className="App-header">

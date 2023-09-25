@@ -61,8 +61,7 @@ function Footer() {
         <Row>
           <Col>
             <p className="text-center">
-              &copy; {new Date().getFullYear()} Your Company Name. All Rights
-              Reserved.
+              &copy; {new Date().getFullYear()} KNOWL3DG3 CONTAINERS. ALL RIGHTS RESERVED
             </p>
           </Col>
         </Row>

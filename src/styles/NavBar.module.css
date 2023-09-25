@@ -1,6 +1,7 @@
 .NavBar {
-  background-color: #ffffff;
-  border: 1px solid #dadadf;
+  background-color: black;
+  color: orange;
+  border-bottom: 4px solid orange;
 }
 
 .NavLink {
@@ -8,5 +9,17 @@
 }
 
 .Active i {
-  color: #2142b2;
+  color: orange;
+}
+
+.Active i:hover {
+  color: orange;
+}
+
+.Active span {
+  color: orange;
+}
+
+.Toggle {
+  color: orange;
 }
