@@ -21,6 +21,8 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
+    favourites_count,
+    favourite_id,
     title,
     content,
     image,
@@ -70,6 +72,38 @@ const Post = (props) => {
         results: prevPosts.results.map((post) => {
           return post.id === id
             ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
+  const handleFavourite = async () => {
+    try {
+      const { data } = await axiosRes.post("/favourites/", { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, favourites_count: post.favourites_count + 1, favourite_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
+  const handleUnFavourite = async () => {
+    try {
+      await axiosRes.delete(`/favourites/${favourite_id}/`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, favourites_count: post.favourites_count - 1, favourite_id: null }
             : post;
         }),
       }));
@@ -128,6 +162,32 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           {likes_count}
+
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't favourite your own post!</Tooltip>}
+            >
+              <i className="far fa-star" />
+            </OverlayTrigger>
+          ) : favourite_id ? (
+            <span onClick={handleUnFavourite}>
+              <i className={`fas fa-star ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handleFavourite}>
+              <i className={`far fa-star ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
+            >
+              <i className="far fa-star" />
+            </OverlayTrigger>
+          )}
+          {favourites_count}
+
           <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>

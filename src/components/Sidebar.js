@@ -35,9 +35,9 @@ function Sidebar() {
             <a href = "#." target= "_blank">Followed Knowledge</a>
             <a href = "#." target= "_blank">Popular Knowledge</a>
             <a href = "#." target= "_blank">Invasive Knowledge</a>
-            <a href = "#." target= "_blank">Most Liked Knowledge</a>
+            <a href = "#." target= "_blank">Liked Knowledge</a>
             <a href = "#." target= "_blank">Most Commented Knowledge</a>
-            <a href = "#." target= "_blank">Most Favourited Knowledge</a>
+            <a href = "#." target= "_blank">Favourited Knowledge</a>
             <h4>
                 Containers
                 {addContainerIcon}

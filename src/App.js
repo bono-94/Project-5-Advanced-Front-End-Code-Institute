@@ -117,6 +117,16 @@ function App() {
               />
             )}
           />
+          <Route
+            exact
+            path="/favourited"
+            render={() => (
+              <PostsPage
+                message="No results found. Adjust the search keyword or favourite a post."
+                filter={`favourites__owner__profile=${profile_id}&ordering=-favourites__created_at&`}
+              />
+            )}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/container/create" render={() => <ContainerCreateForm />} />
