@@ -51,26 +51,26 @@ function PostsPage({ message, filter = "" }) {
   }, [filter, query, pathname, currentUser]);
 
   return (
-    <Container>
+    <Container className={styles.PostsPage} fluid>
         <Row>
           <Col><Sidebar /></Col>
           <Col xs={8}>
           <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          />
-        </Form>
+            <Col className="py-2 p-0 p-lg-2" lg={8}>
+              <PopularProfiles mobile />
+              <i className={`fas fa-search ${styles.SearchIcon}`} />
+              <Form
+                className={styles.SearchBar}
+                onSubmit={(event) => event.preventDefault()}
+              >
+                <Form.Control
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  type="text"
+                  className="mr-sm-2"
+                  placeholder="Search posts"
+                />
+              </Form>
 
         {hasLoaded ? (
           <>

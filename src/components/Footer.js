@@ -9,8 +9,8 @@ import styles from "../styles/Footer.module.css";
 function Footer() {
   return (
     <footer className="bg-dark text-warning">
-      <Container className={styles.Footer}>
-        <Row>
+      <Container className={styles.Footer} fluid>
+        <Row className={styles.Footer} fluid>
           <Col md={4}>
             <img
               src={logo} // Replace with your brand logo URL

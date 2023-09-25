@@ -32,7 +32,8 @@ function Sidebar() {
               activeClassName={styles.Active}
               to="/posts/user"
             >
-              <i className="fas fa-universal-access"></i> My Knowledge
+              <i className="fas fa-universal-access"></i>
+              <span>My Knowledge</span> 
             </NavLink>
             <NavLink
               className={styles.NavLink}
@@ -44,7 +45,7 @@ function Sidebar() {
             <NavLink
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/followed"
+              to="/feed"
             >
               <i className="fas fa-users"></i> Followed Knowledge
             </NavLink>

@@ -39,7 +39,7 @@ const NavBar = () => {
       >
         <i className="fas fa-book"></i>
         <span className="text-warning">
-          Knowledge
+          KNOWL3DG3
         </span>
       </NavLink>
       <NavLink
@@ -49,7 +49,7 @@ const NavBar = () => {
       >
         <i className="fas fa-box"></i>
         <span className="text-warning">
-          Containers
+          CONTAINERS
         </span>
       </NavLink>
       <NavLink
@@ -59,7 +59,7 @@ const NavBar = () => {
       >
         <i className="fas fa-headset"></i>
         <span className="text-warning">
-          Support
+          SUPPORT
         </span>
       </NavLink>
       <NavLink
@@ -68,13 +68,13 @@ const NavBar = () => {
       >
         <Avatar src={currentUser?.profile_image} height={40} />
         <span className="text-warning">
-          Profile
+          PROFILE
         </span>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
         <span className="text-warning">
-          Logout
+          LOGOUT
         </span>
       </NavLink>
     </>
@@ -88,7 +88,7 @@ const NavBar = () => {
       >
         <i className="fas fa-user-plus"></i>
         <span className="text-warning">
-          Register
+          REGISTER
         </span>
       </NavLink>
       <NavLink
@@ -98,7 +98,7 @@ const NavBar = () => {
       >
         <i className="fas fa-sign-in-alt"></i>
         <span className="text-warning">
-          Login
+          LOGIN
         </span>
       </NavLink>
     </>
@@ -111,7 +111,7 @@ const NavBar = () => {
       expand="md"
       fixed="top"
     >
-      <Container>
+      <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />

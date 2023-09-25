@@ -88,7 +88,7 @@ function App() {
 
 
       
-      <Container className={styles.Main}>
+      <Container className={styles.Main} fluid>
         <Switch>
           <Route
             exact
