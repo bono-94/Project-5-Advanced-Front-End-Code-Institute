@@ -6,24 +6,27 @@
     padding: 10px 0;
     text-align: left;
     padding-left: 40px;
-    margin-top: 21px;
     padding: 20px;
     font-size: 16px;
+    font-size: smaller;
+    border-right: 2px black solid;
 }
 
-.sidebar > h4 {
+.sidebar > h5 {
     background-color: lightgrey;
     color: #445261;
     border: white solid 1px;
 }
 
 .sidebar > a {
-    background-color: white;
-    color: #445261;
+    background-color: rgba(247, 242, 242, 0.77);
+    color: black;
     border: white solid 1px;
     padding: 10px 0;
     padding-left: 10px;
     margin-left: 30px;
+    border-bottom: 1px solid rgb(133, 133, 133);
+    font-weight: 400;
 }
 
 .sidebar > a:hover{
@@ -32,6 +35,18 @@
     border: white solid 1px;
 }
 
+.sidebar > a > i{
+    color: orange;
+    border-radius: 50%;
+    font-size: x-large;
+    text-shadow: 1px 1px 1px black;
+}
+
+#sidebar i:hover{
+    color: orange;
+    background-color: black;
+    border: white solid 1px;
+}
 /* Add this to your Sidebar.module.css */
 .section {
     display: flex;
@@ -39,6 +54,14 @@
     align-items: center;
     margin-bottom: 10px;    
   }
+
+.section > div > a > i:hover {
+    color:black;
+}
+
+.section > div > a > i {
+    font-size: x-large;
+}
   
 .icons {
     margin-left: auto; /* Push the icon to the right */
@@ -50,4 +73,23 @@
 .icons:hover {
     color: orange; /* New color on hover (e.g., orange) */
 }
+
+.beat:hover{
+    color:black;
+}
   
+@keyframes beat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .beat {
+    animation: beat 1s infinite;
+  }

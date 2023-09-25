@@ -4,11 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import logo from "../assets/logo.jpg";
+import styles from "../styles/Footer.module.css";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-warning py-5">
-      <Container>
+    <footer className="bg-dark text-warning">
+      <Container className={styles.Footer}>
         <Row>
           <Col md={4}>
             <img

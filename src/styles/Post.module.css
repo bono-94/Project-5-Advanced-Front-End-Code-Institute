@@ -12,13 +12,13 @@ h5 {
 }
 
 .Heart {
-  color: #f85032;
+  color: orange;
 }
 
 .Heart:hover {
-  color: #2142b2;
+  color: rgb(143, 143, 143);
 }
 
 .HeartOutline:hover {
-  color: #f85032;
+  color: orange;
 }

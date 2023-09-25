@@ -4,49 +4,83 @@ import { NavLink } from "react-router-dom";
 
 const addPostIcon = (
     <NavLink
-      className={styles.NavLink}
+      className={`far fa-plus-square ${styles.beat}`}
       activeClassName={styles.Active}
       to="/knowledge/create"
     >
-      <i className="far fa-plus-square"></i>
     </NavLink>
   );
 
   const addContainerIcon = (
     <NavLink
-      className={styles.NavLink}
+      className={`far fa-plus-square ${styles.beat}`}
       activeClassName={styles.Active}
       to="/container/create"
     >
-      <i className="far fa-plus-square"></i>
     </NavLink>
   );
 
-
 function Sidebar() {
     return (
-        <div className={styles.sidebar}>
+        <div className={styles.sidebar} id="sidebar">
             <div className={styles.section}>
-              <h4>Knowledge</h4>
+              <h5>Knowledge</h5>
               <div className={styles.icons}>{addPostIcon}</div>
             </div>
-            <a href = "#." target= "_blank">My Knowledge</a>
-            <a href = "#." target= "_blank">Live Knowledge</a>
-            <a href = "#." target= "_blank">Followed Knowledge</a>
-            <a href = "#." target= "_blank">Popular Knowledge</a>
-            <a href = "#." target= "_blank">Invasive Knowledge</a>
-            <a href = "#." target= "_blank">Liked Knowledge</a>
-            <a href = "#." target= "_blank">Most Commented Knowledge</a>
-            <a href = "#." target= "_blank">Favourited Knowledge</a>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/posts/user"
+            >
+              <i className="fas fa-universal-access"></i> My Knowledge
+            </NavLink>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/feed"
+            >
+              <i className="fas fa-globe"></i> Live Knowledge
+            </NavLink>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/followed"
+            >
+              <i className="fas fa-users"></i> Followed Knowledge
+            </NavLink>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/liked"
+            >
+              <i className="fas fa-heart"></i> Liked Knowledge
+            </NavLink>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/favourited"
+            >
+              <i className="fas fa-star"></i> Favourited Knowledge
+            </NavLink>
             <hr></hr>
             <div className={styles.section}>
-              <h4>Containers</h4>
+              <h5>Containers</h5>
               <div className={styles.icons}>{addContainerIcon}</div>
             </div>
-            <a href = "#." target= "_blank">My Containers</a>
-            <a href = "#." target= "_blank">Public Containers</a>
-            <a href = "#." target= "_blank">Popular Containers</a>
-            <a href = "#." target= "_blank">Deepest Containers</a>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/containers/private"
+            >
+              <i className="fas fa-user-secret"></i> Private Containers
+            </NavLink>
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/containers/public"
+            >
+              <i className="fas fa-network-wired"></i> Public Containers
+            </NavLink>
         </div>
     )
 }
