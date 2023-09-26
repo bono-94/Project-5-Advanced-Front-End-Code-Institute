@@ -114,7 +114,7 @@ const NavBar = () => {
       <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img src={logo} alt="logo" height="55" />
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
@@ -122,6 +122,7 @@ const NavBar = () => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
           className="bg-warning text-warning"
+          style={{ fontSize: '14px', padding: '4px 8px', color: 'dark' }}
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
