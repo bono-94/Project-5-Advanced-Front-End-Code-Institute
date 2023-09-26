@@ -61,7 +61,7 @@ function Sidebar() {
               activeClassName={styles.Active}
               to="/favourited"
             >
-              <i className="fas fa-star"></i> Favourited Knowledge
+              <i className="fas fa-star"></i> Favourite Knowledge
             </NavLink>
             <hr></hr>
             <div className={styles.section}>

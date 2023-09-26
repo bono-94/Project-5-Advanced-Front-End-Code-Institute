@@ -16,3 +16,7 @@
   cursor: default;
   color: #cfced3;
 }
+
+.ScrollableContainer {
+  overflow-y: auto; /* Adjust the maximum height as needed */
+}
