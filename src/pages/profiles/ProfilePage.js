@@ -87,27 +87,42 @@ function ProfilePage() {
               <div>following</div>
             </Col>
           </Row>
-        </Col>
-        <Col lg={3} className="text-lg-right">
-          {currentUser &&
-            !is_owner &&
-            (profile?.following_id ? (
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => handleUnfollow(profile)}
-              >
-                unfollow
-              </Button>
-            ) : (
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => handleFollow(profile)}
-              >
-                follow
-              </Button>
-            ))}
-        </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
+          {profile?.profile_quote && (
+            <div className={styles.ProfileQuote}>{profile?.profile_quote}</div>
+          )}
+          {profile?.first_name && <div>Name: {profile?.first_name}</div>}
+          {profile?.location && <div>Location: {profile?.location}</div>}
+          {profile?.age && <div>Age: {profile?.age}</div>}
+          {profile?.bio && <div>Bio: {profile?.bio}</div>}
+          {profile?.website && (
+            <div>
+              Website:{" "}
+              <a href={profile?.website} target="_blank" rel="noopener noreferrer">
+                {profile?.website}
+              </a>
+            </div>
+          )}
+          </Col>
+          <Col lg={3} className="text-lg-right">
+            {currentUser &&
+              !is_owner &&
+              (profile?.following_id ? (
+                <Button
+                  className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+                  onClick={() => handleUnfollow(profile)}
+                >
+                  unfollow
+                </Button>
+              ) : (
+                <Button
+                  className={`${btnStyles.Button} ${btnStyles.Black}`}
+                  onClick={() => handleFollow(profile)}
+                >
+                  follow
+                </Button>
+              ))}
+          </Col>
+          {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
   );
