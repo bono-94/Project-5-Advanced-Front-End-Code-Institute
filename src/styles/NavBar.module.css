@@ -2,8 +2,9 @@
   background-color: black;
   color: orange;
   border-bottom: 4px solid orange;
+  padding: 0px;
+  margin: 0px;
 }
-
 
 .NavLink {
   padding: 5px;
@@ -21,12 +22,16 @@
   color: orange;
 }
 
-
-.custom-toggle .navbar-toggler-icon {
-  background-color: orange; /* Change the color to orange or any other color you prefer */
+.NavLink:hover i {
+  color: orange;
 }
 
-/* Change the color of the three lines when the Navbar is expanded */
-.custom-toggle.navbar-expand .navbar-toggler-icon {
-  background-color: darkorange; /* Change the color to a different color when expanded */
+.ProfileLink{
+  margin-top: 2px;
 }
+
+
+.ProfileLink:hover img {
+  box-shadow: 0 0 5px orange; /* Adjust shadow properties as needed */
+}
+

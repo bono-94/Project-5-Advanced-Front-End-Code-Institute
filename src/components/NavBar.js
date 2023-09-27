@@ -66,10 +66,10 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser?.profile_image} height={40} />
-        <span className="text-warning">
-          PROFILE
-        </span>
+        <div className={styles.ProfileLink}>
+          <Avatar src={currentUser?.profile_image} height={35} />
+          <span className="text-warning">PROFILE</span>
+        </div>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
@@ -122,19 +122,10 @@ const NavBar = () => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
           className={`bg-${expanded ? 'light' : 'warning'}`}
-          style={{ fontSize: '14px', padding: '4px 8px', color:'red'}}
+          style={{ fontSize: '14px', padding: '4px 8px'}}
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            {/* <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/"
-            >
-              <i className="fas fa-home"></i>Home
-            </NavLink> */}
-
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
