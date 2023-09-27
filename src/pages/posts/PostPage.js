@@ -54,6 +54,7 @@ function PostPage() {
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
               post={id}
+              owner={currentUser.username}
               setPost={setPost}
               setComments={setComments}
             />

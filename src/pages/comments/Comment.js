@@ -16,6 +16,7 @@ const Comment = (props) => {
     owner,
     updated_at,
     content,
+    title,
     id,
     setPost,
     setComments,
@@ -59,12 +60,16 @@ const Comment = (props) => {
               id={id}
               profile_id={profile_id}
               content={content}
+              title={title}
               profileImage={profile_image}
               setComments={setComments}
               setShowEditForm={setShowEditForm}
             />
           ) : (
-            <p>{content}</p>
+            <>
+              <h6>{title}</h6> {/* Display title */}
+              <p>{content}</p>
+            </>
           )}
         </Media.Body>
         {is_owner && !showEditForm && (
