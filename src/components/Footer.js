@@ -13,9 +13,10 @@ function Footer() {
         <Row className={styles.Footer} fluid>
           <Col md={4}>
             <img
-              src={logo} // Replace with your brand logo URL
+              src={logo}
               alt="Brand Logo"
               width="100"
+              className={styles.Spinner}
             />
             <h5>Brand Name</h5>
             <p>
