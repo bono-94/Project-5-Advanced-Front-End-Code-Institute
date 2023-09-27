@@ -21,6 +21,12 @@
   color: orange;
 }
 
-.Toggle {
-  color: orange;
+
+.custom-toggle .navbar-toggler-icon {
+  background-color: orange; /* Change the color to orange or any other color you prefer */
+}
+
+/* Change the color of the three lines when the Navbar is expanded */
+.custom-toggle.navbar-expand .navbar-toggler-icon {
+  background-color: darkorange; /* Change the color to a different color when expanded */
 }

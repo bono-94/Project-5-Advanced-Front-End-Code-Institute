@@ -121,8 +121,8 @@ const NavBar = () => {
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
-          className="bg-warning text-warning"
-          style={{ fontSize: '14px', padding: '4px 8px', color: 'dark' }}
+          className={`bg-${expanded ? 'light' : 'warning'}`}
+          style={{ fontSize: '14px', padding: '4px 8px', color:'red'}}
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
