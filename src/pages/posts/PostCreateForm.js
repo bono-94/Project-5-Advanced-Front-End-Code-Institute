@@ -99,9 +99,7 @@ function PostCreateForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    const containerIdsString = containers.join(',');
-
-    formData.append("containers", containerIdsString);
+    formData.append("containers", containers);
     formData.append("post_category", post_category);
     formData.append("image", imageInput.current.files[0]);
     formData.append("title", title);

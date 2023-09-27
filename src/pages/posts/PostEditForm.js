@@ -53,6 +53,7 @@ function PostEditForm() {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { 
+          containers,
           post_category,
           title,
           sub_title,
@@ -65,6 +66,7 @@ function PostEditForm() {
         
 
         is_owner ? setPostData({ 
+          containers,
           post_category,
           title,
           sub_title,
@@ -131,7 +133,6 @@ function PostEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-
     formData.append("containers", containers);
     formData.append("post_category", post_category);
     formData.append("title", title);
@@ -141,6 +142,8 @@ function PostEditForm() {
     formData.append("content", content);
     formData.append("inspiration", inspiration);
     formData.append("source", source);
+
+    console.log(containers)
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);

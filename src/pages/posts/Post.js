@@ -24,6 +24,7 @@ const Post = (props) => {
     favourites_count,
     favourite_id,
     title,
+    containers,
     content,
     image,
     updated_at,
