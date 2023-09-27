@@ -51,7 +51,7 @@ function PostsPage({ message, filter = "" }) {
   }, [filter, query, pathname, currentUser]);
 
   return (
-    <div className={styles.ScrollableContainer}>
+    <div className={styles.ScrollableContainer} fluid>
       <Container className={styles.PostsPage} fluid>
           <Row>
             <Col><Sidebar /></Col>

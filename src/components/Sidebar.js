@@ -32,8 +32,9 @@ function Sidebar() {
               activeClassName={styles.Active}
               to="/posts/user"
             >
-              <i className="fas fa-universal-access"></i>
               <span>My Knowledge</span> 
+              <i className="fas fa-universal-access"></i>
+              
             </NavLink>
             <NavLink
               className={styles.NavLink}

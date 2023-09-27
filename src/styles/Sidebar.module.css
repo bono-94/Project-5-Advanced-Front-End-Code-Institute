@@ -2,6 +2,7 @@
     grid-row: 2;
     grid-column: 1;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     padding: 10px 0;
     text-align: left;
@@ -24,7 +25,7 @@
     border: white solid 1px;
     padding: 10px 0;
     padding-left: 10px;
-    margin-left: 30px;
+    margin-left: 10px;
     border-bottom: 1px solid rgb(133, 133, 133);
     font-weight: 400;
 }
@@ -42,7 +43,12 @@
     text-shadow: 1px 0px 0px silver;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     border: 1px silver solid;
-    margin-right: 10px;
+    margin-left: auto;
+}
+
+.sidebar > a > span {
+
+    margin-right: auto;
 }
 
 #sidebar i:hover{
@@ -50,7 +56,8 @@
     background-color: black;
     border: white solid 1px;
 }
-/* Add this to your Sidebar.module.css */
+
+
 .section {
     display: flex;
     justify-content: space-between;
@@ -77,6 +84,8 @@
     color: orange; /* New color on hover (e.g., orange) */
 }
 
+
+
 .beat:hover{
     color:black;
 }
@@ -96,3 +105,6 @@
   .beat {
     animation: beat 1s infinite;
   }
+
+
+  
