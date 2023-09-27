@@ -1,0 +1,130 @@
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/Container.module.css";
+
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import ListGroup from "react-bootstrap/ListGroup";
+
+import { Link, useHistory } from "react-router-dom";
+import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
+const Container = (props) => {
+  const {
+    id,
+    owner,
+    profile_id,
+    profile_image,
+    containers,
+    container_name,
+    container_info,
+    created_at,
+    updated_at,
+    is_public
+    /* Add other props specific to Container model here */
+  } = props;
+
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+  const [containerNames, setContainerNames] = useState([]);
+  const [knowledgeItems, setKnowledgeItems] = useState([]);
+
+  // Fetch container names based on the container IDs
+  useEffect(() => {
+    const fetchContainerNames = async () => {
+      try {
+        const containerNamePromises = containers.map(async (containerId) => {
+          const response = await axiosRes.get(`/containers/${containerId}/`);
+          return response.data.container_name;
+        });
+
+        const containerNameResults = await Promise.all(containerNamePromises);
+        setContainerNames(containerNameResults);
+      } catch (err) {
+        // Handle errors if necessary
+        console.error(err);
+      }
+    };
+
+    // Call the function to fetch container names
+    fetchContainerNames();
+  }, [containers]);
+
+  // Fetch knowledge items associated with the container
+  useEffect(() => {
+    const fetchKnowledgeItems = async () => {
+      try {
+        // Assuming you have an API endpoint to fetch knowledge items associated with the container
+        const response = await axiosRes.get(`/containers/${id}/knowledge-items/`);
+        setKnowledgeItems(response.data); // Update knowledgeItems state with fetched data
+      } catch (err) {
+        // Handle errors if necessary
+        console.error(err);
+      }
+    };
+
+    // Call the function to fetch knowledge items
+    fetchKnowledgeItems();
+  }, [id]);
+
+  return (
+    <Card className={styles.Container}>
+      <Card.Body>
+        <Media className="align-items-center justify-content-between">
+          <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} height={55} />
+            {owner}            
+          </Link>
+          <div>
+            <span>Created: {created_at}</span>
+            <span>Updated: {updated_at}</span>
+          </div>
+          {/* Add Container Icon */}
+          <i className="fas fa-box-open"></i>
+        </Media>
+      </Card.Body>
+      {/* Container Name */}
+      <Card.Title>NAme:{container_name}</Card.Title>
+      {/* Container Description */}
+      <Card.Text>Info:{container_info}</Card.Text>
+      <Card.Footer>
+        {/* Privacy or Global Icon based on is_public */}
+        {is_public ? (
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>This container is public.</Tooltip>}
+          >
+            <i className="fas fa-globe"></i>
+          </OverlayTrigger>
+        ) : (
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>This container is private.</Tooltip>}
+          >
+            <i className="fas fa-lock"></i>
+          </OverlayTrigger>
+        )}
+
+        <ListGroup>
+          <ListGroup.Item variant="light" disabled>
+            Knowledge
+          </ListGroup.Item>
+          {knowledgeItems.map((knowledgeItem) => (
+            <ListGroup.Item key={knowledgeItem.id}>
+              {/* Display knowledge item details here */}
+              <Link to={`/knowledge/${knowledgeItem.id}`}>
+                {knowledgeItem.title}
+              </Link>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Card.Footer>
+    </Card>
+  );
+};
+
+export default Container;

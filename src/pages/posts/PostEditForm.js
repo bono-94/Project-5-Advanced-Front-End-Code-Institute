@@ -133,7 +133,10 @@ function PostEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("containers", containers);
+
+    const containerIdsString = containers.join(', ');
+
+    formData.append("containers", containerIdsString);
     formData.append("post_category", post_category);
     formData.append("title", title);
     formData.append("sub_title", sub_title);
@@ -143,7 +146,7 @@ function PostEditForm() {
     formData.append("inspiration", inspiration);
     formData.append("source", source);
 
-    console.log(containers)
+    console.log(containerIdsString)
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);

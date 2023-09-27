@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -6,6 +6,10 @@ import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import ListGroup from "react-bootstrap/ListGroup";
+import Dropdown from "react-bootstrap/Dropdown";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
@@ -24,17 +28,26 @@ const Post = (props) => {
     favourites_count,
     favourite_id,
     title,
-    containers,
+    sub_title,
+    topic,
+    location,
     content,
+    inspiration,
+    source,
+    containers,
     image,
     updated_at,
+    created_at,
     postPage,
     setPosts,
+    post_category
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+  const [containerNames, setContainerNames] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -113,16 +126,41 @@ const Post = (props) => {
     }
   };
 
+  useEffect(() => {
+    // Fetch container names based on the container IDs
+    const fetchContainerNames = async () => {
+      try {
+        const containerNamePromises = containers.map(async (containerId) => {
+          const response = await axiosRes.get(`/containers/${containerId}/`);
+          return response.data.container_name;
+        });
+
+        const containerNameResults = await Promise.all(containerNamePromises);
+        setContainerNames(containerNameResults);
+      } catch (err) {
+        // Handle errors if necessary
+        console.error(err);
+      }
+    };
+
+    // Call the function to fetch container names
+    fetchContainerNames();
+  }, [containers]);
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
-            {owner}
+            {owner}            
           </Link>
+          <div>
+              <span>Created:{created_at}</span>
+              <span>Updated:{updated_at}</span>
+            </div>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            
             {is_owner && postPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
@@ -136,8 +174,13 @@ const Post = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+      {title && <Card.Title className="text-center">{title}</Card.Title>}
+    {sub_title && <div><strong>Sub Title:</strong> {sub_title}</div>}
+    {topic && <div><strong>Topic:</strong> {topic}</div>}
+    {location && <div><strong>Location:</strong> {location}</div>}
+    {content && <div><strong>Content:</strong> {content}</div>}
+    {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
+    {source && <div><strong>Source:</strong> {source}</div>}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -188,6 +231,33 @@ const Post = (props) => {
           {comments_count}
         </div>
       </Card.Body>
+      <Card.Footer>
+        <Button variant="secondary" onClick={() => setShowModal(true)}>
+          Containers
+        </Button>
+
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Containers</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ul>
+              {containerNames.map((containerName, index) => (
+                <li
+                  key={containers[index]}
+                  onClick={() => {
+                    // Handle the click action here (e.g., navigate to container)
+                    history.push(`/container/${containers[index]}`);
+                    setShowModal(false); // Close the modal
+                  }}
+                >
+                  <i className="fas fa-box-open"></i> {containerName}
+                </li>
+              ))}
+            </ul>
+          </Modal.Body>
+        </Modal>
+      </Card.Footer>
     </Card>
   );
 };

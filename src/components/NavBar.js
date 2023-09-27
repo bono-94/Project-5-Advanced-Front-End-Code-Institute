@@ -45,7 +45,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/public-containers"
+        to="/container"
       >
         <i className="fas fa-box"></i>
         <span className="text-warning">

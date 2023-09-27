@@ -7,6 +7,9 @@ import styles from "./App.module.css";
 import { Route, Switch } from "react-router-dom";
 
 import ContainerCreateForm from "./pages/containers/ContainerCreateForm";
+import ContainerPage from "./pages/containers/ContainerPage";
+import ContainerEditForm from "./pages/containers/ContainerEditForm";
+import ContainersPublic from "./pages/containers/ContainersPublic";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostEditForm from "./pages/posts/PostEditForm";
 import PostPage from "./pages/posts/PostPage";
@@ -130,6 +133,9 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/container/create" render={() => <ContainerCreateForm />} />
+          <Route exact path="/container/:id" render={() => <ContainerPage />} />
+          <Route exact path="/container/edit/:id" render={() => <ContainerEditForm />} />
+          <Route exact path="/containers/public" render={() => <ContainersPublic />} />
           <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
@@ -145,11 +151,7 @@ function App() {
             path="/profiles/:id/edit/password"
             render={() => <UserPasswordForm />}
           />
-          <Route
-            exact
-            path="/profiles/:id/edit"
-            render={() => <ProfileEditForm />}
-          />
+          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
 
           <Route render={() => <NotFound />} />
         </Switch>
