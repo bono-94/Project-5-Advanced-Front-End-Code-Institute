@@ -1,8 +1,14 @@
 .SearchBar input {
   border-radius: 20px;
-  color: #242a3d;
+  color:white;
+  background-color: orange;
+  border: 1px solid black;
   padding-left: 40px;
   margin-bottom: 16px;
+}
+
+.SearchBar input::placeholder{
+  color:black;
 }
 
 .SearchIcon {
@@ -10,13 +16,27 @@
   font-size: 1.2rem;
   padding: 9px;
   padding-left: 15px;
+  padding-right: 8px;
+  padding-top: 11px;
+  color: black;
 }
 
 .SearchIcon:hover {
   cursor: default;
-  color: #cfced3;
+  color: rgb(57, 57, 57);
 }
 
 .ScrollableContainer {
-  overflow-y: auto; /* Adjust the maximum height as needed */
+  overflow-y: auto; 
+}
+
+.SearchBar input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid orange;
+}
+
+.SearchBar input:focus,
+.SearchBar input:active {
+  background-color: whitesmoke;
 }
