@@ -51,7 +51,7 @@ function PostEditForm() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/${id}/`);
+        const { data } = await axiosReq.get(`/post/${id}/`);
         const { 
           containers,
           post_category,
@@ -153,8 +153,8 @@ function PostEditForm() {
     }
 
     try {
-      await axiosReq.put(`/posts/${id}/`, formData);
-      history.push(`/posts/${id}`);
+      await axiosReq.put(`/post/${id}/`, formData);
+      history.push(`/post/${id}`);
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

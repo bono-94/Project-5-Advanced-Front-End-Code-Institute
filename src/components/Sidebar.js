@@ -6,7 +6,7 @@ const addPostIcon = (
     <NavLink
       className={`far fa-plus-square ${styles.beat}`}
       activeClassName={styles.Active}
-      to="/knowledge/create"
+      to="/post/create"
     >
     </NavLink>
   );
@@ -31,6 +31,7 @@ function Sidebar() {
               className={styles.NavLink}
               activeClassName={styles.Active}
               to="/posts/user"
+              // add profile_id or username here
             >
               <span>My Knowledge</span> 
               <i className="fas fa-universal-access"></i>
@@ -46,7 +47,7 @@ function Sidebar() {
             <NavLink
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/feed"
+              to="/posts"
             >
               <i className="fas fa-users"></i> Followed Knowledge
             </NavLink>

@@ -50,12 +50,12 @@ const Post = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
-    history.push(`/posts/${id}/edit`);
+    history.push(`/post/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/posts/${id}/`);
+      await axiosRes.delete(`/post/${id}/`);
       history.goBack();
     } catch (err) {
       // console.log(err);
@@ -131,7 +131,7 @@ const Post = (props) => {
     const fetchContainerNames = async () => {
       try {
         const containerNamePromises = containers.map(async (containerId) => {
-          const response = await axiosRes.get(`/containers/${containerId}/`);
+          const response = await axiosRes.get(`/container/${containerId}/`);
           return response.data.container_name;
         });
 
@@ -151,7 +151,7 @@ const Post = (props) => {
     <Card className={styles.Post}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
+          <Link to={`/profile/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}            
           </Link>
@@ -170,7 +170,7 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/posts/${id}`}>
+      <Link to={`/post/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
@@ -225,7 +225,7 @@ const Post = (props) => {
           )}
           {favourites_count}
 
-          <Link to={`/posts/${id}`}>
+          <Link to={`/post/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}

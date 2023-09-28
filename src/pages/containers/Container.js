@@ -36,7 +36,7 @@ const Container = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
-    history.push(`/container/edit/${id}`);
+    history.push(`/container/${id}/edit/`);
   };
 
   const handleDelete = async () => {
@@ -54,7 +54,7 @@ const Container = (props) => {
     const fetchContainerNames = async () => {
       try {
         const containerNamePromises = containers.map(async (containerId) => {
-          const response = await axiosRes.get(`/containers/${containerId}/`);
+          const response = await axiosRes.get(`/container/${containerId}/`);
           return response.data.container_name;
         });
 
@@ -75,7 +75,7 @@ const Container = (props) => {
     <Card className={styles.Container}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
+          <Link to={`/profile/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}            
           </Link>

@@ -29,7 +29,7 @@ function ContainerPage() {
     const handleMount = async () => {
       try {
         const [{ data: container }, { data: posts }] = await Promise.all([
-          axiosReq.get(`/containers/${id}`),
+          axiosReq.get(`/container/${id}`),
           axiosReq.get(`/posts/?containers=${id}`),
         ]);
         setContainer(container);

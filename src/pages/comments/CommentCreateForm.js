@@ -56,7 +56,7 @@ function CommentCreateForm(props) {
       <Row>
         <Col xs={12} sm={5} lg={2}>
           {/* Avatar column */}
-          <Link to={`/profiles/${profile_id}`}>
+          <Link to={`/profile/${profile_id}`}>
             <Avatar src={profileImage} />
           </Link>
           <p>{owner}</p>

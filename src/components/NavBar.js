@@ -35,7 +35,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/live-knowledge"
+        to="/knowledge"
       >
         <i className="fas fa-book"></i>
         <span className="text-warning">
@@ -45,7 +45,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/container"
+        to="/containers"
       >
         <i className="fas fa-box"></i>
         <span className="text-warning">
@@ -64,7 +64,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
+        to={`/profile/${currentUser?.profile_id}`}
       >
         <div className={styles.ProfileLink}>
           <Avatar src={currentUser?.profile_image} height={35} />

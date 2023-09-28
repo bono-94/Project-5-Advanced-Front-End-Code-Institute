@@ -6,10 +6,13 @@ import styles from "./App.module.css";
 
 import { Route, Switch } from "react-router-dom";
 
+
+import Containers from "./pages/containers/Containers";
 import ContainerCreateForm from "./pages/containers/ContainerCreateForm";
 import ContainerPage from "./pages/containers/ContainerPage";
 import ContainerEditForm from "./pages/containers/ContainerEditForm";
 import ContainersPublic from "./pages/containers/ContainersPublic";
+import ContainersPrivate from "./pages/containers/ContainersPrivate";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostEditForm from "./pages/posts/PostEditForm";
 import PostPage from "./pages/posts/PostPage";
@@ -53,6 +56,7 @@ import Footer from "./components/Footer";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import PopularProfiles from "./pages/profiles/PopularProfiles";
 
 
 
@@ -133,25 +137,31 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/container/create" render={() => <ContainerCreateForm />} />
-          <Route exact path="/container/:id" render={() => <ContainerPage />} />
-          <Route exact path="/container/edit/:id" render={() => <ContainerEditForm />} />
+          <Route exact path="/containers" render={() => <Containers />} />
           <Route exact path="/containers/public" render={() => <ContainersPublic message="No results found. Adjust the search keyword." />} />
-          <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
-          <Route exact path="/posts/:id" render={() => <PostPage />} />
-          <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
-          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/containers/private" render={() => <ContainersPrivate message="No results found. Adjust the search keyword." />} />
+          <Route exact path="/container/:id" render={() => <ContainerPage />} />
+          <Route exact path="/container/:id/edit" render={() => <ContainerEditForm />} />
+          
+          <Route exact path="/post/create" render={() => <PostCreateForm />} />
+          <Route exact path="/posts" render={() => <PostsPage />} />
+          <Route exact path="/post/:id" render={() => <PostPage />} />
+          <Route exact path="/post/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/profiles" render={() => <PopularProfiles />} />
+          <Route exact path="/profile/:id" render={() => <ProfilePage />} />
           <Route exact path="/support" render={() => <Support />} />
+          <Route exact path="/profile/:id/edit" render={() => <ProfileEditForm />} />
           <Route
             exact
-            path="/profiles/:id/edit/username"
+            path="/profile/:id/edit/username"
             render={() => <UsernameForm />}
           />
           <Route
             exact
-            path="/profiles/:id/edit/password"
+            path="/profile/:id/edit/password"
             render={() => <UserPasswordForm />}
           />
-          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
+          
 
           <Route render={() => <NotFound />} />
         </Switch>

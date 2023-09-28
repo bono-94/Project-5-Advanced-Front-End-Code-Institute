@@ -51,20 +51,20 @@ export const ProfileEditDropdown = ({ id }) => {
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu>
         <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit`)}
+          onClick={() => history.push(`/profile/${id}/edit`)}
           aria-label="edit-profile"
         >
           <i className="fas fa-edit" /> edit profile
         </Dropdown.Item>
         <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit/username`)}
+          onClick={() => history.push(`/profile/${id}/edit/username`)}
           aria-label="edit-username"
         >
           <i className="far fa-id-card" />
           change username
         </Dropdown.Item>
         <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit/password`)}
+          onClick={() => history.push(`/profile/${id}/edit/password`)}
           aria-label="edit-password"
         >
           <i className="fas fa-key" />
