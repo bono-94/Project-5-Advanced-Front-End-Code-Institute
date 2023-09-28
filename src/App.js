@@ -135,7 +135,7 @@ function App() {
           <Route exact path="/container/create" render={() => <ContainerCreateForm />} />
           <Route exact path="/container/:id" render={() => <ContainerPage />} />
           <Route exact path="/container/edit/:id" render={() => <ContainerEditForm />} />
-          <Route exact path="/containers/public" render={() => <ContainersPublic />} />
+          <Route exact path="/containers/public" render={() => <ContainersPublic message="No results found. Adjust the search keyword." />} />
           <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />

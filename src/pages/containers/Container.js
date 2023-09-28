@@ -32,6 +32,21 @@ const Container = (props) => {
   const history = useHistory();
   const [containerNames, setContainerNames] = useState([]);
   const [knowledgeItems, setKnowledgeItems] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleEdit = () => {
+    history.push(`/container/edit/${id}`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/container/${id}/`);
+      history.goBack();
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
 
   // Fetch container names based on the container IDs
   useEffect(() => {
@@ -54,22 +69,6 @@ const Container = (props) => {
     fetchContainerNames();
   }, [containers]);
 
-  // Fetch knowledge items associated with the container
-  useEffect(() => {
-    const fetchKnowledgeItems = async () => {
-      try {
-        // Assuming you have an API endpoint to fetch knowledge items associated with the container
-        const response = await axiosRes.get(`/containers/${id}/knowledge-items/`);
-        setKnowledgeItems(response.data); // Update knowledgeItems state with fetched data
-      } catch (err) {
-        // Handle errors if necessary
-        console.error(err);
-      }
-    };
-
-    // Call the function to fetch knowledge items
-    fetchKnowledgeItems();
-  }, [id]);
 
   return (
     <Card className={styles.Container}>
