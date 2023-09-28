@@ -11,6 +11,7 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Container = (props) => {
   const {
@@ -121,6 +122,15 @@ const Container = (props) => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+        <div className="d-flex align-items-center">
+            
+            {is_owner && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
+          </div>
       </Card.Footer>
     </Card>
   );

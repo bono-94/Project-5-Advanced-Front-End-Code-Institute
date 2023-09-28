@@ -56,3 +56,44 @@
     text-decoration: underline;
     color: #007bff; /* Change color as needed */
   }
+
+/* ContainerPage.module.css */
+
+.containerPage {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.containerPageCol {
+  margin-right: 30px;
+}
+
+.containerPageContent {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.postCount {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.postCheckbox {
+  margin-bottom: 10px;
+}
+
+.appendButton {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.popularProfilesCol {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
