@@ -30,7 +30,7 @@ function ContainerPage() {
       try {
         const [{ data: container }, { data: posts }] = await Promise.all([
           axiosReq.get(`/container/${id}`),
-          axiosReq.get(`/posts/?containers=${id}`),
+          axiosReq.get(`/posts/?search=${id}`), // Use search query parameter
         ]);
         setContainer(container);
         setPosts(posts);
@@ -38,7 +38,7 @@ function ContainerPage() {
         console.error(err);
       }
     };
-
+  
     handleMount();
   }, [id]);
 
@@ -58,7 +58,7 @@ function ContainerPage() {
             <ul>
               {posts.results.map((post) => (
                 <li key={post.id}>
-                  <Link to={`/posts/${post.id}`}>
+                  <Link to={`/post/${post.id}`}>
                     <strong>{post.title}</strong> by {post.owner}
                   </Link>
                 </li>
