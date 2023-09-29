@@ -6,7 +6,7 @@ import styles from "./App.module.css";
 
 import { Route, Switch } from "react-router-dom";
 
-
+import Home from "./pages/home/Home";
 import Containers from "./pages/containers/Containers";
 import ContainerCreateForm from "./pages/containers/ContainerCreateForm";
 import ContainerPage from "./pages/containers/ContainerPage";
@@ -22,6 +22,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import Support from "./pages/support/Support";
+import SupportSubmit from "./pages/support/SupportSubmit";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
@@ -101,12 +102,19 @@ function App() {
             exact
             path="/"
             render={() => (
+              <Home message="No results found. Adjust the search keyword." />
+            )}
+          />
+          <Route
+            exact
+            path="/knowledge"
+            render={() => (
               <PostsPage message="No results found. Adjust the search keyword." />
             )}
           />
           <Route
             exact
-            path="/feed"
+            path="/followed"
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or follow a user."
@@ -150,6 +158,8 @@ function App() {
           <Route exact path="/profiles" render={() => <PopularProfiles />} />
           <Route exact path="/profile/:id" render={() => <ProfilePage />} />
           <Route exact path="/support" render={() => <Support />} />
+          <Route exact path="/support/successful" render={() => <SupportSubmit />} />
+          
           <Route exact path="/profile/:id/edit" render={() => <ProfileEditForm />} />
           <Route
             exact

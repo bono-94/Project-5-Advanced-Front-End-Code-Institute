@@ -32,8 +32,6 @@ function ContainersPublic({ message, filter = "" }) {
         console.log('API Response:', data);
         setContainers(data);
         setHasLoaded(true);
-        console.log(setContainers)
-
         
       } catch (err) {
         // Handle errors if necessary

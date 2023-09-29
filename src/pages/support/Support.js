@@ -17,6 +17,8 @@ import styles from "../../styles/Support.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
+import SupportSubmit from "../../pages/support/SupportSubmit";
+
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -24,6 +26,9 @@ import { useRedirect } from "../../hooks/useRedirect";
 function Support() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [supportId, setSupportId] = useState(null);
+  
 
   const [supportData, setSupportData] = useState({
     support_type: "support",
@@ -73,7 +78,8 @@ function Support() {
 
     try {
       const { data } = await axiosReq.post("/support/", formData);
-      history.push(`/`);
+      setSuccessMessage(`Successfully sent request! Your request ID is: ${data.id}`);
+      history.push(`/support/successful`);
     //   history.push(`/support/${data.id}`);
     } catch (err) {
       // console.log(err);
@@ -186,6 +192,10 @@ function Support() {
           <Container
             className={`${appStyles.Content} ${styles.Support} d-flex flex-column justify-content-center`}
           >
+
+          {successMessage && supportId && (
+            <SupportSubmit successMessage={successMessage} supportId={supportId} />
+          )}
             {/* <Form.Group className="text-center">
               {image ? (
                 <>
