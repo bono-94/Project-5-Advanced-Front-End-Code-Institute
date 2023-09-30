@@ -58,7 +58,7 @@ function ContainerPage() {
             <ul>
               {posts.results.map((post) => (
                 <li key={post.id}>
-                  <Link to={`/post/${post.id}`}>
+                  <Link to={`/knowledge/${post.id}`}>
                     <strong>{post.title}</strong> by {post.owner}
                   </Link>
                 </li>

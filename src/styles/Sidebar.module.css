@@ -13,21 +13,22 @@
     border-right: 1px rgb(166, 166, 166) solid;
 }
 
-.sidebar > h5 {
-    background-color: lightgrey;
-    color: #445261;
-    border: white solid 1px;
+.sidebar h5 {
+    margin-bottom: 21px;
+    font-weight: bold;
 }
 
 .sidebar > a {
-    background-color: rgba(247, 242, 242, 0.77);
+    background-color:rgb(249, 249, 250);
     color: black;
-    border: white solid 1px;
+    border: gray solid 1px;
     padding: 10px 0;
     padding-left: 10px;
     margin-left: 10px;
-    border-bottom: 1px solid rgb(133, 133, 133);
     font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sidebar > a:hover{
@@ -39,17 +40,25 @@
 .sidebar > a > i{
     color: black;
     border-radius: 50%;
-    font-size: large;
+    font-size: 14px;
     text-shadow: 1px 0px 0px silver;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    border: 1px silver solid;
+    background-color: white;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    border: 1px orange solid;
     margin-left: auto;
+    margin-right: 5px;
 }
 
-.sidebar > a > span {
+.sidebar a:hover > i {
+    font-size: medium; /* Set the font-size on hover */
+    border: 1px black solid;
+  }
 
-    margin-right: auto;
+.sidebar a:hover > span {
+font-size: 14px; /* Set the font-size on hover */
+font-weight: bold;
 }
+
 
 #sidebar i:hover{
     color: orange;
@@ -104,6 +113,7 @@
   
   .beat {
     animation: beat 1s infinite;
+    margin-bottom: 24px;
   }
 
 

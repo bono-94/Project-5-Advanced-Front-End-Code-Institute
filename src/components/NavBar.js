@@ -35,7 +35,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/knowledge"
+        to="/knowledge/live"
       >
         <i className="fas fa-book"></i>
         <span className="text-warning">

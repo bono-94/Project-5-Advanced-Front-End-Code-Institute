@@ -107,14 +107,14 @@ function App() {
           />
           <Route
             exact
-            path="/knowledge"
+            path="/knowledge/live"
             render={() => (
               <PostsPage message="No results found. Adjust the search keyword." />
             )}
           />
           <Route
             exact
-            path="/followed"
+            path="/knowledge/followed"
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or follow a user."
@@ -124,7 +124,7 @@ function App() {
           />
           <Route
             exact
-            path="/liked"
+            path="/knowledge/liked"
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or like a post."
@@ -134,7 +134,7 @@ function App() {
           />
           <Route
             exact
-            path="/favourited"
+            path="/knowledge/favourited"
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or favourite a post."
@@ -151,15 +151,12 @@ function App() {
           <Route exact path="/container/:id" render={() => <ContainerPage />} />
           <Route exact path="/container/:id/edit" render={() => <ContainerEditForm />} />
           
-          <Route exact path="/post/create" render={() => <PostCreateForm />} />
-          <Route exact path="/posts" render={() => <PostsPage />} />
-          <Route exact path="/post/:id" render={() => <PostPage />} />
-          <Route exact path="/post/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
+          <Route exact path="/knowledge/live" render={() => <PostsPage />} />
+          <Route exact path="/knowledge/:id" render={() => <PostPage />} />
+          <Route exact path="/knowledge/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles" render={() => <PopularProfiles />} />
           <Route exact path="/profile/:id" render={() => <ProfilePage />} />
-          <Route exact path="/support" render={() => <Support />} />
-          <Route exact path="/support/successful" render={() => <SupportSubmit />} />
-          
           <Route exact path="/profile/:id/edit" render={() => <ProfileEditForm />} />
           <Route
             exact
@@ -171,8 +168,8 @@ function App() {
             path="/profile/:id/edit/password"
             render={() => <UserPasswordForm />}
           />
-          
-
+          <Route exact path="/support" render={() => <Support />} />
+          <Route exact path="/support/successful" render={() => <SupportSubmit />} />
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>
