@@ -22,6 +22,7 @@ const Post = (props) => {
     owner,
     profile_id,
     profile_image,
+    containers_count,
     comments_count,
     likes_count,
     like_id,
@@ -50,13 +51,13 @@ const Post = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
-    history.push(`/post/${id}/edit`);
+    history.push(`/knowledge/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/post/${id}/`);
-      history.goBack();
+      history.push(`/knowledge/live`);
     } catch (err) {
       // console.log(err);
     }
@@ -225,10 +226,14 @@ const Post = (props) => {
           )}
           {favourites_count}
 
-          <Link to={`/post/${id}`}>
+          <Link to={`/knowledge/${id}`}>
             <i className="far fa-comments" />
+            {comments_count}
           </Link>
-          {comments_count}
+          <Link to="#" onClick={() => setShowModal(true)}>
+            <i className="fas fa-cubes" />
+            {containers_count}
+          </Link>
         </div>
       </Card.Body>
       <Card.Footer>
