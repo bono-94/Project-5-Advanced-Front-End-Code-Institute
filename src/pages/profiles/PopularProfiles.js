@@ -25,9 +25,10 @@ const sortingOptions = [
   { field: "-containers_count", label: "Sort by Containers Count (Descending)" },
   { field: "followers_count", label: "Sort by Followers Count (Ascending)" },
   { field: "-followers_count", label: "Sort by Followers Count (Descending)" },
-  { field: "created_at", label: "Sort by Data Joined (Ascending)" },
+  { field: "created_at", label: "Sort by Date Joined (Ascending)" },
   { field: "-created_at", label: "Sort by Date Joined (Descending)" },
 ];
+
 const PopularProfiles = ({ message, filter = "", mobile }) => {
   const { popularProfiles } = useProfileData();
   const currentUser = useCurrentUser();
@@ -74,7 +75,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
         <>
           {profiles.results.length ? (
             <>
-              <h5>Popular Users</h5>
+              <h5>Public Users</h5>
               {mobile ? (
                 <div className="d-flex justify-content-around">
                   {profiles.results.slice(0, 4).map((profile) => (

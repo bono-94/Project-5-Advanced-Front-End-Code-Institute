@@ -70,6 +70,7 @@
     list-style: none;
     max-height: 400px; 
     overflow-y: auto; 
+    min-width: 400px;
   }
   
   .SortingDropdown:hover {

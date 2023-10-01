@@ -182,6 +182,7 @@ const Post = (props) => {
     {content && <div><strong>Content:</strong> {content}</div>}
     {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
     {source && <div><strong>Source:</strong> {source}</div>}
+    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
     </Card.Body>
     <Card.Footer>
         <div className={styles.PostBar}>

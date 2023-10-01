@@ -42,3 +42,55 @@
   background-color: rgb(255, 166, 0) !important;
   color:black
 }
+
+.SortIcon{
+  margin-top: 7px;
+  margin-left: 5px;
+  color: black;
+}
+
+.SortIcon:hover {
+  margin-top: 7px;
+  margin-left: 5px;
+  padding-right: 5px;
+  color: orange;
+}
+
+.SortingDropdown {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  list-style: none;
+  max-height: 400px; 
+  overflow-y: auto; 
+  min-width: 400px;
+}
+
+.SortingDropdown:hover {
+  background-color: #f8f8f8;
+}
+
+.SortOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SortOption i {
+  color: black;
+  font-size: 12px; 
+}
+
+.SortOption:hover {
+  background-color: #e8e8e8;
+}
+
+.ActiveSortOption {
+  font-weight: bold; 
+}
