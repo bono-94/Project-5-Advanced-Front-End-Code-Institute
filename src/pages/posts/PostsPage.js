@@ -78,7 +78,7 @@ function PostsPage({ message, filter = "" }) {
       <Container className={styles.PostsPage} fluid>
           <Row>
             <Col><Sidebar /></Col>
-            <Col xs={8}>
+            <Col xs={9}>
             <Row className="h-100">
               <Col className="py-2 p-0 p-lg-2" lg={8}>
                 <PopularProfiles mobile />
