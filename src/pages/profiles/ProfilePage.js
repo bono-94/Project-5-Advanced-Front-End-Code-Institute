@@ -86,6 +86,10 @@ function ProfilePage() {
               <div>{profile?.following_count}</div>
               <div>following</div>
             </Col>
+            <Col xs={3} className="my-2">
+              <div>{profile?.containers_count}</div>
+              <div>containers</div>
+            </Col>
           </Row>
           {profile?.profile_quote && (
             <div className={styles.ProfileQuote}>{profile?.profile_quote}</div>

@@ -32,6 +32,7 @@
 
 .ScrollableContainer {
   overflow-y: auto; 
+  background-color:ghostwhite;
 }
 
 .SearchBar input:focus {

@@ -182,6 +182,8 @@ const Post = (props) => {
     {content && <div><strong>Content:</strong> {content}</div>}
     {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
     {source && <div><strong>Source:</strong> {source}</div>}
+    </Card.Body>
+    <Card.Footer>
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -235,12 +237,8 @@ const Post = (props) => {
             {containers_count}
           </Link>
         </div>
-      </Card.Body>
-      <Card.Footer>
-        <Button variant="secondary" onClick={() => setShowModal(true)}>
-          Containers
-        </Button>
-
+      
+      </Card.Footer>
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Containers</Modal.Title>
@@ -262,7 +260,7 @@ const Post = (props) => {
             </ul>
           </Modal.Body>
         </Modal>
-      </Card.Footer>
+      
     </Card>
   );
 };

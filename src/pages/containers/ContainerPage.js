@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -9,13 +8,9 @@ import { useParams, Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import ContainerComponent from "./Container"; // Replace with your Container component
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Asset from "../../components/Asset";
-import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
 import styles from "../../styles/Container.module.css";
-
 
 function ContainerPage() {
   const { id } = useParams();
@@ -30,7 +25,7 @@ function ContainerPage() {
       try {
         const [{ data: container }, { data: posts }] = await Promise.all([
           axiosReq.get(`/container/${id}`),
-          axiosReq.get(`/posts/?search=${id}`), // Use search query parameter
+          axiosReq.get(`/posts/?containers=${id}`), // Include containers parameter
         ]);
         setContainer(container);
         setPosts(posts);
@@ -38,7 +33,7 @@ function ContainerPage() {
         console.error(err);
       }
     };
-  
+
     handleMount();
   }, [id]);
 
@@ -51,7 +46,8 @@ function ContainerPage() {
           <h1>{container.container_name}</h1>
           {posts.results.length ? (
             <div className="mb-3">
-              {posts.results.length} {posts.results.length === 1 ? "Post" : "Posts"}
+              {posts.results.length}{" "}
+              {posts.results.length === 1 ? "Post" : "Posts"}
             </div>
           ) : null}
           {posts.results.length ? (
