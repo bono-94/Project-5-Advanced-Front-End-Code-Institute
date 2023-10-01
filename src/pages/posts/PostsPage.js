@@ -36,7 +36,12 @@ const sortingOptions = [
   { field: "-comments_count", label: "Sort by Comments Count (Descending)" },
   { field: "containers_count", label: "Sort by Containers Count (Ascending)" },
   { field: "-containers_count", label: "Sort by Containers Count (Descending)" },
+  { field: "created_at", label: "Sort by Date Posted (Ascending)" },
+  { field: "-created_at", label: "Sort by Date Posted (Descending)" },
+  { field: "updated_at", label: "Sort by Last Updated (Ascending)" },
+  { field: "-updated_at", label: "Sort by Date Updated (Descending)" },
 ];
+
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });

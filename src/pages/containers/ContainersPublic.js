@@ -9,7 +9,7 @@ import Sidebar from "../../components/Sidebar";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Container.module.css";
+import styles from "../../styles/ContainersPublic.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -18,17 +18,29 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useLocation } from "react-router";
 
+
+const sortingOptions = [
+  { field: "owner__username", label: "Sort by Owner (Ascending)" },
+  { field: "-owner__username", label: "Sort by Owner (Descending)" },
+  { field: "container_name", label: "Sort by Container Name (Ascending)" },
+  { field: "-container_name", label: "Sort by Container Name (Descending)" },
+  { field: "created_at", label: "Sort by Date Created (Ascending)" },
+  { field: "-created_at", label: "Sort by Date Created (Descending)" },
+];
+
 function ContainersPublic({ message, filter = "" }) {
   const [containers, setContainers] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
   const currentUser = useCurrentUser();
+  const [showSortingOptions, setShowSortingOptions] = useState(false);
+  const [ordering, setOrdering] = useState(""); 
 
   useEffect(() => {
     const fetchContainers = async () => {
       try {
-        const { data } = await axiosReq.get(`/containers/public/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(`/containers/public/?${filter}search=${query}&ordering=${ordering}`);
         console.log('API Response:', data);
         setContainers(data);
         setHasLoaded(true);
@@ -47,7 +59,7 @@ function ContainersPublic({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, currentUser]);
+  }, [filter, query, ordering, pathname, currentUser]);
 
   return (
     <div className={styles.ScrollableContainer} fluid>
@@ -60,19 +72,57 @@ function ContainersPublic({ message, filter = "" }) {
             <Row className="h-100">
               <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
                 <PopularProfiles mobile />
-                <i className={`fas fa-search ${styles.SearchIcon}`} />
-                <Form
-                  className={styles.SearchBar}
-                  onSubmit={(event) => event.preventDefault()}
-                >
-                  <Form.Control
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)} // Handle search input change
-                    type="text"
-                    className="mr-sm-2"
-                    placeholder="Search containers..."
-                  />
-                </Form>
+                <div className="mt-3">
+                  <Row>
+                    <Col lg={1}>
+                    <i
+                      className={`fas fa-sort ${styles.SortIcon}`}
+                      onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
+                    />
+                    </Col>
+                    <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}>
+                      <i className={`fas fa-search ${styles.SearchIcon}`} />
+                      <Form
+                        className={styles.SearchBar}
+                        onSubmit={(event) => event.preventDefault()}
+                      >
+                        <Form.Control
+                          value={query}
+                          onChange={(event) => setQuery(event.target.value)}
+                          type="text"
+                          className="mr-sm-2"
+                          placeholder="Search containers..."
+                        />
+                      </Form>
+                    </Col>
+                  </Row>
+                </div>
+                {/* End of search bar */}
+                {/* Sorting options */}
+                <div className="mt-3">
+                  <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
+                    {/* Dropdown for sorting options */}
+                    {showSortingOptions && (
+                      <ListGroup className={styles.SortingDropdown}>
+                        {sortingOptions.map((option) => (
+                          <ListGroup.Item
+                            key={option.field}
+                            className={ordering === option.field ? styles.ActiveSortOption : styles.SortOption}
+                            onClick={() => {
+                              setOrdering(ordering === option.field ? `-${option.field}` : option.field); // Toggle sorting order
+                              setShowSortingOptions(false); // Close dropdown
+                            }}
+                          >
+                            <i className={`fas fa-sort-${ordering === option.field ? 'down' : 'up'}`} />
+                            {option.label}
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    )}
+                    {/* End of dropdown */}
+                  </Col>
+                </div>
+                {/* End of sorting options */}
 
                 {hasLoaded ? (
                   <>
