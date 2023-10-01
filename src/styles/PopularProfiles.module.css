@@ -4,19 +4,19 @@
     background-color: white;
     border: 2px solid black;
     padding-left: 40px;
-    margin-bottom: 16px;
-  }
-  
-  .SearchBar input::placeholder{
+    margin-left: 5px;
+}
+
+.SearchBar input::placeholder{
     color:black;
     margin-left: 5px;
-  }
-  
-  .SearchBar input::content{
+}
+
+.SearchBar input::content{
     color:red;
-  }
-  
-  .SearchIcon {
+}
+
+.SearchIcon {
     position: absolute;
     font-size: 1.2rem;
     padding: 9px;
@@ -25,23 +25,72 @@
     padding-top: 11px;
     color: orange;
     
-  }
-  
-  .SearchIcon:hover {
+}
+
+.SearchIcon:hover {
     cursor: default;
     color: rgb(57, 57, 57);
-  }
-  
-  .ScrollableContainer {
+}
+
+.ScrollableContainer {
     overflow-y: auto; 
-  }
-  
-  .SearchBar input:focus {
+}
+
+.SearchBar input:focus {
     outline: none;
     box-shadow: none;
     border: 1px solid orange;
     background-color: black !important;
     color:orange;
-  }
+}
 
+.SortIcon{
+    margin-top: 7px;
+    margin-left: 5px;
+    color: black;
+}
+
+.SortIcon:hover {
+    margin-top: 7px;
+    margin-left: 5px;
+    padding-right: 5px;
+    color: orange;
+}
+
+.SortingDropdown {
+    position: absolute;
+    top: 42%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    list-style: none;
+    max-height: 400px; 
+    overflow-y: auto; 
+  }
   
+  .SortingDropdown:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .SortOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .SortOption i {
+    color: black;
+    font-size: 12px; 
+  }
+  
+  .SortOption:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .ActiveSortOption {
+    font-weight: bold; 
+  }

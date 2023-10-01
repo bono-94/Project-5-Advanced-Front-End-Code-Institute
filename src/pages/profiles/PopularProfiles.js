@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -13,6 +14,20 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 
+const sortingOptions = [
+  { field: "age", label: "Sort by Age (Ascending)" },
+  { field: "-age", label: "Sort by Age (Descending)" },
+  { field: "location", label: "Sort by Location (Ascending)" },
+  { field: "-location", label: "Sort by Location (Descending)" },
+  { field: "posts_count", label: "Sort by Knowledge Count (Ascending)" },
+  { field: "-posts_count", label: "Sort by Knowledge Count (Descending)" },
+  { field: "containers_count", label: "Sort by Containers Count (Ascending)" },
+  { field: "-containers_count", label: "Sort by Containers Count (Descending)" },
+  { field: "followers_count", label: "Sort by Followers Count (Ascending)" },
+  { field: "-followers_count", label: "Sort by Followers Count (Descending)" },
+  { field: "created_at", label: "Sort by Data Joined (Ascending)" },
+  { field: "-created_at", label: "Sort by Date Joined (Descending)" },
+];
 const PopularProfiles = ({ message, filter = "", mobile }) => {
   const { popularProfiles } = useProfileData();
   const currentUser = useCurrentUser();
@@ -21,6 +36,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
   const [ordering, setOrdering] = useState(""); 
   const { pathname } = useLocation();
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [showSortingOptions, setShowSortingOptions] = useState(false);
   
 
   useEffect(() => {
@@ -67,7 +83,17 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
                 </div>
               ) : (
                 profiles.results.map((profile) => (
-                  <Profile key={profile.id} profile={profile} />
+                  <div key={profile.id} className={styles.ProfileContainer}>
+                    <Profile profile={profile} />
+                    <div className={styles.ProfileInfo}>
+                      <p>Age: {profile.age}</p>
+                      <p>Location: {profile.location}</p>
+                      <p>Posts Count: {profile.posts_count}</p>
+                      <p>Containers Count: {profile.containers_count}</p>
+                      <p>Followers Count: {profile.followers_count}</p>
+                      <p>Created At: {profile.created_at}</p>
+                    </div>
+                  </div>
                 ))
               )}
             </>
@@ -82,93 +108,54 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
       )}
       {/* Search bar for profiles */}
       <div className="mt-3">
-        <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
-          <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form
-            className={styles.SearchBar}
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <Form.Control
-              value={query}
-              onChange={(event) => setQuery(event.target.value)} // Handle search input change
-              type="text"
-              className="mr-sm-2"
-              placeholder="Search profiles..."
-            />
-          </Form>
-        </Col>
+        <Row>
+          <Col lg={1}>
+          <i
+            className={`fas fa-sort ${styles.SortIcon}`}
+            onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
+          />
+          </Col>
+          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}>
+            
+            <i className={`fas fa-search ${styles.SearchIcon}`} />
+            <Form
+              className={styles.SearchBar}
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)} // Handle search input change
+                type="text"
+                className="mr-sm-2"
+                placeholder="Search profiles..."
+              />
+            </Form>
+          </Col>
+        </Row>
       </div>
       {/* End of search bar */}
       {/* Sorting options */}
       <div className="mt-3">
         <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
-          <i className={`fas fa-sort ${styles.SortIcon}`} />
-          <button
-            className={ordering === "age" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("age")}
-          >
-            Sort by Age
-          </button>
-          <button
-            className={ordering === "first_name" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("first_name")}
-          >
-            Sort by First Name
-          </button>
-          <button
-            className={ordering === "location" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("location")}
-          >
-            Sort by Location
-          </button>
-          <button
-            className={ordering === "posts_count" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("posts_count")}
-          >
-            Sort by Posts Count
-          </button>
-          <button
-            className={ordering === "followers_count" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("followers_count")}
-          >
-            Sort by Followers Count
-          </button>
-          <button
-            className={ordering === "following_count" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("following_count")}
-          >
-            Sort by Following Count
-          </button>
-          <button
-            className={ordering === "containers_count" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("containers_count")}
-          >
-            Sort by Containers Count
-          </button>
-          <button
-            className={ordering === "owner__following__created_at" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("owner__following__created_at")}
-          >
-            Sort by Following Created At
-          </button>
-          <button
-            className={ordering === "owner__followed__created_at" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("owner__followed__created_at")}
-          >
-            Sort by Followed Created At
-          </button>
-          <button
-            className={ordering === "created_at" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("created_at")}
-          >
-            Sort by Created At
-          </button>
-          <button
-            className={ordering === "updated_at" ? styles.ActiveSortButton : styles.SortButton}
-            onClick={() => setOrdering("updated_at")}
-          >
-            Sort by Updated At
-          </button>
+          {/* Dropdown for sorting options */}
+          {showSortingOptions && (
+            <ListGroup className={styles.SortingDropdown}>
+              {sortingOptions.map((option) => (
+                <ListGroup.Item
+                  key={option.field}
+                  className={ordering === option.field ? styles.ActiveSortOption : styles.SortOption}
+                  onClick={() => {
+                    setOrdering(ordering === option.field ? `-${option.field}` : option.field); // Toggle sorting order
+                    setShowSortingOptions(false); // Close dropdown
+                  }}
+                >
+                  <i className={`fas fa-sort-${ordering === option.field ? 'down' : 'up'}`} />
+                  {option.label}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
+          {/* End of dropdown */}
         </Col>
       </div>
       {/* End of sorting options */}
