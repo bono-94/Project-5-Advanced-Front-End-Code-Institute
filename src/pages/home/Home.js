@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import styles from "../../styles/Home.module.css";
 
 function Home() {
   const location = useLocation();
@@ -24,7 +25,7 @@ function Home() {
   };
 
   return (
-    <div className="landing-page">
+    <div className={styles.Home}>
       {visible && (
         <div className="alert alert-success alert-dismissible show">
           {decodeURIComponent(successMessage)}

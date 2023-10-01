@@ -32,7 +32,8 @@
 
 .ScrollableContainer {
   overflow-y: auto; 
-  background-color:ghostwhite;
+  background-color:rgba(248, 246, 218, 0.696);
+  min-height: 100vh;
 }
 
 .SearchBar input:focus {

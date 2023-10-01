@@ -96,7 +96,7 @@ function Sidebar() {
         to="/containers/public"
       >
         <span>Public Containers</span>
-        <i className="fas fa-bullhorn"></i>
+        <i className="fas fa-eye"></i>
       </NavLink>
     </div>
   );

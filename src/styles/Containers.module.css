@@ -1,0 +1,187 @@
+.containerCards {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 20px;
+  margin-top: 42px;
+}
+
+.containerCard {
+  width: 320px;
+  height: 600px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerCard:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.cardFront {
+  background-color: #000;
+  color: orange;
+  padding: 20px;
+  text-align: center;
+}
+
+.cardBack {
+  background-color: orange;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.cardBack p{
+  margin-top:21px;
+  padding-top: 21px;
+  margin-left:42px;
+  margin-right:42px;
+}
+
+.selectButton {
+  background-color: black;
+  color: orange;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.selectButton:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Features Styles */
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+  gap: 10px;
+}
+
+.feature {
+  text-align: center;
+  width: 200px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px black;
+  background-color: black;
+  color: orange;
+}
+
+.feature:hover i{
+  transform: translateY(-1px);
+  color: orange;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1rem;
+}
+
+/* Additional Content Styles */
+.additionalContent {
+  margin: 40px 0;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.additionalContent p {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+.createContainerLink,
+.networkLink {
+  background-color: orange;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.createContainerLink:hover,
+.networkLink:hover {
+  background-color: black;
+  color: orange;
+  transform: scale(1.05);
+}
+
+/* Public and Private Container Styles */
+.publicCard,
+.privateCard {
+  background-color: transparent;
+  transition: background-color 0.3s;
+  transform-style: preserve-3d;
+}
+
+.publicCard:hover,
+.privateCard:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add this CSS for image styling */
+.cardImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center; /* Center the image vertically */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: -50px;
+
+}
