@@ -4,9 +4,8 @@ import styles from "../../styles/Home.module.css";
 
 function Home() {
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const successMessage = searchParams.get("successMessage");
-
+  const { state } = location;
+  const [successMessage, setSuccessMessage] = useState(state?.successMessage || "");
   const [visible, setVisible] = useState(!!successMessage);
 
   useEffect(() => {
@@ -14,6 +13,7 @@ function Home() {
       // Automatically hide the alert after 8 seconds
       const timeout = setTimeout(() => {
         setVisible(false);
+        setSuccessMessage(""); // Clear the success message after hiding
       }, 8000);
 
       return () => clearTimeout(timeout);
@@ -22,12 +22,13 @@ function Home() {
 
   const handleAlertClose = () => {
     setVisible(false);
+    setSuccessMessage(""); // Clear the success message on close
   };
 
   return (
     <div className={styles.Home}>
       {visible && (
-        <div className="alert alert-success alert-dismissible show">
+        <div className="alert alert-success alert-dismissible">
           {decodeURIComponent(successMessage)}
           <button
             type="button"

@@ -63,7 +63,7 @@ function ContainerCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/containers/", formData);
-      history.push(`/container/${data.id}`);
+      history.push(history.push("/", { successMessage: "Successfully created a new container!" }));
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

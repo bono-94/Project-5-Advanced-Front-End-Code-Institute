@@ -42,7 +42,7 @@ const Container = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/container/${id}/`);
-      history.goBack();
+      history.push(history.push("/", { successMessage: "Successfully deleted your container!" }));
     } catch (err) {
       // console.log(err);
     }

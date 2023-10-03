@@ -37,7 +37,7 @@ const UserPasswordForm = () => {
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
       // redirect user if they are not the owner of this profile
-      history.push("/");
+      history.push("/", { successMessage: "Successfully created a new password!" });
     }
   }, [currentUser, history, id]);
 

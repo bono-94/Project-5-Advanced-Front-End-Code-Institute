@@ -119,7 +119,7 @@ function PostCreateForm() {
   
     try {
       const { data } = await axiosReq.post("/posts/", requestData);
-      history.push(`/knowledge/${data.id}`);
+      history.push("/", { successMessage: "Successfully created a new post!" });
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);

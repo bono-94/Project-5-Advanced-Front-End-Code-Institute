@@ -57,7 +57,7 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/post/${id}/`);
-      history.push(`/knowledge/live`);
+      history.push("/", { successMessage: "Successfully deleted your post!" });
     } catch (err) {
       // console.log(err);
     }
