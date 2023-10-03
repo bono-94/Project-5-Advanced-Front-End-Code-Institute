@@ -55,6 +55,7 @@ function PostsPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        console.log("ordering:", ordering);
         const { data } = await axiosReq.get(`/posts/?${filter}search=${query}&ordering=${ordering}`);
         setPosts(data);
         setHasLoaded(true);

@@ -14,11 +14,13 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import Select from "react-dropdown-select";
 
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
   const [availableContainers, setAvailableContainers] = useState([]);
+  const [selectedContainers, setSelectedContainers] = useState([]); 
 
   const [postData, setPostData] = useState({
     containers: [],
@@ -53,7 +55,7 @@ function PostEditForm() {
       try {
         const { data } = await axiosReq.get(`/post/${id}/`);
         const { 
-          containers,
+          containers: selectedContainerIds,
           post_category,
           title,
           sub_title,
@@ -62,11 +64,13 @@ function PostEditForm() {
           content,
           inspiration,
           source,
-          image, is_owner } = data;
+          image,
+          is_owner
+        } = data;
         
 
         is_owner ? setPostData({ 
-          containers,
+          containers: selectedContainerIds,
           post_category,
           title,
           sub_title,
@@ -76,18 +80,21 @@ function PostEditForm() {
           inspiration,
           source,
           image }) : history.push("/");
+          
+        setSelectedContainers(selectedContainerIds); // Set selected containers
       } catch (err) {
-        // console.log(err);
+        // Handle errors
       }
     };
-    
+  
 
     handleMount();
   }, [history, id]);
 
   useEffect(() => {
     // Fetch available containers from your backend and update the state
-    axiosReq.get("/containers/") // Adjust the URL based on your API endpoint
+    axiosReq
+    .get("/containers/") // Adjust the URL based on your API endpoint
       .then((response) => {
         console.log("Response data:", response.data); // Log the data received
         setAvailableContainers(response.data);
@@ -116,25 +123,25 @@ function PostEditForm() {
     }
   };
 
-  const handleChangeContainers = (event) => {
-    const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
-    
-    console.log("Selected Options:", selectedOptions); // Log selected options
-  
+  const handleChangeContainers = (selectedOptions) => {
+    const selectedContainerIds = selectedOptions.map((option) => option.id);
+    const selectedContainerNames = selectedOptions.map((option) => option.container_name); // New line
+
+    console.log("Selected Container IDs:", selectedContainerIds); // Log selected container IDs
+    console.log("Selected Container Names:", selectedContainerNames); // Log selected container names
+
     setPostData({
       ...postData,
-      containers: selectedOptions, // Store selected options as an array
+      containers: selectedContainerIds, // Store selected container IDs as an array
+      container_name: selectedContainerNames,
     });
-  
-    console.log("postData.containers:", postData.containers); // Log the updated state
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
-
-    const containerIdsString = containers.join(', ');
+    const containerIdsString = containers.join(", ");
 
     formData.append("containers", containerIdsString);
     formData.append("post_category", post_category);
@@ -146,8 +153,6 @@ function PostEditForm() {
     formData.append("inspiration", inspiration);
     formData.append("source", source);
 
-    console.log(containerIdsString)
-
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
@@ -156,7 +161,6 @@ function PostEditForm() {
       await axiosReq.put(`/post/${id}/`, formData);
       history.push(`/knowledge/${id}`);
     } catch (err) {
-      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -165,7 +169,7 @@ function PostEditForm() {
 
   const textFields = (
     <div className="text-center">
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Label>Select Containers</Form.Label>
         <Form.Control
           as="select"
@@ -174,13 +178,28 @@ function PostEditForm() {
           onChange={handleChangeContainers}
           multiple  // Add the multiple attribute
         >
-        {/* Remove the default "Select a Container" option */}
+        {/* Remove the default "Select a Container" option 
         {availableContainers.results && availableContainers.results.map((container) => (
           <option key={container.id} value={container.id}>
             {container.container_name}
           </option>
         ))}
       </Form.Control>
+      </Form.Group> */}
+
+      <Form.Group>
+        <Form.Label>Select Containers</Form.Label>
+        <Select
+          name="containers"
+          multi
+          options={availableContainers.results || []}
+          values={containers.map((containerId) => ({
+            id: containerId,
+          }))}
+          labelField="container_name"
+          valueField="id"
+          onChange={handleChangeContainers}
+        />
       </Form.Group>
       <Form.Group>
         <Form.Label>Select a Category</Form.Label>

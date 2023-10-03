@@ -19,11 +19,12 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import Select from "react-dropdown-select";
 
 function PostCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-
+  const [selectedContainers, setSelectedContainers] = useState([]);
   const [availableContainers, setAvailableContainers] = useState([]);
 
   const [postData, setPostData] = useState({
@@ -55,16 +56,16 @@ function PostCreateForm() {
   const history = useHistory();
 
   useEffect(() => {
-    // Fetch available containers from your backend and update the state
-    axiosReq.get("/containers/") // Adjust the URL based on your API endpoint
+
+    axiosReq.get("/containers/") 
       .then((response) => {
-        console.log("Response data:", response.data); // Log the data received
+        console.log("Response data:", response.data); 
         setAvailableContainers(response.data);
       })
       .catch((error) => {
         console.error("Error fetching available containers:", error);
       });
-  }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+  }, []); 
 
   console.log("availableContainers:", availableContainers);
 
@@ -78,11 +79,15 @@ function PostCreateForm() {
   const handleChangeContainers = (event) => {
 
     const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
+    
+    console.log("Selected Containers:", selectedOptions);
 
     setPostData({
       ...postData,
       containers: selectedOptions,
     });
+
+    setSelectedContainers(selectedOptions);
   };
 
   const handleChangeImage = (event) => {
@@ -97,24 +102,25 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-
-    formData.append("containers", containers);
-    formData.append("post_category", post_category);
-    formData.append("image", imageInput.current.files[0]);
-    formData.append("title", title);
-    formData.append("sub_title", sub_title);
-    formData.append("topic", topic);
-    formData.append("location", location);
-    formData.append("content", content);
-    formData.append("inspiration", inspiration);
-    formData.append("source", source);
-    
+  
+    const selectedContainerIds = selectedContainers.map((id) => parseInt(id, 10));
+  
+    const requestData = {
+      containers: selectedContainerIds,
+      post_category,
+      title,
+      sub_title,
+      topic,
+      location,
+      content,
+      inspiration,
+      source,
+    };
+  
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
+      const { data } = await axiosReq.post("/posts/", requestData);
       history.push(`/knowledge/${data.id}`);
     } catch (err) {
-      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -146,23 +152,18 @@ function PostCreateForm() {
         </Form.Control>
       </Form.Group>
         
-        <Form.Group>
-          <Form.Label>Select Containers</Form.Label>
-          <Form.Control
-            as="select"
-            name="containers"
-            value={containers}
-            onChange={handleChangeContainers}
-            multiple  // Add the multiple attribute
-          >
-            {/* Remove the default "Select a Container" option */}
-            {availableContainers.results && availableContainers.results.map((container) => (
-              <option key={container.id} value={container.id}>
-                {container.container_name}
-              </option>
-            ))}
-          </Form.Control>
-        </Form.Group>
+      <Form.Group>
+        <Form.Label>Select Containers</Form.Label>
+        <Select
+          name="containers"
+          multi
+          options={availableContainers.results || []}
+          values={containers}
+          labelField="container_name"
+          valueField="id"
+          onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
+        />
+      </Form.Group>
         <Form.Group>
           <Form.Label>Title</Form.Label>
           <Form.Control
