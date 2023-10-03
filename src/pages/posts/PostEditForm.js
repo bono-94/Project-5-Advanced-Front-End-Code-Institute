@@ -139,26 +139,27 @@ function PostEditForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
 
-    const containerIdsString = containers.join(", ");
+    const selectedContainerIds = selectedContainers.map((id) => parseInt(id, 10));
 
-    formData.append("containers", containerIdsString);
-    formData.append("post_category", post_category);
-    formData.append("title", title);
-    formData.append("sub_title", sub_title);
-    formData.append("topic", topic);
-    formData.append("location", location);
-    formData.append("content", content);
-    formData.append("inspiration", inspiration);
-    formData.append("source", source);
+    const requestData = {
+      containers: selectedContainerIds,
+      post_category,
+      title,
+      sub_title,
+      topic,
+      location,
+      content,
+      inspiration,
+      source,
+    };
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
 
     try {
-      await axiosReq.put(`/post/${id}/`, formData);
+      await axiosReq.put(`/post/${id}/`, requestData);
       history.push(`/knowledge/${id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
@@ -198,7 +199,7 @@ function PostEditForm() {
           }))}
           labelField="container_name"
           valueField="id"
-          onChange={handleChangeContainers}
+          onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
         />
       </Form.Group>
       <Form.Group>
