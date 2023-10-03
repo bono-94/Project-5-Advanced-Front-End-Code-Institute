@@ -116,6 +116,9 @@ function PostCreateForm() {
       inspiration,
       source,
     };
+
+    const formData = new FormData();
+    formData.append("image", imageInput?.current?.files[0]); // Append image data
   
     try {
       const { data } = await axiosReq.post("/posts/", requestData);

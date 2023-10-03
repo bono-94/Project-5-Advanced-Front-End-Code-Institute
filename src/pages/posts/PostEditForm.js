@@ -21,6 +21,7 @@ function PostEditForm() {
   const [errors, setErrors] = useState({});
   const [availableContainers, setAvailableContainers] = useState([]);
   const [selectedContainers, setSelectedContainers] = useState([]); 
+  const [imageSaved, setImageSaved] = useState(false);
 
   const [postData, setPostData] = useState({
     containers: [],
@@ -139,9 +140,9 @@ function PostEditForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const selectedContainerIds = selectedContainers.map((id) => parseInt(id, 10));
-
+  
     const requestData = {
       containers: selectedContainerIds,
       post_category,
@@ -153,11 +154,7 @@ function PostEditForm() {
       inspiration,
       source,
     };
-
-    if (imageInput?.current?.files[0]) {
-      formData.append("image", imageInput.current.files[0]);
-    }
-
+  
     try {
       await axiosReq.put(`/post/${id}/`, requestData);
       history.push("/", { successMessage: "Successfully edited your post!" });
@@ -167,6 +164,30 @@ function PostEditForm() {
       }
     }
   };
+
+  const handleSubmitImage = async (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append("image", imageInput?.current?.files[0]);
+  
+    try {
+      // Update the image directly without navigating
+      await axiosReq.patch(`/post/${id}/`, formData); // Use PATCH instead of PUT
+      // Update the image state to reflect changes
+      setPostData({
+        ...postData,
+        image: URL.createObjectURL(imageInput?.current?.files[0]),
+      });
+      setImageSaved(true);
+      // Redirect or show a success message if needed
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
 
   const textFields = (
     <div className="text-center">
@@ -343,48 +364,78 @@ function PostEditForm() {
   </div>
 );
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              <figure>
-                <Image className={appStyles.Image} src={image} rounded />
-              </figure>
-              <div>
-                <Form.Label
+return (
+  <Row>
+    <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <Container
+        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+      >
+        <Form onSubmit={handleSubmitImage} encType="multipart/form-data">
+          <Form.Group className="text-center">
+            <figure>
+              <Image className={appStyles.Image} src={image} rounded />
+            </figure>
+            <div>
+              {imageSaved ? ( // Display different button content based on imageSaved state
+                <Button
                   className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="image-upload"
+                  disabled
                 >
-                  Change the image
-                </Form.Label>
-              </div>
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
-  );
+                  Saved
+                </Button>
+              ) : (
+                <div>
+                  <Form.Label
+                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                    htmlFor="image-upload"
+                  >
+                    Change the image
+                  </Form.Label>
+                  <Form.File
+                    id="image-upload"
+                    accept="image/*"
+                    type="file"
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                  />
+                </div>
+              )}
+            </div>
+          </Form.Group>
+          {errors?.image?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+          {!imageSaved && ( // Show "Save" button only if the image is not saved
+            <>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                onClick={() => history.goBack()}
+              >
+                cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Save
+              </Button>
+            </>
+          )}
+        </Form>
+        <div className="d-md-none">{textFields}</div>
+      </Container>
+    </Col>
+    <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+      <Container className={appStyles.Content}>
+        <Form onSubmit={handleSubmit} encType="multipart/form-data">
+          {textFields}
+        </Form>
+      </Container>
+    </Col>
+  </Row>
+);
 }
 
 export default PostEditForm;
