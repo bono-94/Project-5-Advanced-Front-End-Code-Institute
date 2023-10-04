@@ -116,4 +116,10 @@ font-weight: bold;
   }
 
 
+
+  .NavLink.Active {
+    background-color: orange; 
+    font-weight: bold;
+  }
+
   

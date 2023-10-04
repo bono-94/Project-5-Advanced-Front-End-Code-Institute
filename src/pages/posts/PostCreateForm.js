@@ -129,28 +129,28 @@ function PostCreateForm() {
     }
   };
 
-  const handleSubmitImage = async (event) => {
-    event.preventDefault();
+  // const handleSubmitImage = async (event) => {
+  //   event.preventDefault();
   
-    const formData = new FormData();
-    formData.append("image", imageInput?.current?.files[0]);
+  //   const formData = new FormData();
+  //   formData.append("image", imageInput?.current?.files[0]);
   
-    try {
-      // Update the image directly without navigating
-      await axiosReq.patch(`/post/${id}/`, formData); // Use PATCH instead of PUT
-      // Update the image state to reflect changes
-      setPostData({
-        ...postData,
-        image: URL.createObjectURL(imageInput?.current?.files[0]),
-      });
-      setImageSaved(true);
-      // Redirect or show a success message if needed
-    } catch (err) {
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
-    }
-  };
+  //   try {
+  //     // Update the image directly without navigating
+  //     await axiosReq.patch(`/post/${id}/`, formData); // Use PATCH instead of PUT
+  //     // Update the image state to reflect changes
+  //     setPostData({
+  //       ...postData,
+  //       image: URL.createObjectURL(imageInput?.current?.files[0]),
+  //     });
+  //     setImageSaved(true);
+  //     // Redirect or show a success message if needed
+  //   } catch (err) {
+  //     if (err.response?.status !== 401) {
+  //       setErrors(err.response?.data);
+  //     }
+  //   }
+  // };
 
   const allFields = (
     <div className="text-center">
