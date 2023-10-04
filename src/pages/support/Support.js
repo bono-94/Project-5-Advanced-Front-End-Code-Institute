@@ -79,8 +79,9 @@ function Support() {
     try {
       const { data } = await axiosReq.post("/support/", formData);
       setSuccessMessage(`Successfully sent request! Your request ID is: ${data.id}`);
-      history.push("/", { successMessage: "Your support request has been sent! We will reply as soon as possible." });
-    //   history.push(`/support/${data.id}`);
+      history.push("/", { successMessage: "Your support request has been sent! Keep an eye on your email, we will contact you as soon as possible." });
+      window.scrollTo(0, 0);
+      //   history.push(`/support/${data.id}`);
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

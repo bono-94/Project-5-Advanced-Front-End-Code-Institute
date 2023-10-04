@@ -93,6 +93,7 @@ const ProfileEditForm = () => {
         profile_image: data.image,
       }));
       history.push("/", { successMessage: "Successfully updated your profile!" });
+      window.scrollTo(0, 0);
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

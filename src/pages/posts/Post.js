@@ -52,12 +52,14 @@ const Post = (props) => {
 
   const handleEdit = () => {
     history.push(`/knowledge/${id}/edit`);
+    window.scrollTo(0, 0);
   };
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/post/${id}/`);
       history.push("/", { successMessage: "Successfully deleted your post!" });
+      window.scrollTo(0, 0);
     } catch (err) {
       // console.log(err);
     }

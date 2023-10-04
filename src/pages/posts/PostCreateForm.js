@@ -120,7 +120,8 @@ function PostCreateForm() {
   
     try {
       const { data } = await axiosReq.post("/posts/", requestData);
-      history.push("/", { successMessage: "Successfully created a new post!" });
+      history.push("/", { successMessage: "Successfully created a new post! You can now add a picture." });
+      window.scrollTo(0, 0);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);

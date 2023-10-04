@@ -32,6 +32,7 @@ const UsernameForm = () => {
       setUsername(currentUser.username);
     } else {
       history.push("/", { successMessage: "Successfully changed your username" });
+      window.scrollTo(0, 0);
     }
   }, [currentUser, history, id]);
 

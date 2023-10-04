@@ -37,6 +37,7 @@ export const CurrentUserProvider = ({ children }) => {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/signin");
+                window.scrollTo(0, 0);
               }
               return null;
             });
@@ -61,6 +62,7 @@ export const CurrentUserProvider = ({ children }) => {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/signin");
+                window.scrollTo(0, 0);
               }
               return null;
             });

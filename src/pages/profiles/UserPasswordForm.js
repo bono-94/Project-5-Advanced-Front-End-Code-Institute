@@ -38,6 +38,7 @@ const UserPasswordForm = () => {
     if (currentUser?.profile_id?.toString() !== id) {
       // redirect user if they are not the owner of this profile
       history.push("/", { successMessage: "Successfully created a new password!" });
+      window.scrollTo(0, 0);
     }
   }, [currentUser, history, id]);
 

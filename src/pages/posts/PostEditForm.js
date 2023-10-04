@@ -158,6 +158,7 @@ function PostEditForm() {
     try {
       await axiosReq.put(`/post/${id}/`, requestData);
       history.push("/", { successMessage: "Successfully edited your post!" });
+      window.scrollTo(0, 0);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);

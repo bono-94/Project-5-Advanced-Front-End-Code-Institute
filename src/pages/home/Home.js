@@ -15,8 +15,11 @@ function Home() {
         setVisible(false);
         setSuccessMessage(""); // Clear the success message after hiding
       }, 8000);
-
+  
       return () => clearTimeout(timeout);
+    } else {
+      console.log("Scrolling to the top")
+      window.scrollTo(0, 0);
     }
   }, [successMessage]);
 
@@ -28,7 +31,7 @@ function Home() {
   return (
     <div className={styles.Home}>
       {visible && (
-        <div className="alert alert-success alert-dismissible">
+        <div id="success-alert" className="alert alert-success alert-dismissible">
           {decodeURIComponent(successMessage)}
           <button
             type="button"

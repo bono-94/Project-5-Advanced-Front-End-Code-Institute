@@ -68,6 +68,7 @@ function ContainerEditForm() {
     try {
       await axiosReq.put(`/container/${id}/`, formData);
       history.push(history.push("/", { successMessage: "Successfully edited your container!" }));
+      window.scrollTo(0, 0);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);

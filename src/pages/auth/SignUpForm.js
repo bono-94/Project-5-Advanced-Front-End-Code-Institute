@@ -41,6 +41,7 @@ const SignUpForm = () => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
+      window.scrollTo(0, 0);
     } catch (err) {
       setErrors(err.response?.data);
     }
