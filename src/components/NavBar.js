@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/logo.jpg";
 import styles from "../styles/NavBar.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -17,6 +17,7 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const location = useLocation();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -30,9 +31,26 @@ const NavBar = () => {
     }
   };
 
+  const isActiveLink = (match, location) => {
+
+    if (location.pathname.startsWith("/knowledge")) {
+      return true; 
+    }
+    return false;
+  };
+
+  const isActiveLinkContainers = (match, location) => {
+
+    if (location.pathname.startsWith("/container")) {
+      return true; 
+    }
+    return false;
+  };
+
   const loggedInIcons = (
     <>
       <NavLink
+        isActive={isActiveLink}
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/knowledge/live"
@@ -43,6 +61,7 @@ const NavBar = () => {
         </span>
       </NavLink>
       <NavLink
+      isActive={isActiveLinkContainers}
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/containers"
