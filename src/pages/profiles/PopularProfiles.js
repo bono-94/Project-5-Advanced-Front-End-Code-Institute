@@ -70,44 +70,8 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
         mobile && "d-lg-none text-center mb-3"
       }`}
     >
-      
-      {hasLoaded ? (
-        <>
-          {profiles.results.length ? (
-            <>
-              <h5>Public Users</h5>
-              {mobile ? (
-                <div className="d-flex justify-content-around">
-                  {profiles.results.slice(0, 4).map((profile) => (
-                    <Profile key={profile.id} profile={profile} mobile />
-                  ))}
-                </div>
-              ) : (
-                profiles.results.map((profile) => (
-                  <div key={profile.id} className={styles.ProfileContainer}>
-                    <Profile profile={profile} />
-                    <div className={styles.ProfileInfo}>
-                      <p>Age: {profile.age}</p>
-                      <p>Location: {profile.location}</p>
-                      <p>Posts Count: {profile.posts_count}</p>
-                      <p>Containers Count: {profile.containers_count}</p>
-                      <p>Followers Count: {profile.followers_count}</p>
-                      <p>Created At: {profile.created_at}</p>
-                    </div>
-                  </div>
-                ))
-              )}
-            </>
-          ) : (
-            <Container className={appStyles.Content}>
-              <Asset src={NoResults} message="No results found. Adjust the search keyword." />
-            </Container>
-          )}
-        </>
-      ) : (
-        <Asset spinner />
-      )}
-      {/* Search bar for profiles */}
+      <div>
+        {/* Search bar for profiles */}
       <div className="mt-3">
         <Row>
           <Col lg={1}>
@@ -160,6 +124,45 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
         </Col>
       </div>
       {/* End of sorting options */}
+      </div>
+      
+      {hasLoaded ? (
+        <>
+          {profiles.results.length ? (
+            <>
+              <h5>Public Users</h5>
+              {mobile ? (
+                <div className="d-flex justify-content-around">
+                  {profiles.results.slice(0, 4).map((profile) => (
+                    <Profile key={profile.id} profile={profile} mobile />
+                  ))}
+                </div>
+              ) : (
+                profiles.results.map((profile) => (
+                  <div key={profile.id} className={styles.ProfileContainer}>
+                    <Profile profile={profile} />
+                    <div className={styles.ProfileInfo}>
+                      <p>Age: {profile.age}</p>
+                      <p>Location: {profile.location}</p>
+                      <p>Posts Count: {profile.posts_count}</p>
+                      <p>Containers Count: {profile.containers_count}</p>
+                      <p>Followers Count: {profile.followers_count}</p>
+                      <p>Created At: {profile.created_at}</p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </>
+          ) : (
+            <Container className={appStyles.Content}>
+              <Asset src={NoResults} message="No results found. Adjust the search keyword." />
+            </Container>
+          )}
+        </>
+      ) : (
+        <Asset spinner />
+      )}
+      
     </Container>
   );
 }

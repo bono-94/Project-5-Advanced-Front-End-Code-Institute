@@ -16,12 +16,15 @@ import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Select from "react-dropdown-select";
 
+import Asset from "../../components/Asset";
+
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
   const [availableContainers, setAvailableContainers] = useState([]);
   const [selectedContainers, setSelectedContainers] = useState([]); 
   const [imageSaved, setImageSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [postData, setPostData] = useState({
     containers: [],
@@ -83,8 +86,9 @@ function PostEditForm() {
           image }) : history.push("/");
           
         setSelectedContainers(selectedContainerIds); // Set selected containers
+        setIsLoading(false);
       } catch (err) {
-        // Handle errors
+        setIsLoading(false);
       }
     };
   
@@ -106,6 +110,26 @@ function PostEditForm() {
   }, []); // The empty dependency array ensures this effect runs only once when the component mounts
 
   console.log("availableContainers:", availableContainers);
+
+  if (isLoading) {
+    return (
+      <Row>
+        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+          <Container
+            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+          >
+            <Asset spinner />
+          </Container>
+        </Col>
+        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+          <Container className={appStyles.Content}>
+            {/* Show the loading spinner on the right column as well if needed */}
+            <Asset spinner />
+          </Container>
+        </Col>
+      </Row>
+    );
+  }
 
   const handleChange = (event) => {
     setPostData({

@@ -18,12 +18,18 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+
+import Asset from "../../components/Asset";
+
+
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const [profileData, setProfileData] = useState({
     image: "",
@@ -52,6 +58,7 @@ const ProfileEditForm = () => {
           const { data } = await axiosReq.get(`/profile/${id}/`);
           const { profile_quote, first_name, location, age, bio, website, image } = data;
           setProfileData({ profile_quote, first_name, location, age, bio, website, image });
+          setIsLoading(false);
         } catch (err) {
           // console.log(err);
           history.push("/");
@@ -63,6 +70,10 @@ const ProfileEditForm = () => {
 
     handleMount();
   }, [currentUser, history, id]);
+
+  if (isLoading) {
+    return <Asset spinner />;
+  }
 
   const handleChange = (event) => {
     setProfileData({

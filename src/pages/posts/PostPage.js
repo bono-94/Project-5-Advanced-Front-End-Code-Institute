@@ -25,6 +25,7 @@ function PostPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -35,13 +36,29 @@ function PostPage() {
         ]);
         setPost({ results: [post] });
         setComments(comments);
+        setIsLoading(false);
       } catch (err) {
         // console.log(err);
+        setIsLoading(false);
       }
     };
 
     handleMount();
   }, [id]);
+
+  if (isLoading) {
+    return (
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <PopularProfiles mobile />
+          <Asset spinner />
+        </Col>
+        <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+          <PopularProfiles />
+        </Col>
+      </Row>
+    );
+  }
 
   return (
     <Row className="h-100">
@@ -57,6 +74,7 @@ function PostPage() {
               owner={currentUser.username}
               setPost={setPost}
               setComments={setComments}
+              
             />
           ) : comments.results.length ? (
             "Comments"
