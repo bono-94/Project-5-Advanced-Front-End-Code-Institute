@@ -95,7 +95,12 @@ function ProfilePage() {
             <div className={styles.ProfileQuote}>{profile?.profile_quote}</div>
           )}
           {profile?.first_name && <div>Name: {profile?.first_name}</div>}
-          {profile?.location && <div>Location: {profile?.location}</div>}
+          {profile?.location &&
+            <div>Location:
+              <Badge pill variant="warning">
+                {profile?.location}
+              </Badge>
+             </div>}
           {profile?.age && <div>Age: {profile?.age}</div>}
           {profile?.bio && <div>Bio: {profile?.bio}</div>}
           {profile?.website && (

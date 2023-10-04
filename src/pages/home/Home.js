@@ -55,6 +55,9 @@ function Home() {
           </div>
         </nav>
 
+        Carousel
+        Jumbotron
+
         <div className="hero">
           <div className="container">
             <h1 className="hero-title">Welcome to Your Website</h1>
@@ -108,6 +111,17 @@ function Home() {
       <section id="contact" className="contact">
         <div className="container">
           <h2 className="section-title">Contact Us</h2>
+          <p className="section-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
+            dui mauris.
+          </p>
+          
+        </div>
+      </section>
+
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2 className="section-title">ACCORDION</h2>
           <p className="section-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
             dui mauris.

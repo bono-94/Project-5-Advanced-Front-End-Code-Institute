@@ -108,6 +108,7 @@ function Support() {
           name="support_type"
           value={support_type}
           onChange={handleChange}
+          size="sm"
         >
           <option value="consultacy">Consultancy</option>
           <option value="feedback">Feedback</option>
@@ -138,7 +139,12 @@ function Support() {
           name="content"
           value={content}
           onChange={handleChange}
+          aria-describedby="passwordHelpBlock"
         />
+        <Form.Text id="passwordHelpBlock" muted>
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </Form.Text>
       </Form.Group>
       {errors?.content?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -152,6 +158,7 @@ function Support() {
           name="knowledge_name"
           value={knowledge_name}
           onChange={handleChange}
+          size="sm"
         />
       </Form.Group>
       {errors?.knowledge_name?.map((message, idx) => (
@@ -166,6 +173,7 @@ function Support() {
           name="container_name"
           value={container_name}
           onChange={handleChange}
+          size="sm"
         />
       </Form.Group>
       {errors?.container_name?.map((message, idx) => (

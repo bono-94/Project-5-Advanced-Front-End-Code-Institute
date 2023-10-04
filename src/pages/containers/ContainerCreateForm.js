@@ -80,7 +80,7 @@ function ContainerCreateForm() {
           type="checkbox"
           label="Public"
           name="is_public"
-          checked={containerData.content}
+          checked={containerData.is_public}
           onChange={(e) => setContainerData({ ...containerData, is_public: e.target.checked })}
         />
       </Form.Group>

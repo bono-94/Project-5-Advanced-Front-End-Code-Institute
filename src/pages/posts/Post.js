@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+import Badge from 'react-bootstrap/Badge';
 import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -179,7 +180,14 @@ const Post = (props) => {
       <Card.Body>
       {title && <Card.Title className="text-center">{title}</Card.Title>}
     {sub_title && <div><strong>Sub Title:</strong> {sub_title}</div>}
-    {topic && <div><strong>Topic:</strong> {topic}</div>}
+    {topic && (
+  <div>
+    <strong>Topic:</strong>{" "}
+    <Badge variant="warning">
+      {topic}
+    </Badge>
+  </div>
+)}
     {location && <div><strong>Location:</strong> {location}</div>}
     {content && <div><strong>Content:</strong> {content}</div>}
     {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}

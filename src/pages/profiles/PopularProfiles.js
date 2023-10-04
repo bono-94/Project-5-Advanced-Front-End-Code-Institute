@@ -14,6 +14,7 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 
+
 const sortingOptions = [
   { field: "age", label: "Sort by Age (Ascending)" },
   { field: "-age", label: "Sort by Age (Descending)" },
@@ -140,7 +141,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
               ) : (
                 profiles.results.map((profile) => (
                   <div key={profile.id} className={styles.ProfileContainer}>
-                    <Profile profile={profile} />
+                    <Profile profile={profile} mobile showButtons={false} />
                     <div className={styles.ProfileInfo}>
                       <p>Age: {profile.age}</p>
                       <p>Location: {profile.location}</p>

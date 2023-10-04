@@ -154,13 +154,28 @@ function PostCreateForm() {
 
   const allFields = (
     <div className="text-center">
+      
+        
       <Form.Group>
-        <Form.Label>Select a Category</Form.Label>
+        <Form.Label>Select Containers</Form.Label>
+        <Select
+          name="containers"
+          multi
+          options={availableContainers.results || []}
+          values={containers}
+          labelField="container_name"
+          valueField="id"
+          onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Category</Form.Label>
         <Form.Control
           as="select"
           name="post_category"
           value={post_category}
           onChange={handleChange}
+          size="sm"
         >
           <option value="announcement">Announcement</option>
           <option value="answer">Answer</option>
@@ -176,19 +191,21 @@ function PostCreateForm() {
           <option value="question">Question</option>
         </Form.Control>
       </Form.Group>
-        
       <Form.Group>
-        <Form.Label>Select Containers</Form.Label>
-        <Select
-          name="containers"
-          multi
-          options={availableContainers.results || []}
-          values={containers}
-          labelField="container_name"
-          valueField="id"
-          onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
-        />
-      </Form.Group>
+          <Form.Label>Topic</Form.Label>
+          <Form.Control
+            type="text"
+            name="topic"
+            value={topic}
+            onChange={handleChange}
+            size="sm"
+          />
+        </Form.Group>
+        {errors?.topic?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
         <Form.Group>
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -217,20 +234,7 @@ function PostCreateForm() {
             {message}
           </Alert>
         ))}
-        <Form.Group>
-          <Form.Label>Topic</Form.Label>
-          <Form.Control
-            type="text"
-            name="topic"
-            value={topic}
-            onChange={handleChange}
-          />
-        </Form.Group>
-        {errors?.topic?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
+        
 
         <Form.Group>
           <Form.Label>Location</Form.Label>

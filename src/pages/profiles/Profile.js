@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
-  const { profile, mobile, imageSize = 55 } = props;
+  const { profile, mobile, imageSize = 55, showButtons } = props;
   const { id, following_id, image, owner } = profile;
 
   const currentUser = useCurrentUser();
@@ -29,7 +29,8 @@ const Profile = (props) => {
         <strong>{owner}</strong>
       </div>
       <div className={`text-right ${!mobile && "ml-auto"}`}>
-        {!mobile &&
+        {showButtons && // Conditionally render the buttons based on the showButtons prop
+          !mobile &&
           currentUser &&
           !is_owner &&
           (following_id ? (

@@ -101,6 +101,7 @@ const Container = (props) => {
             overlay={<Tooltip>This container is public.</Tooltip>}
           >
             <i className="fas fa-globe"></i>
+            
           </OverlayTrigger>
         ) : (
           <OverlayTrigger
