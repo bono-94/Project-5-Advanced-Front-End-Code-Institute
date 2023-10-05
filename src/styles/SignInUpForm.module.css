@@ -58,14 +58,16 @@
 .SignUpCol button {
   background-color: black !important; /* Black background color */
   color: orange !important; /* Orange text color */
-  width: 80%;
+  width: 60%;
   margin-top: 30px; /* 20px margin-top */
   border: none; /* Remove border */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-left: auto !important;
   margin-right: auto !important;
   display: block;
   font-size: medium;
+  font-weight: bold;
+  padding: 3px;
 }
 
 .SignUpCol button:hover {
@@ -77,7 +79,7 @@
 @media (min-width: 768px) {
   .SignUpCol button {
     width: 30%; /* Reduce button width to 30% for larger screens */
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -86,4 +88,14 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.Input:focus {
+  border-color: orange; /* Change the border color to orange on focus */
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6); /* Change the box shadow color to orange on focus */
+}
+
+.SignUpCol button:focus {
+  border-color: black; /* Change the border color to orange on focus */
+  box-shadow: 0px 0px 10px black; /* Change the box shadow color to orange on focus */
 }
