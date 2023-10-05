@@ -86,7 +86,7 @@ const NavBar = () => {
         to={`/profile/${currentUser?.profile_id}`}
       >
         <div className={styles.ProfileLink}>
-          <Avatar src={currentUser?.profile_image} height={35} />
+          <Avatar src={currentUser?.profile_image} height={33} />
           <span>PROFILE</span>
         </div>
       </NavLink>
@@ -132,7 +132,7 @@ const NavBar = () => {
     >
       <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
-          <Navbar.Brand>
+          <Navbar.Brand className="pl-0">
             <img src={logo} alt="logo" height="55" className="logo-home" style={{
             marginLeft: '10px',
           }}/>

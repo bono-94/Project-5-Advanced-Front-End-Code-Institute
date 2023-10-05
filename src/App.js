@@ -90,12 +90,13 @@ function App() {
       <UseStateWithArrays />
       <UseEffectCounterContainer />
       <UseEffectCounter /> */}
-
+  
+      
       <NavBar />
-
 
       
       <Container className={styles.Main} fluid>
+        
         <Switch>
           <Route
             exact
@@ -172,7 +173,7 @@ function App() {
         </Switch>
       </Container>
       
-      <Footer></Footer>
+      <Footer />
 
       {/* <Button variant="primary">Primary</Button>
       <Button variant="dark">Primary</Button> */}
