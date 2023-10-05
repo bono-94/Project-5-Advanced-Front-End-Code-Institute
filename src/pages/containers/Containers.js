@@ -46,7 +46,7 @@ function Containers() {
           connect multiple containers to multiple knowledge posts.
         </p>
         <Link to="/container/create" className={styles.createContainerLink}>
-          Create a Container
+          Create Container
         </Link>
       </section>
       <section className={styles.containerCards}>

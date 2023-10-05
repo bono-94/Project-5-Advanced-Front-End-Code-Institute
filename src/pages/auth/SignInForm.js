@@ -54,7 +54,7 @@ function SignInForm() {
     <Row className={`h-100 ${styles.Row}`}>
       <Col className={`my-auto py-2 p-md-2 ${styles.SignUpCol}`}>
         <Container className={`${appStyles.Content} p-4 ${styles.Container}`}>
-          <h1 className={styles.Header}>User?</h1>
+          <h1 className={styles.Header}>Welcome back!</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>

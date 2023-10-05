@@ -1,3 +1,219 @@
-.Home {
-    min-height: 100vh;
+
+
+.Home section a {
+  color: black !important;
+  
+}
+
+.Home section p {
+  color: black !important;
+  font-weight: 400;
+  
+}
+  
+.container {
+    background-color: black;
+    color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px orange;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: beat 21s;
+}
+
+.containerJumbo {
+  background-color: orange;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px black;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin-top: 21px;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards; 
+}
+
+
+hr {
+  color: orange;
+  background-color: white;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerTitle{
+  font-size: medium;
+  color: white;
+  text-shadow: 1px 0px 0px orange;
+}
+
+.sectionTitle{
+  font-size: larger;
+  color: white;
+  text-shadow: 1px 0px 0px orange;
+}
+
+.containerCard i {
+  color:white;
+  text-shadow: 1px 0px 0px orange;
+  
+}
+
+
+.jumbotronTitle {
+  margin-bottom: 20px;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+.Home .section-title {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+
+.Home.section-description {
+  font-size: 16px;
+}
+
+.homeSupport {
+  background-color:rgb(255, 166, 0);
+  margin-top: 20px;
+  padding: 40px;
+}
+
+.homeSupport i {
+  color: black;
+  margin-top: 10px;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1); /* Scale up slightly at the middle of the animation */
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 450px) {
+
+  .jumbotronTitle {
+    font-size: x-large;
+  }
+
+  hr {
+    width: 10%;
+  }
+
+  .homeSupport {
+    padding-top: 60px;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+  hr {
+    width: 100%;
+  }
+
+  .Home section {
+    width: 70%;
+    margin: 20px auto;
+    margin-bottom: 40px;
+    padding: 80px;
+  }
+
+  .containerJumbo {
+    padding: 50px;
+    margin-top: 0px;
+  }
+
+  .jumbotronTitle {
+    margin-bottom: 15px;
+    font-size: xx-large;
+  }
+
+  .containerTitle{
+    font-size: large;
+    
+  }
+  
+  .sectionTitle{
+    font-size: x-large;
+  }
+
+  .containerJumbo p {
+    font-size: large;
+  }
+
+  .Home .jumbotron {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .container {
+    padding: 40px;
+    margin-bottom: 50px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
+
+@media (min-width: 900px) {
+
+.container {
+  margin-bottom: 80px;
+}
+
+}
+
+@media (min-width: 1200px) {
+  .homeSupport {
+    margin-top: 40px;
+  }
+  .homeSupport {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+  
+  }
+
+
+@media (min-width: 1900px) {
+
+  .containerJumbo {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeSupport {
+    margin-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  
 }

@@ -132,8 +132,8 @@ const NavBar = () => {
     >
       <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
-          <Navbar.Brand className="pl-0">
-            <img src={logo} alt="logo" height="55" className="logo-home" style={{
+          <Navbar.Brand className="pl-0 py-2">
+            <img src={logo} alt="logo" height="60" className="logo-home" style={{
             marginLeft: '10px',
           }}/>
           </Navbar.Brand>
