@@ -1,25 +1,34 @@
 .Row {
-  height: calc(100vh - 81px);
+  min-height: 100vh;
 }
+
 .Input {
   background: #ffffff;
   border: 1px solid #f0f1f9;
   box-sizing: border-box;
-  border-radius: 2px;
-  color: #7177a1;
+  border-radius: 5px; /* Rounded edges */
+  color: orange;
   text-align: center;
   padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 3D effect */
+}
+
+.Container {
+  padding: 30px 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 3D effect for the container */
 }
 
 .Header {
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 26px;
   line-height: 19px;
   text-align: center;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #2142b2;
+  color: black;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .Link {
@@ -30,7 +39,7 @@
 }
 
 .Link span {
-  color: #ff9254;
+  color: orange;
 }
 
 .Container {
@@ -43,4 +52,38 @@
 
 .SignUpCol {
   height: 375px;
+}
+
+/* Adjusted CSS for Signup Button */
+.SignUpCol button {
+  background-color: black !important; /* Black background color */
+  color: orange !important; /* Orange text color */
+  width: 80%;
+  margin-top: 30px; /* 20px margin-top */
+  border: none; /* Remove border */
+  margin-bottom: 20px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block;
+  font-size: medium;
+}
+
+.SignUpCol button:hover {
+  background-color: orange !important; /* Orange background color on hover */
+  color: black !important; /* Black text color on hover */
+}
+
+/* Media query for screens larger than or equal to 768px width */
+@media (min-width: 768px) {
+  .SignUpCol button {
+    width: 30%; /* Reduce button width to 30% for larger screens */
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .SignUpCol input {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
