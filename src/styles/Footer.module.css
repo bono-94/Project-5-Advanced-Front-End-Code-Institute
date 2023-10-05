@@ -1,28 +1,104 @@
 .Footer {
-    bottom: 0px;
-    z-index:1;
-    width: 100%;
-    background-color: black !important;
-    /* grid-row: 3;
-    grid-column: 1 / span 4;
-    display: flex; */
-    align-items: center;
-    justify-content: center;
-    padding: 10px;  
-    color: orange;
+  bottom: 0;
+  width: 100%;
+  background-color: black !important;
+  align-items: center;
+  justify-content: center;
+  color: orange !important;
 }
 
-/* spin-animation.css */
 @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
   }
-  
-  /* Apply the animation to the element with the .Spinner class */
-  .Spinner {
-    animation: spin 8s infinite linear;
+  100% {
+    transform: rotate(360deg);
   }
+}
+
+
+.Spinner {
+  animation: spin 8s infinite linear;
+  border-radius: 40%;
+}
+
+@media (max-width: 576px) { 
+  .Footer {
+    padding: 20px 0; 
+    font-size: 0.8rem; 
+  }
+
+  .Footer img {
+    height: 90px;
+    width: 80px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 576px) {
+  .Footer {
+    font-size: 1.2rem;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .Contact i {
+    font-size: large !important;
+  }
+
+  .Social i {
+    font-size: xx-large;
+  }
+
+  .Footer img {
+    margin-bottom: 30px;
+  }
+}
+
+.Footer .Button {
+  position: absolute;
+  top: 10px;
+  font-size: smaller;
+}
+
+.Footer button {
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+}
+
+.Footer i {
+  color: white !important;
+}
+
+.Footer i:hover {
+  box-shadow: 0 0 5px orange;
+  color: orange !important;
+}
+
+
+.Footer img {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.Footer h5 {
+  margin-bottom: 15px;
+  color: orange;
+}
+
+.Footer p {
+  margin-bottom: 5px;
+  color: orange;
+}
+
+.Contact i {
+  font-size: small;
+}
+
+.LogoButtonContainer .btn {
+  top:0;
+}
