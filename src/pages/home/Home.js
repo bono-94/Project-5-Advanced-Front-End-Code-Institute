@@ -90,6 +90,7 @@ function Home() {
                     Unlimited storage & connections, user-friendly, privacy setting,
                     public collaboration, labelling, browsing & filtering
                   </p>
+                  <a href="containers/" className={styles.cardButton}>Select</a>
                 </div>
               </div>
             </div>
@@ -127,6 +128,7 @@ function Home() {
                     Ideas capturing, interactive knowledge collaboration, big data organization,
                     learning & teaching, digital life.
                   </p>
+                  <a href="/knowledge/live" className={styles.cardButton}>Select</a>
                 </div>
               </div>
             </div>
@@ -149,8 +151,10 @@ function Home() {
           <div className="row">
             <div className="col-md-6">
               <div className="support-card">
+              <a href="/support">
                 <i className="fas fa-headset feature-icon"></i>
                 <h3 className="support-title">24/7 Support</h3>
+              </a>
                 <p className="support-description">
                   Our support team is available around the clock to help you
                   with technical assistance and troubleshooting. Please reach
@@ -161,8 +165,10 @@ function Home() {
             </div>
             <div className="col-md-6">
               <div className="support-card">
+              <a href="/knowledge/live">
                 <i className="fas fa-comments feature-icon"></i>
                 <h3 className="support-title">Community Forum</h3>
+              </a>
                 <p className="support-description">
                   Join our public knowledge collaboration community forum
                   to engage with other users, share your input on their knowledge,

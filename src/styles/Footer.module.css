@@ -59,8 +59,8 @@
 
 .Footer .Button {
   position: absolute;
-  top: 10px;
-  font-size: smaller;
+  margin-top: 10px;
+  font-size: medium;
 }
 
 .Footer button {
