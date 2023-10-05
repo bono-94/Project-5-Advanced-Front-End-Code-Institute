@@ -10,6 +10,14 @@
   padding: 5px;
 }
 
+.NavLink span {
+  color: orange;
+}
+
+.NavLink i {
+  color: white;
+}
+
 .Active i {
   color: orange;
 }
@@ -35,3 +43,9 @@
   box-shadow: 0 0 5px orange; /* Adjust shadow properties as needed */
 }
 
+
+@media (max-width: 768px) {
+  .logo-home {
+    padding-left: 50px !important;
+  }
+}

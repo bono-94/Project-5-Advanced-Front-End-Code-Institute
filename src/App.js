@@ -22,7 +22,6 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import Support from "./pages/support/Support";
-import SupportSubmit from "./pages/support/SupportSubmit";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
@@ -169,7 +168,6 @@ function App() {
             render={() => <UserPasswordForm />}
           />
           <Route exact path="/support" render={() => <Support />} />
-          <Route exact path="/support/successful" render={() => <SupportSubmit />} />
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>

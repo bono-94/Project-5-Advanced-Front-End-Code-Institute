@@ -56,7 +56,7 @@ const NavBar = () => {
         to="/knowledge/live"
       >
         <i className="fas fa-book"></i>
-        <span className="text-warning">
+        <span>
           KNOWL3DG3
         </span>
       </NavLink>
@@ -67,7 +67,7 @@ const NavBar = () => {
         to="/containers"
       >
         <i className="fas fa-box"></i>
-        <span className="text-warning">
+        <span>
           CONTAINERS
         </span>
       </NavLink>
@@ -77,7 +77,7 @@ const NavBar = () => {
         to="/support"
       >
         <i className="fas fa-headset"></i>
-        <span className="text-warning">
+        <span>
           SUPPORT
         </span>
       </NavLink>
@@ -87,12 +87,12 @@ const NavBar = () => {
       >
         <div className={styles.ProfileLink}>
           <Avatar src={currentUser?.profile_image} height={35} />
-          <span className="text-warning">PROFILE</span>
+          <span>PROFILE</span>
         </div>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
-        <span className="text-warning">
+        <span>
           LOGOUT
         </span>
       </NavLink>
@@ -106,7 +106,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>
-        <span className="text-warning">
+        <span>
           REGISTER
         </span>
       </NavLink>
@@ -116,7 +116,7 @@ const NavBar = () => {
         to="/signin"
       >
         <i className="fas fa-sign-in-alt"></i>
-        <span className="text-warning">
+        <span>
           LOGIN
         </span>
       </NavLink>
@@ -133,15 +133,22 @@ const NavBar = () => {
       <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="55" />
+            <img src={logo} alt="logo" height="55" className="logo-home" style={{
+            marginLeft: '10px',
+          }}/>
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
-          className={`bg-${expanded ? 'light' : 'warning'}`}
-          style={{ fontSize: '14px', padding: '4px 8px'}}
+          style={{
+            fontSize: '14px',
+            padding: '4px 8px',
+            color: expanded ? 'orange' : 'white', // Text color
+            backgroundColor: expanded ? 'white' : 'orange', // Background color
+            marginRight: '10px',
+          }}
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">

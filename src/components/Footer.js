@@ -8,7 +8,7 @@ import styles from "../styles/Footer.module.css";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-warning">
+    <footer>
       <Container className={styles.Footer} fluid>
         <Row className={styles.Footer} fluid>
           <Col md={4}>

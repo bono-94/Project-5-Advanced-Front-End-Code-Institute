@@ -17,8 +17,6 @@ import styles from "../../styles/Support.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import SupportSubmit from "../../pages/support/SupportSubmit";
-
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -202,9 +200,9 @@ function Support() {
             className={`${appStyles.Content} ${styles.Support} d-flex flex-column justify-content-center`}
           >
 
-          {successMessage && supportId && (
+          {/* {successMessage && supportId && (
             <SupportSubmit successMessage={successMessage} supportId={supportId} />
-          )}
+          )} */}
             {/* <Form.Group className="text-center">
               {image ? (
                 <>
