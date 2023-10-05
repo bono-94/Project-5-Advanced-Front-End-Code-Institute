@@ -144,7 +144,11 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
                     <Profile profile={profile} mobile showButtons={false} />
                     <div className={styles.ProfileInfo}>
                       <p>Age: {profile.age}</p>
-                      <p>Location: {profile.location}</p>
+                      {profile?.location !== null && profile?.location !== undefined && profile?.location !== "null" && (
+                        <div>
+                          <p>Location: {profile.location}</p>
+                        </div>
+                      )}
                       <p>Posts Count: {profile.posts_count}</p>
                       <p>Containers Count: {profile.containers_count}</p>
                       <p>Followers Count: {profile.followers_count}</p>

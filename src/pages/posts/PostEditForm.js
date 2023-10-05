@@ -246,6 +246,7 @@ function PostEditForm() {
           labelField="container_name"
           valueField="id"
           onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
+          paginatioin
         />
       </Form.Group>
       <Form.Group>

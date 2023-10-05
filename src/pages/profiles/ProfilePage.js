@@ -4,6 +4,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
+import Badge from 'react-bootstrap/Badge';
+
 import Asset from "../../components/Asset";
 
 import styles from "../../styles/ProfilePage.module.css";
@@ -91,18 +93,28 @@ function ProfilePage() {
               <div>containers</div>
             </Col>
           </Row>
-          {profile?.profile_quote && (
-            <div className={styles.ProfileQuote}>{profile?.profile_quote}</div>
+          {profile?.profile_quote !== null && profile?.profile_quote !== undefined && profile?.profile_quote !== "null" && (
+            <div>
+              Wisdom: {profile?.profile_quote}
+            </div>
           )}
-          {profile?.first_name && <div>Name: {profile?.first_name}</div>}
-          {profile?.location &&
-            <div>Location:
-              <Badge pill variant="warning">
-                {profile?.location}
-              </Badge>
-             </div>}
+          {profile?.first_name !== null && profile?.first_name !== undefined && profile?.first_name !== "null" && (
+            <div>
+              Name: {profile?.first_name}
+            </div>
+          )}
+          {profile?.location !== null && profile?.location !== undefined && profile?.location !== "null" && (
+            <div>
+              Location: {profile?.location}
+            </div>
+          )}
           {profile?.age && <div>Age: {profile?.age}</div>}
-          {profile?.bio && <div>Bio: {profile?.bio}</div>}
+          {console.log("Bio Value:", profile?.bio)}
+          {profile?.bio !== null && profile?.bio !== undefined && profile?.bio !== "null" && (
+            <div>
+              Bio: {profile?.bio}
+            </div>
+          )}
           {profile?.website && (
             <div>
               Website:{" "}

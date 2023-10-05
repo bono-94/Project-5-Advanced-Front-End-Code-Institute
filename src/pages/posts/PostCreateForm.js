@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -9,7 +8,6 @@ import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
 import Asset from "../../components/Asset";
-
 import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
@@ -40,7 +38,7 @@ function PostCreateForm() {
     inspiration: "",
     source: "",
   });
-  const { 
+  const {
     containers,
     post_category,
     image,
@@ -55,39 +53,45 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  
+
+  const fetchAllContainers = async (url, containersData = []) => {
+    try {
+      const response = await axiosReq.get(url);
+      containersData = [...containersData, ...response.data.results];
+      if (response.data.next) {
+        return fetchAllContainers(response.data.next, containersData);
+      } else {
+        return containersData;
+      }
+    } catch (error) {
+      console.error("Error fetching containers:", error);
+      return containersData;
+    }
+  };
 
   useEffect(() => {
+    const fetchContainers = async () => {
+      const allContainers = await fetchAllContainers("/containers/");
+      setAvailableContainers(allContainers);
+    };
 
-    axiosReq.get("/containers/") 
-      .then((response) => {
-        console.log("Response data:", response.data); 
-        setAvailableContainers(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching available containers:", error);
-      });
-  }, []); 
-
-  console.log("availableContainers:", availableContainers);
+    fetchContainers();
+  }, []);
 
   const handleChange = (event) => {
-
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
     });
   };
+
   const handleChangeContainers = (event) => {
-
     const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
-    
-    console.log("Selected Containers:", selectedOptions);
-
     setPostData({
       ...postData,
       containers: selectedOptions,
     });
-
     setSelectedContainers(selectedOptions);
   };
 
@@ -103,9 +107,9 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const selectedContainerIds = selectedContainers.map((id) => parseInt(id, 10));
-  
+
     const requestData = {
       containers: selectedContainerIds,
       post_category,
@@ -117,7 +121,7 @@ function PostCreateForm() {
       inspiration,
       source,
     };
-  
+
     try {
       const { data } = await axiosReq.post("/posts/", requestData);
       history.push("/", { successMessage: "Successfully created a new post! You can now add a picture." });
@@ -129,39 +133,14 @@ function PostCreateForm() {
     }
   };
 
-  // const handleSubmitImage = async (event) => {
-  //   event.preventDefault();
-  
-  //   const formData = new FormData();
-  //   formData.append("image", imageInput?.current?.files[0]);
-  
-  //   try {
-  //     // Update the image directly without navigating
-  //     await axiosReq.patch(`/post/${id}/`, formData); // Use PATCH instead of PUT
-  //     // Update the image state to reflect changes
-  //     setPostData({
-  //       ...postData,
-  //       image: URL.createObjectURL(imageInput?.current?.files[0]),
-  //     });
-  //     setImageSaved(true);
-  //     // Redirect or show a success message if needed
-  //   } catch (err) {
-  //     if (err.response?.status !== 401) {
-  //       setErrors(err.response?.data);
-  //     }
-  //   }
-  // };
-
   const allFields = (
     <div className="text-center">
-      
-        
       <Form.Group>
         <Form.Label>Select Containers</Form.Label>
         <Select
           name="containers"
           multi
-          options={availableContainers.results || []}
+          options={availableContainers || []}
           values={containers}
           labelField="container_name"
           valueField="id"
@@ -312,21 +291,20 @@ function PostCreateForm() {
 
   return (
     <Form onSubmit={handleSubmit} encType="multipart/form-data">
-    <Row>
-      <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-        <Container
-          className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-        >
-          
-           
-        </Container>
-      </Col>
-      <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-        <Container className={appStyles.Content}>{allFields}</Container>
-      </Col>
-    </Row>
+      <Row>
+        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+          <Container
+            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+          >
+            {/* Asset and Image components */}
+          </Container>
+        </Col>
+        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+          <Container className={appStyles.Content}>{allFields}</Container>
+        </Col>
+      </Row>
     </Form>
   );
-            }
+}
 
 export default PostCreateForm;
