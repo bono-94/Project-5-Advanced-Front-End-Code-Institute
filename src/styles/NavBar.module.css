@@ -18,6 +18,15 @@
   color: white;
 }
 
+.Brand img {
+  height: 20px !important;
+}
+
+#profile-nav {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .Active i {
   color: orange;
 }
@@ -40,9 +49,12 @@
 
 
 .ProfileLink:hover img {
-  box-shadow: 0 0 5px orange; /* Adjust shadow properties as needed */
+  box-shadow: 0 0 5px orange; 
 }
 
+.NavLink #profile-pic{
+ border: 4px orange solid;
+}
 
 @media (max-width: 768px) {
   .logo-home {

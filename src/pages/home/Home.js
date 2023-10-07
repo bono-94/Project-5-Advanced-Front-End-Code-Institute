@@ -74,7 +74,7 @@ function Home() {
               <hr />
                 <div className={styles.containerCard}>
                   <i className="fas fa-cube feature-icon"></i>
-                  <h3 className={styles.containerTitle}>Container Types</h3>
+                  <h3 className={styles.containerTitle}>Containers Types</h3>
                   <p className={styles.containerDescription}>
                   Additional privacy feature allows users to categorize each container
                   as private or public which restricts public access.
@@ -85,10 +85,10 @@ function Home() {
               <hr />
                 <div className={styles.containerCard}>
                   <i className="fas fa-cogs feature-icon"></i>
-                  <h3 className={styles.containerTitle}>Container Benefits</h3>
+                  <h3 className={styles.containerTitle}>Containers Benefits</h3>
                   <p className={styles.containerDescription}>
                     Unlimited storage & connections, user-friendly, privacy setting,
-                    public collaboration, labelling, browsing & filtering
+                    public collaboration, labelling, browsing
                   </p>
                   <a href="containers/" className={styles.cardButton}>Select</a>
                 </div>
@@ -115,7 +115,6 @@ function Home() {
                   <p className={styles.containerDescription}>
                     Anybody can share an announcement,
                     idea, news, event, interview, story, questions and many more.
-
                   </p>
                 </div>
               </div>
@@ -138,7 +137,7 @@ function Home() {
 
       <Row className={styles.homeSupport}>
         <div className="container">
-          <h2 className="section-title">Customer Support</h2>
+          <h3 className="section-title">Customer Support</h3>
           <p className="section-description">
             We provide exceptional customer support to assist you with any
             questions, issues, or inquiries you may have. We also process 
@@ -153,7 +152,7 @@ function Home() {
               <div className="support-card">
               <a href="/support">
                 <i className="fas fa-headset feature-icon"></i>
-                <h3 className="support-title">24/7 Support</h3>
+                <h4 className="support-title">24/7 Support</h4>
               </a>
                 <p className="support-description">
                   Our support team is available around the clock to help you
@@ -167,7 +166,7 @@ function Home() {
               <div className="support-card">
               <a href="/knowledge/live">
                 <i className="fas fa-comments feature-icon"></i>
-                <h3 className="support-title">Community Forum</h3>
+                <h4 className="support-title">Community Forum</h4>
               </a>
                 <p className="support-description">
                   Join our public knowledge collaboration community forum

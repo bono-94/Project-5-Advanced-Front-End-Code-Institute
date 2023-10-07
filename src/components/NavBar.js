@@ -27,7 +27,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -84,6 +84,9 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         to={`/profile/${currentUser?.profile_id}`}
+        style={{
+          paddingLeft: '0px',
+        }}
       >
         <div className={styles.ProfileLink}>
           <Avatar src={currentUser?.profile_image} height={33} />
@@ -133,7 +136,7 @@ const NavBar = () => {
       <Container className={styles.NavBarContainer} fluid>
         <NavLink to="/">
           <Navbar.Brand className="pl-0 py-2">
-            <img src={logo} alt="logo" height="60" className="logo-home" style={{
+            <img src={logo} alt="logo" height="57" className="logo-home" style={{
             marginLeft: '10px',
           }}/>
           </Navbar.Brand>
@@ -143,11 +146,10 @@ const NavBar = () => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
           style={{
-            fontSize: '14px',
+            fontSize: '12px',
             padding: '4px 8px',
-            color: expanded ? 'orange' : 'white', // Text color
-            backgroundColor: expanded ? 'white' : 'orange', // Background color
-            marginRight: '10px',
+            backgroundColor: expanded ? 'white' : 'orange', 
+            marginRight: '14px',
           }}
         />
         <Navbar.Collapse id="basic-navbar-nav">

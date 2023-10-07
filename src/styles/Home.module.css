@@ -16,9 +16,9 @@
     background-color: black;
     color: orange;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px orange;
+    box-shadow: 0px 0px 10px orange;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 34px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -30,8 +30,8 @@
   border-radius: 6px;
   box-shadow: 0px 0px 5px black;
   padding: 20px;
-  margin-bottom: 30px;
-  margin-top: 21px;
+  margin-bottom: 40px;
+  margin-top: 38px;
   width: 94%;
   margin-left: auto;
   margin-right: auto;
@@ -39,6 +39,13 @@
   animation: fadeIn 1.5s forwards; 
 }
 
+.container p{
+  font-size: small;
+}
+
+.containerJumbo p{
+  font-size: medium;
+}
 
 hr {
   color: orange;
@@ -86,7 +93,7 @@ hr {
 }
 
 .homeSupport {
-  background-color:rgb(255, 166, 0);
+  background-color:orange;
   margin-top: 20px;
   padding: 20px;
   padding-top: 40px;
@@ -102,6 +109,11 @@ hr {
   text-shadow: 1px 0px 0px black;
 }
 
+.homeSupport p {
+  font-size: medium;
+  color: black;
+}
+
 a:hover {
   color: white;
 }
@@ -110,7 +122,7 @@ a:hover i {
   color: white;
 }
 
-a h3 {
+a h4 {
   color: black;
 }
 
@@ -167,6 +179,19 @@ a h3 {
     padding-top: 60px;
     padding: 40px;
   }
+
+  .containerJumbo p{
+    font-size: large;
+  }
+
+  .container p{
+    font-size: medium;
+  }
+
+  .containerJumbo {
+    margin-bottom: 44px;
+    margin-top: 48px;
+  }
 }
 
 
@@ -186,6 +211,7 @@ a h3 {
   .containerJumbo {
     padding: 50px;
     margin-top: 0px;
+    margin-left: 0px;
   }
 
   .jumbotronTitle {
@@ -255,5 +281,10 @@ a h3 {
     padding-bottom: 80px;
   }
 
+  .container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 80px;
+  }
   
 }
