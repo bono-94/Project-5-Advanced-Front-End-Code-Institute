@@ -1,20 +1,24 @@
+h2 {
+  font-size: 30px;
+  margin-bottom: 32px;
+}
+
 .containerCards {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
   margin-top: 65px;
-  margin-bottom: 42px;
+  margin-bottom: 22px;
 }
 
 .containerCard {
-  width: 320px;
+  width: 300px !important;
   height: 600px;
   cursor: pointer;
   transform-style: preserve-3d;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 40px !important;
 }
 
 .cardInner {
@@ -43,12 +47,12 @@
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
+  margin-top: 0px;
 }
 
 .cardFront {
   background-color: #000;
   color: orange;
-  padding: 20px;
   text-align: center;
 }
 
@@ -82,7 +86,7 @@
   border: none;
   cursor: pointer;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -95,7 +99,7 @@
 .features {
   display: flex;
   justify-content: space-around;
-  margin: 80px 0;
+  margin: 60px 20px;
   gap: 10px;
   margin-bottom: 105px;
 }
@@ -108,6 +112,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 24px;
 }
 
 .feature:hover {
@@ -115,6 +120,10 @@
   box-shadow: 0 6px 12px black;
   background-color: black;
   color: orange;
+}
+
+.feature i{
+  color: black;
 }
 
 .feature:hover i{
@@ -142,9 +151,13 @@
   text-align: center;
 }
 
+.additionalContent a{
+  margin-top: 24px;
+}
+
 .additionalContent p {
-  margin-right: 25%;
-  margin-left: 25%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .createContainerLink,
@@ -169,27 +182,70 @@
   transform: scale(1.05);
 }
 
-/* Public and Private Container Styles */
+
 .publicCard,
 .privateCard {
-  background-color: transparent;
+  background-color: black;
   transition: background-color 0.3s;
   transform-style: preserve-3d;
 }
 
-.publicCard:hover,
-.privateCard:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+.publicCard {
+  margin-bottom: 40px !important;
 }
 
-/* Add this CSS for image styling */
+.privateCard {
+  margin-bottom: 40px !important;
+}
+
+.publicCard:hover,
+.privateCard:hover {
+  background-color: orange;
+}
+
 .cardImage {
   width: 100%;
   height: auto;
   object-fit: cover;
   object-position: center right;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin-top: 0;
+  border-radius: 10px;
+  margin-top: 0px;
 
 }
+
+@media (min-width: 400px) {
+  .containerCard {
+    height: 700px;
+  }
+
+  .containerCard i {
+    font-size: 40px;
+  }
+
+  .feature {
+    margin-bottom: 38px;
+  }
+  
+}  
+
+@media (min-width: 576px) {
+
+  .feature {
+    margin-bottom: 0px;
+  }
+  
+}  
+
+@media (min-width: 767px) {
+  .containerCard {
+    height: 600px;
+  }
+  
+}  
+
+@media (min-width: 1700px) {
+  .containerCards {
+    margin-top: 80px;
+  }
+  
+}  
