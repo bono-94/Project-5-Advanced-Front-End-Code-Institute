@@ -1,5 +1,7 @@
 .Row {
   min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards; 
 }
 
 .Input {
@@ -75,18 +77,31 @@
   color: black !important; /* Black text color on hover */
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Media query for screens larger than or equal to 768px width */
 @media (min-width: 768px) {
   .SignUpCol button {
-    width: 30%; /* Reduce button width to 30% for larger screens */
+    width: 24%; /* Reduce button width to 30% for larger screens */
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
   }
   .SignUpCol input {
-    width: 80%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  h1 {
+    margin-bottom: 50px !important;
   }
 }
 

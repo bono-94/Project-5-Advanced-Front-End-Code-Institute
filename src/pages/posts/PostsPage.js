@@ -77,7 +77,7 @@ function PostsPage({ message, filter = "" }) {
   return (
     <div className={styles.ScrollableContainer} fluid>
       <Container className={styles.PostsPage} fluid>
-          <Row>
+          <Row fluid>
             <Col><Sidebar /></Col>
             <Col xs={9}>
             <Row className="h-100">

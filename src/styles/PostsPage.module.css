@@ -32,7 +32,7 @@
 
 .ScrollableContainer {
   overflow-y: auto; 
-  background-color:rgba(248, 246, 218, 0.696);
+  background-color:rgba(206, 206, 206, 0.696);
   min-height: 100vh;
 }
 
@@ -95,3 +95,4 @@
 .ActiveSortOption {
   font-weight: bold; 
 }
+
