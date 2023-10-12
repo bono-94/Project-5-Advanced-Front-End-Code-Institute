@@ -27,34 +27,11 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
-
 import NotFound from "./components/NotFound";
 
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
-
-
-// import ContentAPI from "./components/ContentAPI";
-// import ContentAPIHooks from "./components/ContentAPIHooks";
-// import ConditionalRenderingClass from './components/ConditionalRenderingClass';
-// import ConditionalRenderingFunctional from './components/ConditionalRenderingFunctional';
-
-// import SearchBar from "./components/SearchBar";
-// import RenderingLists from './components/RenderingLists';
-// import EventsClass from './components/EventsClass';
-// import EventsFunctional from './components/EventsFunctional';
-// import EventsBinding from './components/EventsBinding';
-
-// import ControlledFormHooks from "./components/ControlledFormHooks";
-// import ControlledForm from "./components/ControlledForm";
-
-// import UseStateWithArrays from "./components/UseStateWithArrays";
-// import UseStateWithObjects from "./components/UseStateWithObjects";
-// import UseEffectCounter from "./components/UseEffectCounter";
-// import UseEffectCounterContainer from "./components/UseEffectCounter";
-
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import PopularProfiles from "./pages/profiles/PopularProfiles";
 
@@ -67,36 +44,8 @@ function App() {
 
   return (
     <div className={styles.App}>
-      
-      {/* Knowledge */}
-      {/* <ContentAPIHooks />
-      <ContentAPI /> */}
-      {/* <ConditionalRenderingClass />
-      <ConditionalRenderingFunctional connected={true} /> */}
-
-      {/* Components */}
-      {/* <SearchBar /> 
-      <RenderingLists /> */}
-      {/* <EventsClass />
-      <EventsFunctional />
-      <EventsBinding />
-
-      {/* Support */}
-      {/* <ControlledForm /> */}
-      {/* <ControlledFormHooks /> */}
-
-      {/* Extra */}
-      {/* <UseStateWithObjects />
-      <UseStateWithArrays />
-      <UseEffectCounterContainer />
-      <UseEffectCounter /> */}
-  
-      
       <NavBar />
-
-      
       <Container className={styles.Main} fluid>
-        
         <Switch>
           <Route
             exact
@@ -150,7 +99,6 @@ function App() {
           <Route exact path="/containers/private" render={() => <ContainersPrivate message="No results found. Adjust the search keyword." />} />
           <Route exact path="/container/:id" render={() => <ContainerPage message="No results found. Adjust the search keyword." />} />
           <Route exact path="/container/:id/edit" render={() => <ContainerEditForm />} />
-          
           <Route exact path="/knowledge/create" render={() => <PostCreateForm />} />
           <Route exact path="/knowledge/live" render={() => <PostsPage />} />
           <Route exact path="/knowledge/:id" render={() => <PostPage />} />
@@ -172,30 +120,7 @@ function App() {
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>
-      
       <Footer />
-
-      {/* <Button variant="primary">Primary</Button>
-      <Button variant="dark">Primary</Button> */}
-
-      {/* FOOTER
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn how to use React
-        </a> */}
-        {/* <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32"/>
-        <FunctionalGreeting/> */}
-        
-      {/* </header> */}
     </div>
   );
 }
