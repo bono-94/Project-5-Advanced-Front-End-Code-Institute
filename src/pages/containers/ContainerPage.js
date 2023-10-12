@@ -20,6 +20,8 @@ function ContainerPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const handleMount = async () => {
       try {

@@ -22,6 +22,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function Support() {
+  window.scrollTo(0, 0);
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");

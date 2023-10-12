@@ -9,6 +9,8 @@ function Home() {
   const [successMessage, setSuccessMessage] = useState(state?.successMessage || "");
   const [visible, setVisible] = useState(!!successMessage);
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     if (successMessage) {
       // Automatically hide the alert after 8 seconds

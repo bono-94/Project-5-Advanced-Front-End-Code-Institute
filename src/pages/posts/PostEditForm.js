@@ -26,6 +26,8 @@ function PostEditForm() {
   const [imageSaved, setImageSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  window.scrollTo(0, 0);
+
   const [postData, setPostData] = useState({
     containers: [],
     post_category: "",

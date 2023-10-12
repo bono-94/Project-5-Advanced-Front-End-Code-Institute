@@ -41,6 +41,8 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

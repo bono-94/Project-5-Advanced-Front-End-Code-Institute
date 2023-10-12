@@ -16,6 +16,8 @@ const Profile = (props) => {
 
   const { handleFollow, handleUnfollow } = useSetProfileData();
 
+  window.scrollTo(0, 0);
+
   return (
     <div
       className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}

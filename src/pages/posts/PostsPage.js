@@ -52,7 +52,10 @@ function PostsPage({ message, filter = "" }) {
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
 
+  window.scrollTo(0, 0);
+  
   useEffect(() => {
+    
     const fetchPosts = async () => {
       try {
         console.log("ordering:", ordering);

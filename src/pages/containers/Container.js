@@ -35,6 +35,8 @@ const Container = (props) => {
   const [knowledgeItems, setKnowledgeItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  window.scrollTo(0, 0);
+
   const handleEdit = () => {
     history.push(`/container/${id}/edit/`);
     window.scrollTo(0, 0);

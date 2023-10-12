@@ -27,6 +27,8 @@ function ContainerEditForm() {
   const history = useHistory();
   const { id } = useParams();
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const handleMount = async () => {
       try {

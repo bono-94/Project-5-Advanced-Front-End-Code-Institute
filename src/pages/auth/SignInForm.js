@@ -18,6 +18,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
+  window.scrollTo(0, 0);
   const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 

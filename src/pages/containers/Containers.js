@@ -6,6 +6,7 @@ import privateContainerImage from "../../assets/security-cloud.jpg";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function Containers() {
+  window.scrollTo(0, 0);
   return (
     <>
       <section className={styles.additionalContent}>

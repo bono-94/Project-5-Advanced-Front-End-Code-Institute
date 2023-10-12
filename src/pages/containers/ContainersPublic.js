@@ -37,6 +37,8 @@ function ContainersPublic({ message, filter = "" }) {
   const [showSortingOptions, setShowSortingOptions] = useState(false);
   const [ordering, setOrdering] = useState(""); 
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const fetchContainers = async () => {
       try {

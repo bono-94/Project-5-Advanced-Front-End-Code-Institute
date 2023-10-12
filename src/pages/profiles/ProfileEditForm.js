@@ -51,6 +51,8 @@ const ProfileEditForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {

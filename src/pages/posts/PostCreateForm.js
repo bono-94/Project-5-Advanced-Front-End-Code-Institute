@@ -53,7 +53,8 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
-  
+
+  window.scrollTo(0, 0);  
 
   const fetchAllContainers = async (url, containersData = []) => {
     try {

@@ -34,6 +34,8 @@ const UserPasswordForm = () => {
     });
   };
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
       // redirect user if they are not the owner of this profile

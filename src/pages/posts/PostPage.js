@@ -27,6 +27,8 @@ function PostPage() {
   const [comments, setComments] = useState({ results: [] });
   const [isLoading, setIsLoading] = useState(true);
 
+  window.scrollTo(0, 0);
+
   useEffect(() => {
     const handleMount = async () => {
       try {
