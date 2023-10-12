@@ -76,6 +76,7 @@
 .Footer i:hover {
   box-shadow: 0 0 5px orange;
   color: orange !important;
+  border-radius: 50%;
 }
 
 

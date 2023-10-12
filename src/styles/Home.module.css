@@ -47,6 +47,10 @@
   font-size: medium;
 }
 
+.containerJumbo h2 {
+  color: black;
+}
+
 hr {
   color: orange;
   background-color: white;
@@ -111,6 +115,10 @@ hr {
 
 .homeSupport p {
   font-size: medium;
+  color: black;
+}
+
+.homeSupport h3 {
   color: black;
 }
 
@@ -211,7 +219,6 @@ a h4 {
   .containerJumbo {
     padding: 50px;
     margin-top: 0px;
-    margin-left: 0px;
   }
 
   .jumbotronTitle {
