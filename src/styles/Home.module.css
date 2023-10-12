@@ -63,18 +63,23 @@ hr {
   font-size: medium;
   color: white;
   text-shadow: 1px 0px 0px orange;
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
 }
 
 .sectionTitle{
   font-size: larger;
   color: white;
   text-shadow: 1px 0px 0px orange;
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
 }
 
 .containerCard i {
   color:white;
   text-shadow: 1px 0px 0px orange;
-  
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
 }
 
 
@@ -146,6 +151,8 @@ a h4 {
   border-radius: 20px;
   border: 2px solid black;
   margin-top: 30px;
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
 }
 
 .cardButton:hover {
@@ -281,6 +288,7 @@ a h4 {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 100px;
   }
 
   .homeSupport {

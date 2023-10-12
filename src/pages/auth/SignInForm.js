@@ -102,7 +102,7 @@ function SignInForm() {
               </Alert>
             ))}
             <Link className={styles.Link} to="/signup">
-              Don't have an account? <span>Register now!</span>
+              Don't have an account? <span>Register!</span>
             </Link>
           </Form>
         </Container>
