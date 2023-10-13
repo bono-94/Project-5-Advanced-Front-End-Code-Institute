@@ -53,15 +53,6 @@ function Support() {
     });
   };
 
-  // const handleChangeImage = (event) => {
-  //   if (event.target.files.length) {
-  //     URL.revokeObjectURL(image);
-  //     setContainerData({
-  //       ...containerData,
-  //       image: URL.createObjectURL(event.target.files[0]),
-  //     });
-  //   }
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -91,15 +82,6 @@ function Support() {
 
   const allFields = (
     <div className="text-center">
-      {/* <Form.Group>
-        <Form.Check
-          type="checkbox"
-          label="Public"
-          name="is_public"
-          checked={supportData.content}
-          onChange={(e) => setSupportData({ ...supportData, is_public: e.target.checked })}
-        />
-      </Form.Group> */}
       <Form.Group>
         <Form.Label>Support Type</Form.Label>
         <Form.Control
@@ -107,9 +89,11 @@ function Support() {
           name="support_type"
           value={support_type}
           onChange={handleChange}
-          size="sm"
+          
+          className={styles.InputSelect}
+          placeholder="Support Type"
         >
-          <option value="consultacy">Consultancy</option>
+          <option value="consultancy">Consultancy</option>
           <option value="feedback">Feedback</option>
           <option value="request">Request Knowledge</option>
           <option value="support">Support Ticket</option>
@@ -123,6 +107,8 @@ function Support() {
           name="title"
           value={title}
           onChange={handleChange}
+          className={styles.Input}
+          placeholder="Please give a title..."
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
@@ -139,17 +125,16 @@ function Support() {
           value={content}
           onChange={handleChange}
           aria-describedby="passwordHelpBlock"
+          className={styles.Input}
+          placeholder="You can share your details here..."
         />
-        <Form.Text id="passwordHelpBlock" muted>
-        Your password must be 8-20 characters long, contain letters and numbers,
-        and must not contain spaces, special characters, or emoji.
-      </Form.Text>
       </Form.Group>
       {errors?.content?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
+      <hr></hr>
       <Form.Group>
         <Form.Label>Relevant Knowledge</Form.Label>
         <Form.Control
@@ -158,6 +143,8 @@ function Support() {
           value={knowledge_name}
           onChange={handleChange}
           size="sm"
+          className={styles.Input}
+          placeholder="Which knowledge?"
         />
       </Form.Group>
       {errors?.knowledge_name?.map((message, idx) => (
@@ -173,6 +160,8 @@ function Support() {
           value={container_name}
           onChange={handleChange}
           size="sm"
+          className={styles.Input}
+          placeholder="Which container?"
         />
       </Form.Group>
       {errors?.container_name?.map((message, idx) => (
@@ -180,78 +169,32 @@ function Support() {
           {message}
         </Alert>
       ))}
-
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
-      >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
-      </Button>
+      <Form.Group className={styles.SupportSubmit}>
+        {/* <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          onClick={() => history.goBack()}
+        >
+          Cancel
+        </Button> */}
+        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+          Create
+        </Button>
+      </Form.Group>
+      
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Support} d-flex flex-column justify-content-center`}
-          >
-
-          {/* {successMessage && supportId && (
-            <SupportSubmit successMessage={successMessage} supportId={supportId} />
-          )} */}
-            {/* <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))} */}
-
-            <div className="d-md-none">{allFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{allFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+    <Row className={styles.Row}>
+      <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
+        <Container  className={`${appStyles.Content} p-4 ${styles.Container}`}>
+        <h1 className={styles.Header}>Support Request</h1>
+          <Form onSubmit={handleSubmit}>
+            {allFields}
+          </Form>
+        </Container>
+      </Col>
+    </Row>
   );
 }
 

@@ -1,10 +1,14 @@
 .App {
   font-family: "DM Sans", sans-serif;
   min-height: 100vh;
+  background-color: #f0eeee;
 }
 
 .Main {
   padding-top: 81px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-color: #f0eeee;
 }
 
 .Content {

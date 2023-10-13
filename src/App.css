@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color:rgba(206, 206, 206, 0.696);
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .App-logo {
@@ -45,9 +47,6 @@
   min-height: 100vh;
 }
 
-.Main {
-  padding-top: 81px;
-}
 
 .Content {
   background-color: #ffffff;

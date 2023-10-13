@@ -170,6 +170,10 @@ function PostCreateForm() {
           <option value="tutorial">Tutorial</option>
           <option value="question">Question</option>
         </Form.Control>
+        <Form.Text id="passwordHelpBlock" muted>
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </Form.Text>
       </Form.Group>
       <Form.Group>
           <Form.Label>Topic</Form.Label>

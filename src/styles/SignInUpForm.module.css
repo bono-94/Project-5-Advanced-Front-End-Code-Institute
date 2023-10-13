@@ -74,7 +74,6 @@
   background-color: black !important;
   color: orange !important;
   width: 60%;
-  margin-top: 30px; 
   border: none; 
   margin-bottom: 11px;
   margin-left: auto !important;
@@ -115,7 +114,6 @@
   .Header {
     font-size: 27px;
     text-transform: uppercase;
-
     margin-bottom: 60px;
     margin-top: 40px;
   }
