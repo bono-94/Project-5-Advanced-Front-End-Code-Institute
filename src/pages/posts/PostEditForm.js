@@ -25,6 +25,7 @@ function PostEditForm() {
   const [selectedContainers, setSelectedContainers] = useState([]); 
   const [imageSaved, setImageSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [allContainers, setAllContainers] = useState([]);
 
   window.scrollTo(0, 0);
 
@@ -101,7 +102,7 @@ function PostEditForm() {
   useEffect(() => {
     // Fetch available containers from your backend and update the state
     axiosReq
-    .get("/containers/") // Adjust the URL based on your API endpoint
+    .get("/containers/public") // Adjust the URL based on your API endpoint
       .then((response) => {
         console.log("Response data:", response.data); // Log the data received
         setAvailableContainers(response.data);
@@ -115,19 +116,9 @@ function PostEditForm() {
 
   if (isLoading) {
     return (
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Asset spinner />
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>
-            {/* Show the loading spinner on the right column as well if needed */}
-            <Asset spinner />
-          </Container>
+      <Row className="h-100">
+        <Col className="py-2 p-0">
+          <Asset spinner />
         </Col>
       </Row>
     );
@@ -248,7 +239,7 @@ function PostEditForm() {
           labelField="container_name"
           valueField="id"
           onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
-          paginatioin
+          className={styles.InputSelect}
         />
       </Form.Group>
       <Form.Group>
@@ -258,6 +249,7 @@ function PostEditForm() {
           name="post_category"
           value={post_category}
           onChange={handleChange}
+          className={styles.InputSelect}
         >
           <option value="announcement">Announcement</option>
           <option value="answer">Answer</option>
@@ -273,6 +265,22 @@ function PostEditForm() {
           <option value="question">Question</option>
         </Form.Control>
       </Form.Group>
+      <Form.Group>
+          <Form.Label>Topic</Form.Label>
+          <Form.Control
+            type="text"
+            name="topic"
+            value={topic}
+            onChange={handleChange}
+            className={styles.Input}
+            placeholder="What is the topic?"
+          />
+        </Form.Group>
+        {errors?.topic?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
         
         <Form.Group>
           <Form.Label>Title</Form.Label>
@@ -281,6 +289,8 @@ function PostEditForm() {
             name="title"
             value={title}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="What is the title?"
           />
         </Form.Group>
         {errors?.title?.map((message, idx) => (
@@ -288,8 +298,6 @@ function PostEditForm() {
             {message}
           </Alert>
         ))}
-
-        {/* Include the missing fields */}
         <Form.Group>
           <Form.Label>Sub Title</Form.Label>
           <Form.Control
@@ -297,23 +305,11 @@ function PostEditForm() {
             name="sub_title"
             value={sub_title}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="What is the sub-title?"
           />
         </Form.Group>
         {errors?.sub_title?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Topic</Form.Label>
-          <Form.Control
-            type="text"
-            name="topic"
-            value={topic}
-            onChange={handleChange}
-          />
-        </Form.Group>
-        {errors?.topic?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
             {message}
           </Alert>
@@ -325,6 +321,8 @@ function PostEditForm() {
             name="location"
             value={location}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="Where can it be found?"
           />
         </Form.Group>
         {errors?.location?.map((message, idx) => (
@@ -333,12 +331,31 @@ function PostEditForm() {
           </Alert>
         ))}
         <Form.Group>
+      <Form.Label>Content</Form.Label>
+      <Form.Control
+        as="textarea"
+        rows={6}
+        name="content"
+        value={content}
+        onChange={handleChange}
+        className={styles.Input}
+        placeholder="Knowledge details..."
+      />
+    </Form.Group>
+    {errors?.content?.map((message, idx) => (
+      <Alert variant="warning" key={idx}>
+        {message}
+      </Alert>
+    ))}
+        <Form.Group>
           <Form.Label>Inspiration</Form.Label>
           <Form.Control
             type="text"
             name="inspiration"
             value={inspiration}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="Inspiration for knowledge..."
           />
         </Form.Group>
         {errors?.inspiration?.map((message, idx) => (
@@ -353,6 +370,8 @@ function PostEditForm() {
             name="source"
             value={source}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="Sources of knowledge..."
           />
         </Form.Group>
         {errors?.source?.map((message, idx) => (
@@ -360,44 +379,20 @@ function PostEditForm() {
             {message}
           </Alert>
         ))}
-  
-    
-    {/* End of missing fields */}
-
-    <Form.Group>
-      <Form.Label>Content</Form.Label>
-      <Form.Control
-        as="textarea"
-        rows={6}
-        name="content"
-        value={content}
-        onChange={handleChange}
-      />
-    </Form.Group>
-    {errors?.content?.map((message, idx) => (
-      <Alert variant="warning" key={idx}>
-        {message}
-      </Alert>
-    ))}
-
-    <Button
-      className={`${btnStyles.Button} ${btnStyles.Blue}`}
-      onClick={() => history.goBack()}
-    >
-      cancel
-    </Button>
+     
     <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-      save
+      Save
     </Button>
   </div>
 );
 
 return (
-  <Row>
-    <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+  <Row className={styles.Row}>
+    <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
       <Container
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
       >
+      <h1 className={styles.Header}>Edit Knowledge</h1>
         <Form onSubmit={handleSubmitImage} encType="multipart/form-data">
           <Form.Group className="text-center">
             <figure>
@@ -412,9 +407,9 @@ return (
                   Saved
                 </Button>
               ) : (
-                <div>
+                <div className={styles.Upload}>
                   <Form.Label
-                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                    className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.Upload} btn text-dark bg-warning border-1 border-dark text-center`}
                     htmlFor="image-upload"
                   >
                     Change the image
@@ -437,12 +432,7 @@ return (
           ))}
           {!imageSaved && ( // Show "Save" button only if the image is not saved
             <>
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                onClick={() => history.goBack()}
-              >
-                cancel
-              </Button>
+
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 type="submit"
@@ -452,11 +442,8 @@ return (
             </>
           )}
         </Form>
-        <div className="d-md-none">{textFields}</div>
       </Container>
-    </Col>
-    <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-      <Container className={appStyles.Content}>
+      <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
         <Form onSubmit={handleSubmit} encType="multipart/form-data">
           {textFields}
         </Form>

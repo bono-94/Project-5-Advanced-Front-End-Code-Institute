@@ -69,7 +69,12 @@
   margin-top: 10px;
   text-align: left;
   animation: fadeIn 6s forwards;
+}
 
+.Upload {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 .Link {
@@ -117,6 +122,10 @@
 /* .InputSelect:focus option {
   background-color: orange !important;
 } */
+
+::placeholder {
+  font-size: small;
+}
 
 
 @keyframes fadeIn {
@@ -195,6 +204,10 @@
     margin-bottom: 60px !important;
     margin-top: 50px !important;
   }
+  .Upload {
+    margin: auto;
+    width: 40%;
+  }
   
 }
 
@@ -242,5 +255,8 @@
 
   .Header {
     font-size: 34px;
+  }
+  ::placeholder {
+    font-size: medium;
   }
 }
