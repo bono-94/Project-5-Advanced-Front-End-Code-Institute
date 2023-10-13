@@ -9,8 +9,9 @@ function Containers() {
   window.scrollTo(0, 0);
   return (
     <>
+      <div className="container">
       <section className={styles.additionalContent}>
-        <h2>Create and Organize your Knowledge</h2>
+        <h2>Create and Organize</h2>
         <p>
           With our containers solution, you can create custom environments to
           efficiently store, manage, and share your knowledge. Effortlessly add, edit, categorize, and
@@ -73,28 +74,28 @@ function Containers() {
       </section>
       <section className={styles.features}>
         <div className="row">
-          <div className={`col-md-3 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
+          <div className={`col-lg-2 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
             <div className={styles.featureIcon}>
               <i className="fas fa-server"></i>
             </div>
             <h3>Reliability</h3>
             <p>Our container services are highly reliable and secure 24/7.</p>
           </div>
-          <div className={`col-md-3 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
+          <div className={`col-lg-2 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
             <div className={styles.featureIcon}>
               <i className="fas fa-warehouse"></i>
             </div>
             <h3>Capacity</h3>
             <p>Large storage space for your structured data and files.</p>
           </div>
-          <div className={`col-md-3 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
+          <div className={`col-lg-2 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
             <div className={styles.featureIcon}>
               <i className="fas fa-search"></i>
             </div>
             <h3>Browse</h3>
             <p>Effortlessly search and filter containers inside long lists.</p>
           </div>
-          <div className={`col-md-3 col-sm-6 col-10 offset-1 offset-sm-0 ${styles.feature}`}>
+          <div className={`col-lg-2 col-sm-6 col-10 offset-1 offset-sm-0  ${styles.feature}`}>
             <div className={styles.featureIcon}>
               <i className="fas fa-plug"></i>
             </div>
@@ -103,6 +104,7 @@ function Containers() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

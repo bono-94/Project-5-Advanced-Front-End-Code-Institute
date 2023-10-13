@@ -1,5 +1,5 @@
 .additionalContent h2 {
-  font-size: 30px;
+  font-size: 28px;
   margin-bottom: 32px;
 }
 
@@ -113,6 +113,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
   margin-bottom: 24px;
+  background-color: white;
 }
 
 .feature:hover {
@@ -214,6 +215,11 @@
 }
 
 @media (min-width: 400px) {
+  .additionalContent h2 {
+    font-size: 32px;
+    margin-bottom: 22px;
+    margin-top: 52px !important;
+  }
   .containerCard {
     height: 700px;
   }
@@ -233,6 +239,10 @@
   .feature {
     margin-bottom: 0px;
   }
+
+  .containerCards {
+    margin-top: 85px;
+  }
   
 }  
 
@@ -240,12 +250,34 @@
   .containerCard {
     height: 600px;
   }
+  .feature {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+}  
+
+@media (min-width: 990px) {
+  .additionalContent h2 {
+    font-size: 36px;
+    margin-bottom: 32px;
+    margin-top: 63px !important;
+  }
+
+  .containerCards {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
   
 }  
 
 @media (min-width: 1700px) {
   .containerCards {
-    margin-top: 80px;
+    margin-top: 90px;
+  }
+  .features {
+    margin-bottom: 140px;
   }
   
 }  
