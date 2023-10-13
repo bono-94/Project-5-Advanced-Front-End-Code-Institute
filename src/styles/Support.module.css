@@ -1,6 +1,6 @@
 .Row {
   opacity: 0;
-  animation: fadeIn 1.5s forwards; 
+  animation: fadeIn 3s forwards; 
   margin: 32px 0px !important;
   padding-bottom: 21px;
 }
@@ -45,7 +45,6 @@
 }
 
 
-
 .Container {
   padding: 30px 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -62,6 +61,16 @@
   color: black;
   margin-bottom: 50px;
   margin-top: 30px;
+}
+
+.Container label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  margin-top: 10px;
+  text-align: left;
+  animation: fadeIn 6s forwards;
+
 }
 
 .Link {
@@ -142,6 +151,11 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .Container label {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .SupportCol button {
     width: 44%;
     margin-top: 40px;
@@ -174,6 +188,9 @@
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .Container label {
+    width: 70%;
   }
   h1 {
     margin-bottom: 60px !important;
@@ -214,9 +231,12 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .Container label {
+    width: 60%;
+  }
   .SupportCol button {
     width: 21%;
-    /* margin-top: 45px; */
+    margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
   }
