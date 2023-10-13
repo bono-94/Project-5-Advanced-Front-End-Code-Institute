@@ -146,6 +146,7 @@ function PostCreateForm() {
           labelField="container_name"
           valueField="id"
           onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
+          className={styles.InputSelect}
         />
       </Form.Group>
       <Form.Group>
@@ -155,7 +156,7 @@ function PostCreateForm() {
           name="post_category"
           value={post_category}
           onChange={handleChange}
-          size="sm"
+          className={styles.InputSelect}
         >
           <option value="announcement">Announcement</option>
           <option value="answer">Answer</option>
@@ -170,10 +171,6 @@ function PostCreateForm() {
           <option value="tutorial">Tutorial</option>
           <option value="question">Question</option>
         </Form.Control>
-        <Form.Text id="passwordHelpBlock" muted>
-        Your password must be 8-20 characters long, contain letters and numbers,
-        and must not contain spaces, special characters, or emoji.
-      </Form.Text>
       </Form.Group>
       <Form.Group>
           <Form.Label>Topic</Form.Label>
@@ -182,7 +179,8 @@ function PostCreateForm() {
             name="topic"
             value={topic}
             onChange={handleChange}
-            size="sm"
+            className={styles.Input}
+            placeholder="What is the topic?"
           />
         </Form.Group>
         {errors?.topic?.map((message, idx) => (
@@ -197,6 +195,8 @@ function PostCreateForm() {
             name="title"
             value={title}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="What is the title?"
           />
         </Form.Group>
         {errors?.title?.map((message, idx) => (
@@ -211,6 +211,8 @@ function PostCreateForm() {
             name="sub_title"
             value={sub_title}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="What is the sub-title?"
           />
         </Form.Group>
         {errors?.sub_title?.map((message, idx) => (
@@ -227,6 +229,8 @@ function PostCreateForm() {
             name="location"
             value={location}
             onChange={handleChange}
+            className={styles.Input}
+            placeholder="Where can it be found?"
           />
         </Form.Group>
         {errors?.location?.map((message, idx) => (
@@ -242,6 +246,8 @@ function PostCreateForm() {
             value={content}
             onChange={handleChange}
             rows={8}
+            className={styles.Input}
+            placeholder="Knowledge details..."
           />
         </Form.Group>
         {errors?.content?.map((message, idx) => (
@@ -258,6 +264,8 @@ function PostCreateForm() {
             value={inspiration}
             onChange={handleChange}
             rows={4}
+            className={styles.Input}
+            placeholder="Inspiration for knowledge..."
           />
         </Form.Group>
         {errors?.inspiration?.map((message, idx) => (
@@ -274,6 +282,8 @@ function PostCreateForm() {
             value={source}
             onChange={handleChange}
             rows={4}
+            className={styles.Input}
+            placeholder="Sources of knowledge..."
           />
         </Form.Group>
         {errors?.source?.map((message, idx) => (
@@ -282,12 +292,6 @@ function PostCreateForm() {
           </Alert>
         ))}
         
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
-      >
-        cancel
-      </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
@@ -295,20 +299,18 @@ function PostCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit} encType="multipart/form-data">
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            {/* Asset and Image components */}
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{allFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+    <Row className={styles.Row}>
+      <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
+        <Container
+          className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+        >
+        <h1 className={styles.Header}>Create Knowledge</h1>
+          <Form onSubmit={handleSubmit} encType="multipart/form-data">
+            {allFields}
+          </Form>
+        </Container>
+      </Col>
+    </Row>
   );
 }
 

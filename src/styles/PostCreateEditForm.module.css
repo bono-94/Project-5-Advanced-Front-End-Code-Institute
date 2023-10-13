@@ -1,3 +1,246 @@
+.Row {
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
+  margin: 32px 0px !important;
+  padding-bottom: 21px;
+}
+
+.Form {
+  padding-top: 21px !important;
+  padding-bottom: 18px !important;
+  
+}
+
+.Container hr {
+  margin-top: 42px;
+  margin-bottom: 42px;
+  width: 80% !important;
+  margin-left: 0px auto !important;
+  margin-right: 0px auto !important;
+  background-color: orange;
+}
+
+.Input {
+  background: #ffffff;
+  border: 1px solid #f0f1f9;
+  box-sizing: border-box;
+  border-radius: 5px; 
+  color: rgb(227, 148, 1);
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.InputSelect {
+  background: #ffffff !important;
+  border: 1px solid #f0f1f9 !important;
+  box-sizing: border-box !important;
+  border-radius: 5px !important; 
+  color: orange !important;
+  text-align: center !important;
+  padding: 5px !important;
+  padding-bottom: 10px !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !important; 
+}
+
 .Container {
-  min-height: 343px;
+  padding: 30px 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Header {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.Container label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  margin-top: 10px;
+  text-align: left;
+  animation: fadeIn 6s forwards;
+
+}
+
+.Link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.SupportCol button {
+  background-color: black !important;
+  color: orange !important;
+  width: 60%;
+  border: none; 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 52px;
+  margin-bottom: 42px;
+  display: block;
+  font-size: medium;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.SupportCol button:hover {
+  background-color: orange !important; 
+  color: black !important; 
+}
+
+.Input:focus {
+  border: 1px solid orange; 
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6); 
+}
+
+.InputSelect:focus {
+  border: 1px solid orange !important; 
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6) !important; 
+}
+
+.SupportCol button:focus {
+  border-color: black;
+  box-shadow: 0px 0px 10px black; 
+}
+
+/* .InputSelect:focus option {
+  background-color: orange !important;
+} */
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Media query for screens larger than or equal to 768px width */
+@media (min-width: 450px) {
+  .Row {
+    margin: 52px 0px !important;
+  }
+  .Header {
+    font-size: 27px;
+    text-transform: uppercase;
+
+    margin-bottom: 60px;
+    margin-top: 40px;
+  }
+  .Input {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .InputSelect {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .Container label {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .SupportCol button {
+    width: 44%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* Media query for screens larger than or equal to 768px width */
+@media (min-width: 768px) {
+  .Row {
+    margin: 72px 0px !important;
+  }
+  .Container hr {
+    width: 70% !important;
+  }
+  .SupportCol button {
+    width: 24%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Input {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .InputSelect {
+    width: 70% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .Container label {
+    width: 70%;
+  }
+  h1 {
+    margin-bottom: 60px !important;
+    margin-top: 50px !important;
+  }
+  
+}
+
+/* Media query for screens larger than or equal to 768px width */
+@media (min-width: 990px) {
+  .Row {
+    margin: 82px 0px !important;
+  }
+  .SupportCol button {
+    margin-top: 50px;
+  }
+
+  .Header {
+    font-size: 32px;
+  }
+}
+
+/* Media query for screens larger than or equal to 768px width */
+@media (min-width: 1400px) {
+  .Row {
+    margin: 92px 0px !important;
+  }
+  .Container hr {
+    width: 4% !important;
+  }
+  .Input {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .InputSelect {
+    width: 60% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .Container label {
+    width: 60%;
+  }
+  .SupportCol button {
+    width: 21%;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Header {
+    font-size: 34px;
+  }
 }
