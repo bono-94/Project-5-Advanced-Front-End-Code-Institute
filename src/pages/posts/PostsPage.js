@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
+import Modal from "react-bootstrap/Modal"; 
 
 import Post from "./Post";
 import Asset from "../../components/Asset";
@@ -52,6 +53,10 @@ function PostsPage({ message, filter = "" }) {
   const [query, setQuery] = useState("");
   const currentUser = useCurrentUser();
 
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
   window.scrollTo(0, 0);
   
   useEffect(() => {
@@ -81,9 +86,20 @@ function PostsPage({ message, filter = "" }) {
     <div className={styles.ScrollableContainer} fluid>
       <Container className={styles.PostsPage} fluid>
           <Row fluid>
-            <Col><Sidebar /></Col>
-            <Col xs={9}>
+            <Col lg={3} className="d-none d-lg-block"><Sidebar /></Col>
+            <Col xs={12} lg={9}>
+              <div className={styles.TopNav}>
+                <button
+              className={`d-lg-none ${styles.SortIcon} ${styles.MobileNavIcon}`}
+              onClick={handleShowModal}
+            >
+              <i className="fas fa-compass" />
+            </button>
+              </div>
+            
             <Row className="h-100">
+         
+              
               <Col className="py-2 p-0 p-lg-2" lg={8}>
                 <PopularProfiles mobile />
                 <div className="mt-3">
@@ -168,6 +184,19 @@ function PostsPage({ message, filter = "" }) {
             </Col>
           </Row>
         </Container>
+        {/* Modal for Mobile Navigation */}
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Explore Content</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Sidebar />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

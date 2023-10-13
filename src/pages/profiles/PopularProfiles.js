@@ -73,7 +73,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
     >
       <div>
         {/* Search bar for profiles */}
-      <div className="mt-3">
+      <div className="p-0">
         <Row>
           <Col lg={1}>
           <i

@@ -180,6 +180,7 @@ const Post = (props) => {
       <Card.Body>
       {title && <Card.Title className="text-center">{title}</Card.Title>}
     {sub_title && <div><strong>Sub Title:</strong> {sub_title}</div>}
+    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
     {topic && (
   <div>
     <strong>Topic:</strong>{" "}
@@ -189,10 +190,12 @@ const Post = (props) => {
   </div>
 )}
     {location && <div><strong>Location:</strong> {location}</div>}
+    <hr></hr>
     {content && <div><strong>Content:</strong> {content}</div>}
+    <hr></hr>
     {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
     {source && <div><strong>Source:</strong> {source}</div>}
-    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
+    
     </Card.Body>
     <Card.Footer>
         <div className={styles.PostBar}>
