@@ -68,21 +68,20 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
   return (
     <Container
       className={`${appStyles.Content} ${
-        mobile && "d-lg-none text-center mb-3"
+        mobile && "d-lg-none mb-3"
       }`}
     >
       <div>
         {/* Search bar for profiles */}
       <div className="p-0">
         <Row>
-          <Col lg={1}>
+          <Col xs={1} lg={1}>
           <i
             className={`fas fa-sort ${styles.SortIcon}`}
             onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
           />
           </Col>
-          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}>
-            
+          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={9} sm={4} lg={10}>
             <i className={`fas fa-search ${styles.SearchIcon}`} />
             <Form
               className={styles.SearchBar}
@@ -92,7 +91,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)} // Handle search input change
                 type="text"
-                className="mr-sm-2"
+                // className="mr-sm-2"
                 placeholder="Search profiles..."
               />
             </Form>

@@ -22,6 +22,7 @@ import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+
 const sortingOptions = [
   { field: "title", label: "Sort by Title (Ascending)" },
   { field: "-title", label: "Sort by Title (Descending)" },
@@ -42,7 +43,6 @@ const sortingOptions = [
   { field: "updated_at", label: "Sort by Last Updated (Ascending)" },
   { field: "-updated_at", label: "Sort by Date Updated (Descending)" },
 ];
-
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
@@ -85,32 +85,29 @@ function PostsPage({ message, filter = "" }) {
   return (
     <div className={styles.ScrollableContainer} fluid>
       <Container className={styles.PostsPage} fluid>
-          <Row fluid>
-            <Col lg={3} className="d-none d-lg-block"><Sidebar /></Col>
-            <Col xs={12} lg={9}>
+        <Row fluid>
+          <Col lg={3} className="d-none d-lg-block"><Sidebar /></Col>
+          <Col lg={9}>
+            <Row  fluid>
               <div className={styles.TopNav}>
                 <button
-              className={`d-lg-none ${styles.SortIcon} ${styles.MobileNavIcon}`}
-              onClick={handleShowModal}
-            >
-              <i className="fas fa-compass" />
-            </button>
+                  className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
+                  onClick={handleShowModal}
+                >
+                  <i className="fas fa-compass" />
+                </button>
               </div>
-            
-            <Row className="h-100">
-         
-              
-              <Col className="py-2 p-0 p-lg-2" lg={8}>
+              <Col className="p-0 p-lg-2" lg={8}>
                 <PopularProfiles mobile />
-                <div className="mt-3">
-                  <Row>
-                    <Col lg={1}>
+                <div className={`mt-3 ${styles.SearchBarContainer}`}>
+                    <Col xs={1}>
                     <i
                       className={`fas fa-sort ${styles.SortIcon}`}
                       onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
                     />
                     </Col>
-                    <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}>
+                    <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={10} lg={8}>
+                      {/* sm=4 */}
                       <i className={`fas fa-search ${styles.SearchIcon}`} />
                       <Form
                         className={styles.SearchBar}
@@ -120,12 +117,11 @@ function PostsPage({ message, filter = "" }) {
                           value={query}
                           onChange={(event) => setQuery(event.target.value)}
                           type="text"
-                          className="mr-sm-2"
+                          // className="mr-sm-2"
                           placeholder="Search posts..."
                         />
                       </Form>
                     </Col>
-                  </Row>
                 </div>
                 {/* End of search bar */}
                 {/* Sorting options */}
@@ -153,38 +149,38 @@ function PostsPage({ message, filter = "" }) {
                   </Col>
                 </div>
                 {/* End of sorting options */}
-          {hasLoaded ? (
-            <>
-              {posts.results.length ? (
-                <InfiniteScroll
-                  children={posts.results.map((post) => (
-                    <Post key={post.id} {...post} setPosts={setPosts} />
-                  ))}
-                  dataLength={posts.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!posts.next}
-                  next={() => fetchMoreData(posts, setPosts)}
-                />
-              ) : (
-                <Container className={appStyles.Content}>
-                  <Asset src={NoResults} message={message} />
-                </Container>
-              )}
-            </>
-          ) : (
-            <Container className={appStyles.Content}>
-              <Asset spinner />
-            </Container>
-          )}
-        </Col>
-        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-          <PopularProfiles />
-        </Col>
-      </Row>
-            </Col>
-          </Row>
-        </Container>
-        {/* Modal for Mobile Navigation */}
+                {hasLoaded ? (
+                  <>
+                    {posts.results.length ? (
+                      <InfiniteScroll
+                        children={posts.results.map((post) => (
+                          <Post key={post.id} {...post} setPosts={setPosts} />
+                        ))}
+                        dataLength={posts.results.length}
+                        loader={<Asset spinner />}
+                        hasMore={!!posts.next}
+                        next={() => fetchMoreData(posts, setPosts)}
+                      />
+                    ) : (
+                      <Container className={appStyles.Content}>
+                        <Asset src={NoResults} message={message} />
+                      </Container>
+                    )}
+                  </>
+                ) : (
+                  <Container className={appStyles.Content}>
+                    <Asset spinner />
+                  </Container>
+                )}
+              </Col>
+              <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+                <PopularProfiles />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+      {/* Modal for Mobile Navigation */}
       <Modal
         show={showModal}
         onHide={handleCloseModal}
