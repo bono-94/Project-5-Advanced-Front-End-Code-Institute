@@ -86,9 +86,9 @@ function PostsPage({ message, filter = "" }) {
     <div className={styles.ScrollableContainer} fluid>
       <Container className={styles.PostsPage} fluid>
         <Row fluid>
-          <Col lg={3} className="d-none d-lg-block"><Sidebar /></Col>
-          <Col lg={9}>
-            <Row  fluid>
+          <Col lg={4} xl={3} className="d-none d-lg-block ps-0 ms-0 "><Sidebar /></Col>
+          <Col lg={8} xl={9} xxl={10}>
+            <Row fluid className="justify-content-between">
               <div className={`p-0 ${styles.TopNav}`}>
                 <button
                   className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
@@ -97,7 +97,7 @@ function PostsPage({ message, filter = "" }) {
                   <i className="fas fa-compass fa-2x" />
                 </button>
               </div>
-              <Col className="p-0" lg={8}>
+              <Col className="ps-1" lg={8}>
                 <PopularProfiles mobile />
                 <div className={`mt-3 ${styles.SearchBarContainer}`}>
                   <Row fluid className={styles.SortRow}>
@@ -164,6 +164,7 @@ function PostsPage({ message, filter = "" }) {
                         loader={<Asset spinner />}
                         hasMore={!!posts.next}
                         next={() => fetchMoreData(posts, setPosts)}
+                        className={styles.InfinitePosts}
                       />
                     ) : (
                       <Container className={appStyles.Content}>
@@ -177,7 +178,7 @@ function PostsPage({ message, filter = "" }) {
                   </Container>
                 )}
               </Col>
-              <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+              <Col lg={4} xl={3}  className="d-none d-lg-block p-4 border-left border-1 border-secondary">
                 <PopularProfiles />
               </Col>
             </Row>
@@ -193,7 +194,7 @@ function PostsPage({ message, filter = "" }) {
         <Modal.Header closeButton>
           <Modal.Title>Explore Content</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="pt-0">
         <Sidebar />
         </Modal.Body>
       </Modal>

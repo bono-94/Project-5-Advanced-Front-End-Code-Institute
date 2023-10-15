@@ -95,7 +95,7 @@ function ContainerCreateForm() {
           value={container_info}
           onChange={handleChange}
           className={styles.Input}
-          placeholder="About container..."
+          placeholder="Tell us more about the container..."
         />
       </Form.Group>
       {errors?.container_info?.map((message, idx) => (

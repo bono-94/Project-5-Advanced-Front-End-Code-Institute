@@ -32,6 +32,8 @@ function Sidebar() {
 
   return (
     <div className={styles.sidebar} id="sidebar">
+      <h4 className="d-none d-lg-block">Explore Content</h4>
+      <hr className="d-none d-lg-block"></hr>
       <div className={styles.section}>
         <h5>Knowledge</h5>
         <div className={styles.icons}>{addPostIcon}</div>
@@ -66,7 +68,7 @@ function Sidebar() {
         activeClassName={styles.Active}
         to="/knowledge/favourited"
       >
-        <span>Favourite Knowledge</span>
+        <span>Favourited Knowledge</span>
         <i className="fas fa-star"></i>
       </NavLink>
       <NavLink
@@ -77,8 +79,7 @@ function Sidebar() {
         <span>My Knowledge</span>
         <i className="fas fa-universal-access"></i>
       </NavLink>
-      <hr></hr>
-      <div className={styles.section}>
+      <div className={`mt-4 pt-2 ${styles.section}`}>
         <h5>Containers</h5>
         <div className={styles.icons}>{addContainerIcon}</div>
       </div>

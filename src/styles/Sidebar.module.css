@@ -8,23 +8,26 @@
     text-align: left;
     padding-left: 40px;
     padding: 20px;
-    font-size: 16px;
-    font-size: smaller;
+    font-size: medium;
+    font-family: 500;
+    margin-top: 20px;
 }
 
 .sidebar h5 {
-    margin-bottom: 21px;
+    margin-bottom: 18px;
     font-weight: bold;
 }
 
+.sidebar hr {
+  background-color: rgb(134, 134, 134) !important;}
+
 .sidebar > a {
-    background-color:rgb(252, 252, 255);
+    background-color:white;
     color: black;
     border: gray solid 1px;
     padding: 10px 0;
     padding-left: 10px;
-    margin-left: 10px;
-    font-weight: 400;
+    /* margin-left: 10px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +44,7 @@
     border-radius: 50%;
     font-size: 14px;
     text-shadow: 1px 0px 0px silver;
-    background-color: white;
+    background-color: transparent;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
     border: 1px orange solid;
     margin-left: auto;
@@ -51,6 +54,9 @@
 .sidebar a:hover > i {
     font-size: medium; /* Set the font-size on hover */
     border: 1px black solid;
+    background-color: black;
+    text-shadow: 1px 0px 0px black;
+    color: orange;
   }
 
 .sidebar a:hover > span {
@@ -121,5 +127,21 @@ font-weight: bold;
     background-color: orange; 
     font-weight: bold;
   }
+
+  .NavLink.Active i{
+    background-color: black; 
+    text-shadow: 1px 0px 0px black;
+    color: orange;
+  }
+
+  
+  @media (min-width: 992px) {
+    .sidebar {
+      border-right: 1px rgb(132, 132, 131) solid;
+      border-bottom: 1px rgb(132, 132, 131) solid;
+      font-size: small;
+    }
+  }
+
 
   
