@@ -74,14 +74,14 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
       <div>
         {/* Search bar for profiles */}
       <div className="p-0">
-        <Row>
+        <Row fluid>
           <Col xs={1} lg={1}>
           <i
             className={`fas fa-sort ${styles.SortIcon}`}
             onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
           />
           </Col>
-          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={9} sm={4} lg={10}>
+          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={8} sm={4} lg={10}>
             <i className={`fas fa-search ${styles.SearchIcon}`} />
             <Form
               className={styles.SearchBar}
@@ -133,7 +133,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
               <h5>Public Users</h5>
               {mobile ? (
                 <div className="d-flex justify-content-around">
-                  {profiles.results.slice(0, 4).map((profile) => (
+                  {profiles.results.slice(0, 3).map((profile) => (
                     <Profile key={profile.id} profile={profile} mobile />
                   ))}
                 </div>

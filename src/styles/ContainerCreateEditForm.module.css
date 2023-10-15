@@ -225,6 +225,7 @@
   }
   .Container hr {
     width: 4% !important;
+    color: lightgray;
   }
   .Input {
     width: 60%;

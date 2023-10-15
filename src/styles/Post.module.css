@@ -1,24 +1,104 @@
 .Post {
-  background-color: #ffffff;
-  border: 1px solid #dadadf;
-  border-radius: 2px;
-  margin-bottom: 16px;
-  text-align: center;
+  background-color: white;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.Post figure,
-h5 {
-  margin: 0 0;
+.Post:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.PostBody {
+  padding: 20px !important;
+  padding-left: 10px !important;
+}
+
+.postPostPage {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.PostBodyAvatar {
+  margin-left: 0px !important
+}
+
+.Badge span{
+  font-size: 14px !important;
+  color: orange;
+}
+
+.Date span{
+  font-size:  14px !important;
+}
+
+.Badge {
+  background-color: black;
+}
+
+.ButtonReadMore button {
+  background-color: transparent;
+  border: 1px black solid;
+  color: black;
+  font-size: 10px;
+  border-radius: 5px;
+}
+
+.PostCardFooter{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Post hr {
+  background-color: rgb(105, 104, 104);
+}
+
+.Post a:hover {
+  color: orange;
+}
+
+.Post a:hover i{
+  color: orange;
+}
+
+.Post i:hover {
+  color: orange;
+  transition: color 0.3s ease-in-out;
+}
+
+.Post i {
+  color: orange;
+}
+
+.Post figure {
+  margin: 0 0 !important;
 }
 
 .Heart {
   color: orange;
 }
 
-.Heart:hover {
-  color: rgb(143, 143, 143);
-}
-
 .HeartOutline:hover {
   color: orange;
 }
+
+
+.Post p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+@media (min-width: 2000px) {
+  .postPostPage {
+
+    margin: 5% 5% !important;
+  }
+}
+

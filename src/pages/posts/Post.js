@@ -50,6 +50,7 @@ const Post = (props) => {
   const history = useHistory();
   const [containerNames, setContainerNames] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showFullContent, setShowFullContent] = useState(false);
 
   const handleEdit = () => {
     history.push(`/knowledge/${id}/edit`);
@@ -153,16 +154,13 @@ const Post = (props) => {
 
   return (
     <Card className={styles.Post}>
-      <Card.Body>
+      <Card.Body className={styles.PostBody}>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profile/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}            
           </Link>
-          <div>
-              <span>Created:{created_at}</span>
-              <span>Updated:{updated_at}</span>
-            </div>
+          
           <div className="d-flex align-items-center">
             
             {is_owner && postPage && (
@@ -174,30 +172,48 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/knowledge/${id}`}>
+      <Link to={`/knowledge/${id}`} className="mt-3">
         <Card.Img src={image} alt={title} />
       </Link>
-      <Card.Body>
+      <Card.Body className="p-4">
       {title && <Card.Title className="text-center">{title}</Card.Title>}
-    {sub_title && <div><strong>Sub Title:</strong> {sub_title}</div>}
-    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
+    {sub_title && <div className="text-center mb-3">{sub_title}</div>}
     {topic && (
   <div>
     <strong>Topic:</strong>{" "}
-    <Badge variant="warning">
-      {topic}
+    <Badge className={styles.Badge} variant="dark">
+      <span>{topic}</span>
     </Badge>
   </div>
 )}
+    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
+    
     {location && <div><strong>Location:</strong> {location}</div>}
+    <div className="w-100">
+  <span className={styles.Date}><strong>Created:</strong> <span>{created_at}</span></span>
+</div>
+<div className="w-100">
+  <span className={styles.Date}><strong>Updated:</strong> <span>{updated_at}</span></span>
+</div>
     <hr></hr>
-    {content && <div><strong>Content:</strong> {content}</div>}
+    <div className={styles.ButtonReadMore}>
+    {showFullContent ? (
+        <div><strong>Content:</strong> {content}</div>
+      ) : (
+        <div><strong>Content:</strong> {content.slice(0, 0)}
+        ...
+        </div>
+      )}
+      <button onClick={() => setShowFullContent(!showFullContent)}>
+        {showFullContent ? "Read less" : "Read more"}
+      </button>
+    </div>
     <hr></hr>
     {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
     {source && <div><strong>Source:</strong> {source}</div>}
     
     </Card.Body>
-    <Card.Footer>
+    <Card.Footer className={styles.PostCardFooter}>
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
