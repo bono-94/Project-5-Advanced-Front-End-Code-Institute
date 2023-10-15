@@ -89,24 +89,27 @@ function PostsPage({ message, filter = "" }) {
           <Col lg={3} className="d-none d-lg-block"><Sidebar /></Col>
           <Col lg={9}>
             <Row  fluid>
-              <div className={styles.TopNav}>
+              <div className={`p-0 ${styles.TopNav}`}>
                 <button
                   className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
                   onClick={handleShowModal}
                 >
-                  <i className="fas fa-compass" />
+                  <i className="fas fa-compass fa-2x" />
                 </button>
               </div>
-              <Col className="p-0 p-lg-2" lg={8}>
+              <Col className="p-0" lg={8}>
                 <PopularProfiles mobile />
                 <div className={`mt-3 ${styles.SearchBarContainer}`}>
-                    <Col xs={1}>
+                  <Row fluid className={styles.SortRow}>
+                    <h4>Knowl3dg3 Posts</h4>
                     <i
                       className={`fas fa-sort ${styles.SortIcon}`}
                       onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
                     />
-                    </Col>
-                    <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={10} lg={8}>
+                  </Row>
+                  <Row className={styles.SearchRow} fluid>
+                    <Col className="p-0">
+                    
                       {/* sm=4 */}
                       <i className={`fas fa-search ${styles.SearchIcon}`} />
                       <Form
@@ -122,11 +125,12 @@ function PostsPage({ message, filter = "" }) {
                         />
                       </Form>
                     </Col>
+                  </Row>
                 </div>
                 {/* End of search bar */}
                 {/* Sorting options */}
-                <div className="mt-3">
-                  <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
+                <div>
+                  <Col className={`py-2 p-0 p-lg-1 ${styles.ContainerList}`} lg={8}>
                     {/* Dropdown for sorting options */}
                     {showSortingOptions && (
                       <ListGroup className={styles.SortingDropdown}>

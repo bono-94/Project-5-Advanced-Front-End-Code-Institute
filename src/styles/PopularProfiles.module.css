@@ -1,5 +1,4 @@
-.ContainerList
-{
+.ContainerList {
   margin-left: 10px;
 }
 
@@ -15,10 +14,6 @@
 .SearchBar input::placeholder{
     color:black;
     margin-left: 5px;
-}
-
-.SearchBar input::content{
-    color:red;
 }
 
 .SearchIcon {
@@ -56,9 +51,6 @@
 }
 
 .SortIcon:hover {
-    margin-top: 7px;
-    margin-left: 5px;
-    padding-right: 5px;
     color: orange;
 }
 
@@ -73,9 +65,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 0;
     list-style: none;
-    max-height: 400px; 
+    /* max-height: 400px;  */
     overflow-y: auto; 
-    min-width: 400px;
+    /* min-width: 400px; */
   }
   
   .SortingDropdown:hover {
