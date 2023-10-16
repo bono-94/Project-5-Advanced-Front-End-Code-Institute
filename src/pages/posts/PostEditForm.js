@@ -15,7 +15,6 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Select from "react-dropdown-select";
-
 import Asset from "../../components/Asset";
 
 
@@ -26,8 +25,6 @@ function PostEditForm() {
   const [imageSaved, setImageSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [allContainers, setAllContainers] = useState([]);
-
-  window.scrollTo(0, 0);
 
   const [postData, setPostData] = useState({
     containers: [],
@@ -56,6 +53,8 @@ function PostEditForm() {
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+
+  window.scrollTo(0, 0);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -100,17 +99,15 @@ function PostEditForm() {
   }, [history, id]);
 
   useEffect(() => {
-    // Fetch available containers from your backend and update the state
     axiosReq
-    .get("/containers/public") // Adjust the URL based on your API endpoint
+    .get("/containers/public")
       .then((response) => {
-        console.log("Response data:", response.data); // Log the data received
         setAvailableContainers(response.data);
       })
       .catch((error) => {
         console.error("Error fetching available containers:", error);
       });
-  }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+  }, []);
 
   console.log("availableContainers:", availableContainers);
 
@@ -143,14 +140,13 @@ function PostEditForm() {
 
   const handleChangeContainers = (selectedOptions) => {
     const selectedContainerIds = selectedOptions.map((option) => option.id);
-    const selectedContainerNames = selectedOptions.map((option) => option.container_name); // New line
+    const selectedContainerNames = selectedOptions.map((option) => option.container_name); 
 
-    console.log("Selected Container IDs:", selectedContainerIds); // Log selected container IDs
-    console.log("Selected Container Names:", selectedContainerNames); // Log selected container names
-
+    console.log("Selected Container IDs:", selectedContainerIds); 
+    console.log("Selected Container Names:", selectedContainerNames); 
     setPostData({
       ...postData,
-      containers: selectedContainerIds, // Store selected container IDs as an array
+      containers: selectedContainerIds, 
       container_name: selectedContainerNames,
     });
   };
@@ -399,7 +395,7 @@ return (
               <Image className={appStyles.Image} src={image} rounded />
             </figure>
             <div>
-              {imageSaved ? ( // Display different button content based on imageSaved state
+              {imageSaved ? ( 
                 <Button
                   className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   disabled
@@ -430,7 +426,7 @@ return (
               {message}
             </Alert>
           ))}
-          {!imageSaved && ( // Show "Save" button only if the image is not saved
+          {!imageSaved && (
             <>
 
               <Button

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+import styles from "../../styles/ProfileEditForm.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import {
@@ -17,8 +18,6 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
-
 import Asset from "../../components/Asset";
 
 
@@ -28,8 +27,9 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-
+  const [imageSaved, setImageSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [errors, setErrors] = useState({});
 
   const [profileData, setProfileData] = useState({
     image: "",
@@ -49,7 +49,7 @@ const ProfileEditForm = () => {
     bio,
     website, } = profileData;
 
-  const [errors, setErrors] = useState({});
+  const imageInput = useRef(null);
 
   window.scrollTo(0, 0);
 
@@ -62,7 +62,6 @@ const ProfileEditForm = () => {
           setProfileData({ profile_quote, first_name, location, age, bio, website, image });
           setIsLoading(false);
         } catch (err) {
-          // console.log(err);
           history.push("/");
         }
       } else {
@@ -74,14 +73,31 @@ const ProfileEditForm = () => {
   }, [currentUser, history, id]);
 
   if (isLoading) {
-    return <Asset spinner />;
+    return (
+      <Row className="h-100">
+        <Col className="py-2 p-0">
+          <Asset spinner />
+        </Col>
+      </Row>
+    );
   }
+
 
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(image);
+      setProfileData({
+        ...profileData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -106,9 +122,7 @@ const ProfileEditForm = () => {
         profile_image: data.image,
       }));
       history.push("/", { successMessage: "Successfully updated your profile!" });
-      window.scrollTo(0, 0);
     } catch (err) {
-      // console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -144,145 +158,150 @@ const ProfileEditForm = () => {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
-          <Container className={appStyles.Content}>
-            <Form.Group>
-              {image && (
-                <figure>
-                  <Image src={image} fluid />
-                </figure>
-              )}
-              {errors?.image?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-              <div>
-                <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
-                  htmlFor="image-upload"
-                >
-                  Change the image
-                </Form.Label>
+      <Row className={styles.Row}>
+        <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
+          <Container  className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+            <h1 className={styles.Header}>Edit Profile</h1>
+            <Form onSubmit={handleSubmit} className="text-center" encType="multipart/form-data">
+              <Form.Group className="text-center">
+                {image && (
+                  <figure>
+                    <Image src={image} fluid />
+                  </figure>
+                )}
+                {errors?.image?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+                <div>
+                  <div className={styles.Upload}>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn text-dark bg-warning border-1 border-dark text-center`}
+                      htmlFor="image-upload"
+                    >
+                      Change the image
+                    </Form.Label>
+                  </div>
+                  <Form.File
+                    id="image-upload"
+                    ref={imageFile}
+                    accept="image/*"
+                    onChange={(e) => {
+                      if (e.target.files.length) {
+                        setProfileData({
+                          ...profileData,
+                          image: URL.createObjectURL(e.target.files[0]),
+                        });
+                      }
+                    }}
+                />
               </div>
-              <Form.File
-                id="image-upload"
-                ref={imageFile}
-                accept="image/*"
-                onChange={(e) => {
-                  if (e.target.files.length) {
-                    setProfileData({
-                      ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  }
-                }}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Profile Quote</Form.Label>
-              <Form.Control
-                type="text"
-                value={profile_quote}
-                onChange={handleChange}
-                name="profile_quote"
-              />
-              {errors?.profile_quote?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={first_name}
-                onChange={handleChange}
-                name="first_name"
-              />
-              {errors?.first_name?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                type="text"
-                value={location}
-                onChange={handleChange}
-                name="location"
-              />
-              {errors?.location?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Age</Form.Label>
-              <Form.Control
-                type="text"
-                value={age}
-                onChange={handleChange}
-                name="age"
-              />
-              {errors?.age?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Bio</Form.Label>
-              <Form.Control
-                as="textarea"
-                value={bio}
-                onChange={handleChange}
-                name="bio"
-                rows={7}
-              />
-              {errors?.bio?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Website</Form.Label>
-              <Form.Control
-                type="text"
-                value={website}
-                onChange={handleChange}
-                name="website"
-              />
-              {errors?.website?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </Form.Group>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              cancel
-            </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-              save
-            </Button>
-          </Container>
-        </Col>
-        <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-          <Container className={appStyles.Content}>{/* ... */}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Profile Quote</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={profile_quote}
+                  onChange={handleChange}
+                  name="profile_quote"
+                  className={styles.Input}
+                  placeholder="Enter your life qoute here..."
+                />
+                {errors?.profile_quote?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={first_name}
+                  onChange={handleChange}
+                  name="first_name"
+                  className={styles.Input}
+                  placeholder="Your first name..."
+                />
+                {errors?.first_name?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Location</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={location}
+                  onChange={handleChange}
+                  name="location"
+                  className={styles.Input}
+                  placeholder="Where are you from?"
+                />
+                {errors?.location?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Age</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={age}
+                  onChange={handleChange}
+                  name="age"
+                  className={styles.Input}
+                  placeholder="How old are you?"
+                />
+                {errors?.age?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Bio</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  value={bio}
+                  onChange={handleChange}
+                  name="bio"
+                  rows={7}
+                  className={styles.Input}
+                  placeholder="Tell the world more about yourself..."
+                />
+                {errors?.bio?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Website</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={website}
+                  onChange={handleChange}
+                  name="website"
+                  className={styles.Input}
+                  placeholder="You can share one social media link or website..."
+                />
+                {errors?.website?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
+              </Form.Group>
+              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                save
+              </Button>
+            </Form>
           </Container>
         </Col>
       </Row>
-    </Form>
   );
 };
 
