@@ -223,7 +223,7 @@ function PostEditForm() {
       </Form.Control>
       </Form.Group> */}
 
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Label>Select Containers</Form.Label>
         <Select
           name="containers"
@@ -237,7 +237,7 @@ function PostEditForm() {
           onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
           className={styles.InputSelect}
         />
-      </Form.Group>
+      </Form.Group> */}
       <Form.Group>
         <Form.Label>Select a Category</Form.Label>
         <Form.Control

@@ -135,8 +135,8 @@ const Post = (props) => {
     // Fetch container names based on the container IDs
     const fetchContainerNames = async () => {
       try {
-        const containerNamePromises = containers.map(async (id) => {
-          const response = await axiosRes.get(`/container/${id}/`);
+        const containerNamePromises = containers.map(async (containerId) => {
+          const response = await axiosRes.get(`/container/${containerId}/`);
           return response.data.container_name;
         });
 

@@ -60,7 +60,7 @@ const UsernameForm = () => {
     <Row className={styles.Row}>
       <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
         <Container  className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
-          <h1 className={styles.Header}>Edit Profile</h1>
+          <h1 className={styles.Header}>Change Username</h1>
           <Form onSubmit={handleSubmit} className="text-center" encType="multipart/form-data">
             <Form.Group>
               <Form.Label>Change username</Form.Label>

@@ -68,58 +68,61 @@ function ProfilePage() {
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
-        <Col lg={3} className="text-lg-left">
+        <Col lg={3} className="text-lg-left mt-2 mb-5 mt-lg-0">
           <Image
             className={styles.ProfileImage}
             roundedCircle
             src={profile?.image}
           />
         </Col>
-        <Col lg={6}>
+        <Col lg={6} className="mt-lg-0">
           <h3 className="m-2">{profile?.owner}</h3>
-          <Row className="justify-content-center no-gutters">
-            <Col xs={3} className="my-2">
-              <div>{profile?.posts_count}</div>
-              <div>posts</div>
-            </Col>
-            <Col xs={3} className="my-2">
+          {profile?.first_name !== null && profile?.first_name !== undefined && profile?.first_name !== "null" && (
+            <div className="mb-4">
+              ({profile?.first_name})
+            </div>
+          )}
+          <hr></hr>
+          <Row className="justify-content-center no-gutters mb-4 mb-2">
+            <Col xs={4} sm={3} className="my-2">
               <div>{profile?.followers_count}</div>
               <div>followers</div>
             </Col>
-            <Col xs={3} className="my-2">
+            <Col xs={4} sm={3} className="my-2">
+              <div>{profile?.posts_count}</div>
+              <div>posts</div>
+            </Col>
+            <Col xs={4} sm={3} className="my-2">
               <div>{profile?.following_count}</div>
               <div>following</div>
             </Col>
-            <Col xs={3} className="my-2">
+            <Col xs={4} sm={3} className="my-2">
               <div>{profile?.containers_count}</div>
               <div>containers</div>
             </Col>
           </Row>
+          <hr></hr>
           {profile?.profile_quote !== null && profile?.profile_quote !== undefined && profile?.profile_quote !== "null" && (
-            <div>
-              Wisdom: {profile?.profile_quote}
+            <div className="mb-4 font-italic">
+              {profile?.profile_quote}
             </div>
           )}
-          {profile?.first_name !== null && profile?.first_name !== undefined && profile?.first_name !== "null" && (
-            <div>
-              Name: {profile?.first_name}
-            </div>
-          )}
+          
           {profile?.location !== null && profile?.location !== undefined && profile?.location !== "null" && (
-            <div>
-              Location: {profile?.location}
+            <div className="mb-2 text-left">
+              <strong>Location: </strong> {profile?.location}
             </div>
           )}
-          {profile?.age && <div>Age: {profile?.age}</div>}
+          {profile?.age && <div className="mb-2 text-left"><strong>Age: </strong> {profile?.age}</div>}
           {console.log("Bio Value:", profile?.bio)}
           {profile?.bio !== null && profile?.bio !== undefined && profile?.bio !== "null" && (
-            <div>
-              Bio: {profile?.bio}
+            <div className="mb-2 mt-4 text-left">
+              <strong>Bio: </strong>{profile?.bio}
             </div>
           )}
           {profile?.website && (
-            <div>
-              Website:{" "}
+            <div className="mb-4 mt-4 ">
+              <strong>Website: </strong>{" "}
               <a href={profile?.website} target="_blank" rel="noopener noreferrer">
                 {profile?.website}
               </a>
@@ -153,8 +156,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
-      <hr />
+      <h4 className="text-center pt-3 pb-4 pb-lg-5">{profile?.owner}'s posts</h4>
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
@@ -178,7 +180,7 @@ function ProfilePage() {
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Container className={appStyles.Content}>
+        <Container className={`pt-0 ${appStyles.Content}`}>
           {hasLoaded ? (
             <>
               {mainProfile}
