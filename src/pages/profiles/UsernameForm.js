@@ -16,6 +16,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import styles from "../../styles/ProfileEditForm.module.css";
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
@@ -56,14 +57,16 @@ const UsernameForm = () => {
   };
 
   return (
-    <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
-          <Form onSubmit={handleSubmit} className="my-2">
+    <Row className={styles.Row}>
+      <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
+        <Container  className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <h1 className={styles.Header}>Edit Profile</h1>
+          <Form onSubmit={handleSubmit} className="text-center" encType="multipart/form-data">
             <Form.Group>
               <Form.Label>Change username</Form.Label>
               <Form.Control
-                placeholder="username"
+                className={styles.Input}
+                placeholder="Choose a new username..."
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
@@ -74,12 +77,6 @@ const UsernameForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              cancel
-            </Button>
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               type="submit"
