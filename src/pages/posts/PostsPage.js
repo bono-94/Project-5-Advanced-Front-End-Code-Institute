@@ -94,16 +94,16 @@ function PostsPage({ message, filter = "" }) {
                   className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
                   onClick={handleShowModal}
                 >
-                  <i className="fas fa-compass fa-2x" />
+                  <i className="fas fa-compass fa-3x" />
                 </button>
               </div>
               <Col className="ps-1" lg={8}>
                 <PopularProfiles mobile />
                 <div className={`mt-3 ${styles.SearchBarContainer}`}>
                   <Row fluid className={styles.SortRow}>
-                    <h4>Knowl3dg3 Posts</h4>
+                    <h4 className="mt-3 pt-1">Knowl3dg3 Posts</h4>
                     <i
-                      className={`fas fa-sort ${styles.SortIcon}`}
+                      className={`fas fa-sort mt-3 ${styles.SortIcon}`}
                       onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
                     />
                   </Row>
@@ -178,7 +178,7 @@ function PostsPage({ message, filter = "" }) {
                   </Container>
                 )}
               </Col>
-              <Col lg={4} xl={3}  className="d-none d-lg-block p-4 border-left border-1 border-secondary">
+              <Col lg={4} xl={3} className="d-none d-lg-block mt-lg-4">
                 <PopularProfiles />
               </Col>
             </Row>

@@ -50,7 +50,6 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
         setHasLoaded(true);
         
       } catch (err) {
-        // Handle errors if necessary
         console.error(err);
       }
     };
@@ -67,72 +66,70 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
 
   return (
     <Container
-      className={`${appStyles.Content} ${
-        mobile && "d-lg-none mb-3"
+      className={`${appStyles.Content} ${styles.LoadFadeIn} ${
+        mobile && "d-lg-none mb-0 p-3"
       }`}
-    >
-      <div>
-        {/* Search bar for profiles */}
-      <div className="p-0">
-        <Row fluid>
-          <Col xs={1} lg={1}>
-          <i
-            className={`fas fa-sort ${styles.SortIcon}`}
-            onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
-          />
-          </Col>
-          <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} xs={8} sm={4} lg={10}>
-            <i className={`fas fa-search ${styles.SearchIcon}`} />
-            <Form
-              className={styles.SearchBar}
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <Form.Control
-                value={query}
-                onChange={(event) => setQuery(event.target.value)} // Handle search input change
-                type="text"
-                // className="mr-sm-2"
-                placeholder="Search profiles..."
+    > 
+          <div className={`mt-3 ${styles.SearchBarContainer}`}>
+            <Row fluid className={styles.SortRow}>
+              <h4>Public Profiles</h4>
+              <i
+                className={`fas fa-sort mt-0 ${styles.SortIcon}`}
+                onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
               />
-            </Form>
-          </Col>
-        </Row>
-      </div>
-      {/* End of search bar */}
-      {/* Sorting options */}
-      <div className="mt-3">
-        <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
-          {/* Dropdown for sorting options */}
-          {showSortingOptions && (
-            <ListGroup className={styles.SortingDropdown}>
-              {sortingOptions.map((option) => (
-                <ListGroup.Item
-                  key={option.field}
-                  className={ordering === option.field ? styles.ActiveSortOption : styles.SortOption}
-                  onClick={() => {
-                    setOrdering(ordering === option.field ? `-${option.field}` : option.field); // Toggle sorting order
-                    setShowSortingOptions(false); // Close dropdown
-                  }}
+            </Row>
+            <Row className={styles.SearchRow} fluid>
+              <Col className="p-0">
+              
+                {/* sm=4 */}
+                <i className={`fas fa-search ${styles.SearchIcon}`} />
+                <Form
+                  className={styles.SearchBar}
+                  onSubmit={(event) => event.preventDefault()}
                 >
-                  <i className={`fas fa-sort-${ordering === option.field ? 'down' : 'up'}`} />
-                  {option.label}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          )}
-          {/* End of dropdown */}
-        </Col>
-      </div>
+                  <Form.Control
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    type="text"
+                    // className="mr-sm-2"
+                    placeholder="Search users..."
+                  />
+                </Form>
+              </Col>
+            </Row>
+          </div>
+          {/* End of search bar */}
+          {/* Sorting options */}
+          <div className="mt-1">
+            <Col className={` ${styles.ContainerList}`}>
+              {/* Dropdown for sorting options */}
+              {showSortingOptions && (
+                <ListGroup className={styles.SortingDropdown}>
+                  {sortingOptions.map((option) => (
+                    <ListGroup.Item
+                      key={option.field}
+                      className={ordering === option.field ? styles.ActiveSortOption : styles.SortOption}
+                      onClick={() => {
+                        setOrdering(ordering === option.field ? `-${option.field}` : option.field); // Toggle sorting order
+                        setShowSortingOptions(false); // Close dropdown
+                      }}
+                    >
+                      <i className={`pb-1 fas fa-sort-${ordering === option.field ? 'down' : 'up'}`} />
+                      {option.label}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+              {/* End of dropdown */}
+            </Col>
+          </div>
       {/* End of sorting options */}
-      </div>
-      
       {hasLoaded ? (
         <>
           {profiles.results.length ? (
             <>
-              <h5>Public Users</h5>
               {mobile ? (
-                <div className="d-flex justify-content-around">
+                <div className={`d-flex justify-content-around ${styles.LoadFadeIn}`}>
                   {profiles.results.slice(0, 3).map((profile) => (
                     <Profile key={profile.id} profile={profile} mobile />
                   ))}
@@ -142,17 +139,26 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
                   <div key={profile.id} className={styles.ProfileContainer}>
                     <Profile profile={profile} mobile showButtons={false} />
                     <div className={styles.ProfileInfo}>
-                      <p>Age: {profile.age}</p>
-                      {profile?.location !== null && profile?.location !== undefined && profile?.location !== "null" && (
-                        <div>
-                          <p>Location: {profile.location}</p>
-                        </div>
+                    <div className={`hide-on-desktop`}>
+                      {profile?.location !== null &&
+                      profile?.location !== undefined &&
+                      profile?.location !== "null" ? (
+                        <p><strong>Location:</strong> {profile.location}</p>
+                      ) : (
+                        <p><strong>Location:</strong> Unknown</p>
                       )}
-                      <p>Posts Count: {profile.posts_count}</p>
-                      <p>Containers Count: {profile.containers_count}</p>
-                      <p>Followers Count: {profile.followers_count}</p>
-                      <p>Created At: {profile.created_at}</p>
+                      {profile?.age !== null && profile?.age !== undefined && profile?.age !== "null" ? (
+                        <p><strong>Age:</strong> {profile.age}</p>
+                      ) : (
+                        <p><strong>Age:</strong> Unknown</p>
+                      )}
                     </div>
+                      <p><strong>Knowl3dg3:</strong> {profile.posts_count}</p>
+                      <p><strong>Containers:</strong> {profile.containers_count}</p>
+                      <p><strong>Followers:</strong> {profile.followers_count}</p>
+                      <p><strong>User Since:</strong> {profile.created_at}</p>
+                    </div>
+                    <hr></hr>
                   </div>
                 ))
               )}

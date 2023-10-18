@@ -1,3 +1,11 @@
+/* .ContainerList{
+  margin-left: 10px;
+} */
+
+.ContainerList div{
+  padding: 6px 3px;
+}
+
 /* SORTING TITLE */
 .SortRow {
   margin-top: 60px;
@@ -11,14 +19,6 @@
   margin-right: 5px;
   color: black !important;
   font-weight: 500;
-}
-
-/* .ContainerList{
-  margin-left: 10px;
-} */
-
-.ContainerList div{
-  padding: 6px 3px;
 }
 
 .ActiveSortOption div{
@@ -157,20 +157,20 @@
     margin-bottom: 20px;
   }
   .SortRow {
-    margin-top: 70px;
+    margin-top: 400px;
   }
 }
 
 @media (min-width: 767px) {
   .SortRow {
-    margin-top: 80px;
+    margin-top: 30px;
     margin-bottom: 15px;
   }
 }
 
 @media (min-width: 992px) {
   .SortRow {
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
   .SearchRow {

@@ -148,7 +148,7 @@ function ProfilePage() {
                 </Button>
               ))}
           </Col>
-          {profile?.content && <Col className="p-3">{profile.content}</Col>}
+          {profile?.content && <Col className="p-3 p-md-5">{profile.content}</Col>}
       </Row>
     </>
   );
@@ -177,10 +177,10 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <Row fluid className="mt-lg-4 mb-5 justify-content-between">
+      <Col className="py-0 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Container className={`pt-0 ${appStyles.Content}`}>
+        <Container className={`pt-1 mt-4 mt-lg-0 ${appStyles.Content}`}>
           {hasLoaded ? (
             <>
               {mainProfile}
@@ -191,7 +191,7 @@ function ProfilePage() {
           )}
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+      <Col lg={4} xl={3} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
       </Col>
     </Row>

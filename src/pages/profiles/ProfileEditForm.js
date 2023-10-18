@@ -152,7 +152,7 @@ const ProfileEditForm = () => {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
+        Save
       </Button>
     </>
   );
@@ -296,7 +296,7 @@ const ProfileEditForm = () => {
                 ))}
               </Form.Group>
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-                save
+                Save
               </Button>
             </Form>
           </Container>
