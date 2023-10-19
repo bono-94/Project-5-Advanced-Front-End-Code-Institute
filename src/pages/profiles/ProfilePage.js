@@ -66,97 +66,133 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
+      <div className="text-right">
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <Row noGutters className="px-3 text-center">
-        <Col lg={3} className="text-lg-left mt-2 mb-5 mt-lg-0">
+      </div>
+      
+      <Row noGutters className="px-4 text-center">
+      <Col lg={3} className={`text-lg-left ${profile?.is_owner ? "mb-5 mt-lg-0" : "mb-5 mt-5"}  d-flex justify-content-center `}>
           <Image
-            className={styles.ProfileImage}
+            className={`${styles.ProfileImage}`}
             roundedCircle
             src={profile?.image}
           />
         </Col>
-        <Col lg={6} className="mt-lg-0">
-          <h3 className="m-2">{profile?.owner}</h3>
+
+        
+        
+        <Col lg={9} className="mt-lg-0">
+          <h3 className="m-2 mt-0">{profile?.owner}</h3>
           {profile?.first_name !== null && profile?.first_name !== undefined && profile?.first_name !== "null" && (
-            <div className="mb-4">
+            <div className="text-break">
               ({profile?.first_name})
             </div>
           )}
-          <hr></hr>
-          <Row className="justify-content-center no-gutters mb-4 mb-2">
-            <Col xs={4} sm={3} className="my-2">
-              <div>{profile?.followers_count}</div>
-              <div>followers</div>
-            </Col>
-            <Col xs={4} sm={3} className="my-2">
-              <div>{profile?.posts_count}</div>
-              <div>posts</div>
-            </Col>
-            <Col xs={4} sm={3} className="my-2">
-              <div>{profile?.following_count}</div>
-              <div>following</div>
-            </Col>
-            <Col xs={4} sm={3} className="my-2">
-              <div>{profile?.containers_count}</div>
-              <div>containers</div>
-            </Col>
-          </Row>
-          <hr></hr>
+          
+          <div className="d-block d-sm-none">
+            <Row className="justify-content-center no-gutters mb-4 mb-2">
+            
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.following_count}</strong></div>
+                <div className="text-white me-2">following</div>
+              </Col>
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.posts_count}</strong></div>
+                <div className="text-white me-2">knowl3dg3</div>
+              </Col>
+              
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.followers_count}</strong></div>
+                <div className="text-white me-2">followers</div>
+              </Col>
+              
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.containers_count}</strong></div>
+                <div className="text-white me-2">containers</div>
+              </Col>
+            </Row>
+          </div>
+            <div className="d-none d-sm-block">
+            <Row className="justify-content-center no-gutters mb-4 mb-2">
+  
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.following_count}</strong></div>
+                <div className="text-white me-2">following</div>
+              </Col>
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.followers_count}</strong></div>
+                <div className="text-white me-2">followers</div>
+              </Col>
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.posts_count}</strong></div>
+                <div className="text-white me-2">knowl3dg3</div>
+              </Col>
+              
+              <Col xs={6} sm={3} className="my-2">
+                <div><strong>{profile?.containers_count}</strong></div>
+                <div className="text-white me-2">containers</div>
+              </Col>
+            
+            </Row>
+          </div>
+            
+          
           {profile?.profile_quote !== null && profile?.profile_quote !== undefined && profile?.profile_quote !== "null" && (
             <div className="mb-4 font-italic">
+              <hr className="mb-sm-4"></hr>
               {profile?.profile_quote}
+              <hr className="mt-sm-4"></hr>
             </div>
           )}
           
           {profile?.location !== null && profile?.location !== undefined && profile?.location !== "null" && (
             <div className="mb-2 text-left">
-              <strong>Location: </strong> {profile?.location}
+              <strong className=" text-white">Location: </strong> {profile?.location}
             </div>
           )}
-          {profile?.age && <div className="mb-2 text-left"><strong>Age: </strong> {profile?.age}</div>}
+          {profile?.age && <div className="mb-2 text-left"><strong className="text-white">Age: </strong> {profile?.age}</div>}
           {console.log("Bio Value:", profile?.bio)}
           {profile?.bio !== null && profile?.bio !== undefined && profile?.bio !== "null" && (
-            <div className="mb-2 mt-4 text-left">
-              <strong>Bio: </strong>{profile?.bio}
+            <div className="mb-2 mt-1 text-left">
+              <strong className="text-white mb-sm-3">Bio: </strong>{profile?.bio}
+              <hr></hr>
             </div>
           )}
+          {currentUser &&
+                  !is_owner &&
+                  (profile?.following_id ? (
+                    <Button
+                      className={`${btnStyles.Button} bg-secondary p-1 mb-0 mt-2 text-light`}
+                      onClick={() => handleUnfollow(profile)}
+                    >
+                      Unfollow
+                    </Button>
+                  ) : (
+                    <Button
+                      className={`${btnStyles.Button} bg-white p-1 mb-0 mt-2 text-dark`}
+                      onClick={() => handleFollow(profile)}
+                    >
+                      Follow
+                    </Button>
+                  ))}
           {profile?.website && (
-            <div className="mb-4 mt-4 ">
-              <strong>Website: </strong>{" "}
+            <div className="mb-4 mt-4 pb-sm-2">
+              <strong className="text-white">Website: </strong>{" "}
               <a href={profile?.website} target="_blank" rel="noopener noreferrer">
                 {profile?.website}
               </a>
             </div>
           )}
           </Col>
-          <Col lg={3} className="text-lg-right">
-            {currentUser &&
-              !is_owner &&
-              (profile?.following_id ? (
-                <Button
-                  className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                  onClick={() => handleUnfollow(profile)}
-                >
-                  unfollow
-                </Button>
-              ) : (
-                <Button
-                  className={`${btnStyles.Button} ${btnStyles.Black}`}
-                  onClick={() => handleFollow(profile)}
-                >
-                  follow
-                </Button>
-              ))}
-          </Col>
-          {profile?.content && <Col className="p-3 p-md-5">{profile.content}</Col>}
       </Row>
     </>
   );
 
   const mainProfilePosts = (
     <>
-      <hr />
-      <h4 className="text-center pt-3 pb-4 pb-lg-5">{profile?.owner}'s posts</h4>
+      <h4 className="text-center pb-4 pb-lg-5 mt-5">
+        {profile?.owner}'s posts
+      </h4>
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
@@ -177,13 +213,13 @@ function ProfilePage() {
   );
 
   return (
-    <Row fluid className="mt-lg-4 mb-5 justify-content-between">
+    <Row fluid className="m-lg-5 mb-5">
       <Col className="py-0 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Container className={`pt-1 mt-4 mt-lg-0 ${appStyles.Content}`}>
+        <Container className={`pt-1 mt-5 mt-lg-0 `}>
           {hasLoaded ? (
             <>
-              {mainProfile}
+              <div className={`${styles.ProfilePage} ${appStyles.Content}`}>{mainProfile}</div>
               {mainProfilePosts}
             </>
           ) : (
@@ -191,7 +227,10 @@ function ProfilePage() {
           )}
         </Container>
       </Col>
-      <Col lg={4} xl={3} className="d-none d-lg-block p-0 p-lg-2">
+      <Col xl={1} className="d-none d-xl-block p-0 p-lg-2">
+        {/* Empty Col for space */}
+      </Col>
+      <Col lg={4} xl={3} className="d-none d-lg-block p-0 p-lg-2 align-end border-">
         <PopularProfiles />
       </Col>
     </Row>

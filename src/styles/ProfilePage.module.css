@@ -1,9 +1,33 @@
+.ProfilePage {
+  background-color: black !important;
+  color: orange;
+  opacity: 0;
+  animation: fadeIn 1s forwards; 
+}
+
+.ProfilePage a {
+  color: orange;
+  text-decoration: underline;
+}
+
+.ProfilePage i{
+  color: orange;
+  margin-right: 5px;
+}
+
+.ProfilePage a.drop {
+  color: black;
+  text-decoration: none;
+
+}
+
 .ProfileImage {
   object-fit: cover;
   height: 100px;
   width: 100px;
   /* margin: 4px; */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 15px orange;
+  border: 1px solid orange;
 }
 
 .WordBreak {
@@ -12,15 +36,32 @@
 
 .CenteredDropdown {
   position: fixed;
-  /* top: 50%;
-  left: 50%; */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
-@media screen and (max-width: 991px) {
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@media screen and (min-width: 991px) {
   .ProfileImage {
-    width: 250px;
-    height: 250px;
+    width: 121px;
+    height: 121px;
   }
 
+}
+
+@media screen and (min-width: 1600px) {
+  .ProfileImage {
+    height: 150px;
+    width: 150px;
+  }
 }
