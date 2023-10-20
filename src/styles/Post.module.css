@@ -8,6 +8,10 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
+.ButtonReadMore span {
+  font-size: small;
+}
+
 .Post:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
@@ -94,6 +98,35 @@
   line-height: 1.6;
   color: #333;
 }
+
+
+.UnstyledList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.HoverBoxOpen {
+  display: none;
+}
+
+/* Show the "fa-box-open" icon on hover */
+.UnstyledList li:hover .HoverBoxOpen {
+  display: inline-block;
+}
+
+.UnstyledList li:hover .HoverBox {
+  display: none;
+}
+
+
+@media (min-width: 1400px) {
+  .ButtonReadMore span {
+    font-size: medium;
+  }
+}
+
 
 @media (min-width: 2000px) {
   .postPostPage {

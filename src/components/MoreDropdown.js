@@ -47,14 +47,14 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
   return (
-    <Dropdown className={`ml-auto ${styles.CenteredDropdown}`}>
+    <Dropdown className={`ml-auto ${styles.CenteredDropdown}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu className={styles.DropdownItem}>
+      <Dropdown.Menu className={`${styles.DropdownLeft} ${styles.DropdownItem}`}>
         <Dropdown.Item
           onClick={() => history.push(`/profile/${id}/edit`)}
           aria-label="edit-profile"
         >
-          <i className="fas fa-edit" />
+          <i className="fas fa-edit"/>
           <span>Edit Profile</span> 
         </Dropdown.Item>
         <Dropdown.Item

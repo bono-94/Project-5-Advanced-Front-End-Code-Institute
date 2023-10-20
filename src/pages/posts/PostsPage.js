@@ -83,11 +83,13 @@ function PostsPage({ message, filter = "" }) {
   }, [filter, query, ordering, pathname, currentUser]);
 
   return (
-    <div className={styles.ScrollableContainer} fluid>
-      <Container className={styles.PostsPage} fluid>
+    <div className={`p-0 ${styles.ScrollableContainer}`} fluid>
+      <Container className={`p-0 ${styles.PostsPage}`} fluid>
         <Row fluid>
-          <Col lg={4} xl={3} className="d-none d-lg-block ps-0 ms-0 "><Sidebar /></Col>
-          <Col lg={8} xl={9} xxl={10}>
+          <Col lg={3} xl={3} className="d-none d-lg-block ps-0 ms-0">
+            <Sidebar />
+          </Col>
+          <Col lg={9} xl={9} xxl={10}>
             <Row fluid className="justify-content-between">
               <div className={`p-0 ${styles.TopNav}`}>
                 <button
@@ -98,7 +100,9 @@ function PostsPage({ message, filter = "" }) {
                 </button>
               </div>
               <Col className="ps-1" lg={8}>
+                <div className="ms-sm-0 me-sm-0">
                 <PopularProfiles mobile />
+                </div>
                 <div className={`mt-3 ${styles.SearchBarContainer}`}>
                   <Row fluid className={styles.SortRow}>
                     <h4 className="mt-3 pt-1">Knowl3dg3 Posts</h4>
@@ -178,7 +182,7 @@ function PostsPage({ message, filter = "" }) {
                   </Container>
                 )}
               </Col>
-              <Col lg={4} xl={3} className="d-none d-lg-block mt-lg-4">
+              <Col lg={4} className="d-none d-lg-block mt-lg-4">
                 <PopularProfiles />
               </Col>
             </Row>

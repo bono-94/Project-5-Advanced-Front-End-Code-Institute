@@ -84,12 +84,12 @@ function ProfilePage() {
         <Col lg={9} className="mt-lg-0">
           <h3 className="m-2 mt-0">{profile?.owner}</h3>
           {profile?.first_name !== null && profile?.first_name !== undefined && profile?.first_name !== "null" && (
-            <div className="text-break">
+            <div className="text-break mb-xl-4 mb-xxl-5">
               ({profile?.first_name})
             </div>
           )}
           
-          <div className="d-block d-sm-none">
+          <div className="d-block d-sm-none mt-4">
             <Row className="justify-content-center no-gutters mb-4 mb-2">
             
               <Col xs={6} sm={3} className="my-2">
@@ -112,7 +112,7 @@ function ProfilePage() {
               </Col>
             </Row>
           </div>
-            <div className="d-none d-sm-block">
+            <div className="d-none d-sm-block mt-4">
             <Row className="justify-content-center no-gutters mb-4 mb-2">
   
               <Col xs={6} sm={3} className="my-2">

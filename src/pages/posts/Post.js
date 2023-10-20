@@ -198,14 +198,14 @@ const Post = (props) => {
     <hr></hr>
     <div className={styles.ButtonReadMore}>
     {showFullContent ? (
-        <div><strong>Content:</strong> {content}</div>
+        <div><strong>Content:</strong> <span>{content}</span></div>
       ) : (
-        <div><strong>Content:</strong> {content.slice(0, 0)}
+        <div><strong>Content:</strong> <span>{content.slice(0, 0)}</span>
         ...
         </div>
       )}
-      <button onClick={() => setShowFullContent(!showFullContent)}>
-        {showFullContent ? "Read less" : "Read more"}
+      <button className="mt-2" onClick={() => setShowFullContent(!showFullContent)}>
+        {showFullContent ? "Collapse" : "Read more"}
       </button>
     </div>
     <hr></hr>
@@ -274,7 +274,7 @@ const Post = (props) => {
             <Modal.Title>Containers</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ul>
+            <ul className={styles.UnstyledList}>
               {containerNames.map((containerName, index) => (
                 <li
                   key={containers[index]}
@@ -284,7 +284,9 @@ const Post = (props) => {
                     setShowModal(false); // Close the modal
                   }}
                 >
-                  <i className="fas fa-box-open"></i> {containerName}
+                  <i className={`fas fa-box ${styles.HoverBox}`}></i> {/* Regular icon */}
+                  <i className={`fas fa-box-open ${styles.HoverBoxOpen}`}></i> {/* Icon to show on hover */}
+                  {containerName}
                 </li>
               ))}
             </ul>

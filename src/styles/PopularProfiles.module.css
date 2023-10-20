@@ -236,6 +236,13 @@
   }
 }
 
+@media (min-width: 992px) and (max-width: 1200px) {
+  .SortRow h4 {
+    font-size: 22px !important;
+  }
+}
+
+
 @media (min-width: 1400px) {
   .SearchRow {
     margin-bottom: 35px;

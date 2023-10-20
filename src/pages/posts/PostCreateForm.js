@@ -293,7 +293,7 @@ function PostCreateForm() {
         ))}
         
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        Create
       </Button>
     </div>
   );

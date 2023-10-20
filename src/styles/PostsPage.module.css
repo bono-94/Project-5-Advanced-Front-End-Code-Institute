@@ -154,10 +154,10 @@
 /* DEVICES VIEWS */
 @media (min-width: 400px) {
   .SearchRow {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .SortRow {
-    margin-top: 400px;
+    margin-top: 41px !important;
   }
 }
 
@@ -170,7 +170,7 @@
 
 @media (min-width: 992px) {
   .SortRow {
-    margin-top: 10px;
+    margin-top: 10px !important;
     margin-bottom: 10px;
   }
   .SearchRow {

@@ -9,9 +9,10 @@
   top:0;
   z-index: 99;
 }
-
-
-
 .DropdownItem i{
 color: orange !important
+}
+
+.DropdownLeft {
+  right: 0; 
 }

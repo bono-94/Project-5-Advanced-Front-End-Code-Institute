@@ -134,7 +134,6 @@ font-weight: bold;
     color: orange;
   }
 
-  
   @media (min-width: 992px) {
     .sidebar {
       border-right: 1px rgb(132, 132, 131) solid;
