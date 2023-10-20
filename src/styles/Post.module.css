@@ -8,6 +8,10 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
+.Post hr {
+  width: 100% !important;
+}
+
 .ButtonReadMore span {
   font-size: small;
 }

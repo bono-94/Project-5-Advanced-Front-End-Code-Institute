@@ -53,11 +53,10 @@ function CommentCreateForm(props) {
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
-      <Row>
-        <Col xs={12} sm={5} lg={2}>
+        <Col xs={12} sm={5} lg={2} className={`mt-4 ${styles.CreateFormCol}`}>
           {/* Avatar column */}
           <Link to={`/profile/${profile_id}`}>
-            <Avatar src={profileImage} />
+            <Avatar src={profileImage}/>
           </Link>
           <p>{owner}</p>
         </Col>
@@ -92,7 +91,6 @@ function CommentCreateForm(props) {
             Post
           </button>
         </Col>
-      </Row>
     </Form>
   );
 }

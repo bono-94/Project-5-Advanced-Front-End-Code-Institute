@@ -47,10 +47,11 @@ const Comment = (props) => {
 
   return (
     <>
-      <hr />
+      <hr className="w-100 my-4" />
+      <div>
       <Media>
         <Link to={`/profile/${profile_id}`}>
-          <Avatar src={profile_image} />
+          <Avatar src={profile_image} className={styles.AvatarCommentCreate}/>
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
@@ -79,6 +80,7 @@ const Comment = (props) => {
           />
         )}
       </Media>
+      </div>
     </>
   );
 };

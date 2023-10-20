@@ -65,7 +65,7 @@ function PostPage() {
 
   return (
     <Row className="h-100 p-2 justify-content-between">
-      <Col className="py-2 p-0 p-lg-2" lg={6}>
+      <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile className="p-2" />
         <Col className={styles.postPostPage}>
         <Post {...post.results[0]} setPosts={setPost} postPage />
@@ -80,7 +80,6 @@ function PostPage() {
               owner={currentUser.username}
               setPost={setPost}
               setComments={setComments}
-              
             />
           ) : comments.results.length ? (
             "Comments"
@@ -101,13 +100,13 @@ function PostPage() {
               next={() => fetchMoreData(comments, setComments)}
             />
           ) : currentUser ? (
-            <span>No comments yet, be the first to comment!</span>
+            <span>No comments posted yet, be the first to comment!</span>
           ) : (
             <span>No comments... yet</span>
           )}
         </Container>
       </Col>
-      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
       </Col>
     </Row>
