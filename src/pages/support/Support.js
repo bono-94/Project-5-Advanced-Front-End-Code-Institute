@@ -108,7 +108,7 @@ function Support() {
           value={title}
           onChange={handleChange}
           className={styles.Input}
-          placeholder="Please give a title..."
+          placeholder="You can enter title here..."
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (

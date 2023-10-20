@@ -2,8 +2,8 @@
   background-color: white;
   border: 1px solid #e1e1e1;
   border-radius: 4px;
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin-bottom: 41px !important;
+  margin-top: 10px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -132,10 +132,9 @@
 }
 
 
-@media (min-width: 2000px) {
+/* @media (min-width: 2000px) {
   .postPostPage {
-
     margin: 5% 5% !important;
   }
-}
+} */
 

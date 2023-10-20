@@ -50,12 +50,16 @@ const Comment = (props) => {
       <hr className="w-100 my-4" />
       <div>
       <Media>
-        <Link to={`/profile/${profile_id}`}>
+        <Link to={`/profile/${profile_id}`} className="mt-0">
           <Avatar src={profile_image} className={styles.AvatarCommentCreate}/>
         </Link>
         <Media.Body className="align-self-center ml-2">
+          <div>
           <span className={styles.Owner}>{owner}</span>
+          </div>
+          <div>
           <span className={styles.Date}>{updated_at}</span>
+          </div>
           {showEditForm ? (
             <CommentEditForm
               id={id}
@@ -68,7 +72,7 @@ const Comment = (props) => {
             />
           ) : (
             <>
-              <h6>{title}</h6> {/* Display title */}
+              <h5 className="mt-3 mb-1">{title}</h5>
               <p>{content}</p>
             </>
           )}

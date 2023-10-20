@@ -60,7 +60,7 @@ function CommentCreateForm(props) {
           </Link>
           <p>{owner}</p>
         </Col>
-        <Col xs={12} sm={9}>
+        <Col xs={12} sm={9} xl={6}>
           {/* Title and content column */}
           <Form.Group>
             <Form.Control

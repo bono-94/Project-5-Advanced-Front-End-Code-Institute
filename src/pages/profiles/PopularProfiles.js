@@ -156,7 +156,7 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
                       <p><strong>Knowl3dg3:</strong> {profile.posts_count}</p>
                       <p><strong>Containers:</strong> {profile.containers_count}</p>
                       <p><strong>Followers:</strong> {profile.followers_count}</p>
-                      <p><strong>User Since:</strong> {profile.created_at}</p>
+                      <p><strong>Joined:</strong> {profile.created_at}</p>
                     </div>
                     <hr></hr>
                   </div>

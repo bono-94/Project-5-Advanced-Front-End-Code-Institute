@@ -172,7 +172,7 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/knowledge/${id}`} className="mt-3">
+      <Link to={`/knowledge/${id}`} className="mt-0">
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body className="p-4">

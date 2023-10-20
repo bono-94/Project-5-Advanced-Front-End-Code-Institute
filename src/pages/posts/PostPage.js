@@ -64,14 +64,13 @@ function PostPage() {
   }
 
   return (
-    <Row className="h-100 p-2 justify-content-between">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <Row className="h-100 justify-content-between">
+      <Col className="py-2 p-0 p-lg-2 m-auto" md={10} lg={7} xxl={4}>
         <PopularProfiles mobile className="p-2" />
         <Col className={styles.postPostPage}>
         <Post {...post.results[0]} setPosts={setPost} postPage />
-        </Col>
-        
-        <Container className={appStyles.Content}>
+      </Col>
+        <Container className={`mb-4 mb-md-5 border-1 border-solid border-warning ${appStyles.Content}`}>
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
@@ -106,7 +105,7 @@ function PostPage() {
           )}
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5">
         <PopularProfiles />
       </Col>
     </Row>
