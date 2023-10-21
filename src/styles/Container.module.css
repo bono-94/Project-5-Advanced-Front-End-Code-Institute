@@ -1,7 +1,7 @@
 /* Style for the Container card */
 .Container {
     margin: 20px;
-    padding: 20px;
+    padding: 20px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
@@ -140,4 +140,43 @@
   border: 2px solid black;
   background-color: rgb(255, 166, 0) !important;
   color:black
+}
+
+.Underline {
+  text-decoration: underline;
+  margin: 5px 5px;
+}
+
+.SubTitle {
+  margin-top: 21px;
+  margin: 5px 5px;
+}
+
+.Created {
+  margin: 5px 5px;
+  color: orange;
+}
+
+@media (max-width: 400px) {
+  .BoxIcon {
+    font-size: 35px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .Underline {
+    text-decoration: underline;
+    margin: 15px 25px;
+  }
+  
+  .SubTitle {
+    margin-top: 31px;
+    margin-bottom: 15px;
+    margin-left: 8px;
+  }
+
+  .Created {
+    margin-left: 8px;
+  }
+  
 }

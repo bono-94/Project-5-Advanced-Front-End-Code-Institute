@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+
+import ContainerPosts from "./ContainerPosts";
+
 import styles from "../../styles/Container.module.css";
 
 import Card from "react-bootstrap/Card";
@@ -23,7 +26,6 @@ const Container = (props) => {
     container_name,
     container_info,
     created_at,
-    updated_at,
     is_public
     /* Add other props specific to Container model here */
   } = props;
@@ -52,91 +54,71 @@ const Container = (props) => {
     }
   };
 
-
-  // Fetch container names based on the container IDs
-  useEffect(() => {
-    const fetchContainerNames = async () => {
-      try {
-        const containerNamePromises = containers.map(async (containerId) => {
-          const response = await axiosRes.get(`/container/${containerId}/`);
-          return response.data.container_name;
-        });
-
-        const containerNameResults = await Promise.all(containerNamePromises);
-        setContainerNames(containerNameResults);
-      } catch (err) {
-        // Handle errors if necessary
-        console.error(err);
-      }
-    };
-
-    // Call the function to fetch container names
-    fetchContainerNames();
-  }, [containers]);
-
-
   return (
     <Card className={styles.Container}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profile/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
-            {owner}            
+            <div className={`d-block d-sm-inline ${styles.Owner}`}>
+              {owner}
+            </div>     
           </Link>
-          <div>
-            <span>Created: {created_at}</span>
-            <span>Updated: {updated_at}</span>
-          </div>
           {/* Add Container Icon */}
-          <i className="fas fa-box-open"></i>
+          <i className={`fas fa-box-open fa-3x ${styles.BoxIcon}`}></i>
         </Media>
       </Card.Body>
       {/* Container Name */}
-      <Card.Title>NAme:{container_name}</Card.Title>
+      <Card.Title className={`ms-sm-5 text-center ${styles.Underline}`}>{container_name}</Card.Title>
       {/* Container Description */}
-      <Card.Text>Info:{container_info}</Card.Text>
-      <Card.Footer>
-        {/* Privacy or Global Icon based on is_public */}
-        {is_public ? (
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>This container is public.</Tooltip>}
-          >
-            <i className="fas fa-globe"></i>
-            
-          </OverlayTrigger>
-        ) : (
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>This container is private.</Tooltip>}
-          >
-            <i className="fas fa-lock"></i>
-          </OverlayTrigger>
-        )}
+      <Card.Text  className={styles.SubTitle}>
+        {container_info}
 
-        <ListGroup>
-          <ListGroup.Item variant="light" disabled>
-            Knowledge
+      </Card.Text>
+      <Card.Footer className="m-sm-1">
+      <div className="d-flex align-items-center justify-content-between mb-3">
+      {/* Privacy or Global Icon based on is_public */}
+      {is_public ? (
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>This container is public.</Tooltip>}
+        >
+          <i className="fas fa-globe"></i>
+          
+        </OverlayTrigger>
+      ) : (
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>This container is private.</Tooltip>}
+        >
+          <i className="fas fa-lock"></i>
+        </OverlayTrigger>
+      )}
+      {is_owner && (
+          <MoreDropdown
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        )}
+      </div>
+      <ListGroup>
+        <ListGroup.Item variant="light" disabled>
+          <ContainerPosts />
+        </ListGroup.Item>
+        {knowledgeItems.map((knowledgeItem) => (
+          <ListGroup.Item key={knowledgeItem.id}>
+            {/* Display knowledge item details here */}
+            <Link to={`/knowledge/${knowledgeItem.id}`}>
+              {knowledgeItem.title}
+            </Link>
           </ListGroup.Item>
-          {knowledgeItems.map((knowledgeItem) => (
-            <ListGroup.Item key={knowledgeItem.id}>
-              {/* Display knowledge item details here */}
-              <Link to={`/knowledge/${knowledgeItem.id}`}>
-                {knowledgeItem.title}
-              </Link>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-        <div className="d-flex align-items-center">
-            
-            {is_owner && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            )}
-          </div>
+        ))}
+      </ListGroup>
+        
       </Card.Footer>
+      <div className={styles.Created}>
+        <span className=" ms-1 ms-sm-3">Created: {created_at}</span>
+      </div>
     </Card>
   );
 };

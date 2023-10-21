@@ -64,8 +64,8 @@ function PostPage() {
   }
 
   return (
-    <Row className="h-100 justify-content-between">
-      <Col className="py-2 p-0 p-lg-2 m-auto" md={10} lg={7} xxl={4}>
+    <Row className="h-100">
+      <Col className="py-2 p-0 p-lg-2 m-auto" md={8} lg={5} xxl={4}>
         <PopularProfiles mobile className="p-2" />
         <Col className={styles.postPostPage}>
         <Post {...post.results[0]} setPosts={setPost} postPage />
@@ -105,7 +105,7 @@ function PostPage() {
           )}
         </Container>
       </Col>
-      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5">
+      <Col  md={4}lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5 mb-5">
         <PopularProfiles />
       </Col>
     </Row>

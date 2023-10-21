@@ -178,8 +178,8 @@ function ContainersPublic({ message, filter = "" }) {
                                 </div> 
                                 </Col>
                                 <Col xs={4} sm={2} className="d-flex justify-content-end">
-                                <i className={`fas fa-box fa-4x ${stylesTwo.HoverBox}`}></i> {/* Regular icon */}
-                                <i className={`fas fa-box-open fa-4x ${stylesTwo.HoverBoxOpen}`}></i> {/* Icon to show on hover */}
+                                <i className={`fas fa-box fa-4x ${stylesTwo.HoverBox}`}></i>
+                                <i className={`fas fa-box-open fa-4x ${stylesTwo.HoverBoxOpen}`}></i> 
                                 </Col>
                               </Row>  
                             </div>

@@ -4,9 +4,10 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
+
 import { useParams, Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import ContainerComponent from "./Container"; // Replace with your Container component
+import ContainerComponent from "./Container";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PopularProfiles from "../profiles/PopularProfiles";
 
@@ -40,36 +41,14 @@ function ContainerPage() {
   }, [id]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <Row className="h-100 justify-content-between">
+      <Col className="py-2 p-0 p-lg-2" lg={7} xxl={4}>
         <PopularProfiles mobile />
-        <ContainerComponent {...container} setContainer={setContainer} />
-        <Container className={appStyles.Content}>
-          <h1>{container.container_name}</h1>
-          {posts.results.length ? (
-            <div className="mb-3">
-              {posts.results.length}{" "}
-              {posts.results.length === 1 ? "Post" : "Posts"}
-            </div>
-          ) : null}
-          {posts.results.length ? (
-            <ul>
-              {posts.results.map((post) => (
-                <li key={post.id}>
-                  <Link to={`/knowledge/${post.id}`}>
-                    <strong>{post.title}</strong> by {post.owner}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : currentUser ? (
-            <span>Loading...</span>
-          ) : (
-            <span>No posts... yet</span>
-          )}
-        </Container>
+        <Col className="mt-5">
+          <ContainerComponent {...container} setContainer={setContainer} />
+        </Col>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5">
         <PopularProfiles />
       </Col>
     </Row>
