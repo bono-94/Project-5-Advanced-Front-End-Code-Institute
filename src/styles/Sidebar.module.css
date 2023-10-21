@@ -133,8 +133,6 @@ font-weight: bold;
     margin-bottom: 24px;
   }
 
-
-
   .NavLink.Active {
     background-color: orange; 
     font-weight: bold;
@@ -142,8 +140,8 @@ font-weight: bold;
 
   .NavLink.Active i{
     background-color: black; 
+    color: orange !important;
     text-shadow: 1px 0px 0px black;
-    color: orange;
   }
 
   @media (min-width: 992px) {

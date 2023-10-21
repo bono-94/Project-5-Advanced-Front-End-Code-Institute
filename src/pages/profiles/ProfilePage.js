@@ -191,7 +191,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       {profilePosts.results.length ? (
-        <div>
+        <div className={styles.ProfilePageTitle}>
         <h4 className="text-center pb-4 pb-lg-5 mt-5">
         Knowl3dg3 by {profile?.owner}
         </h4>

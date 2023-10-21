@@ -113,6 +113,10 @@
 
 }
 
+.UnstyledList i {
+  color: orange;
+}
+
 .HoverBoxOpen {
   display: none;
 }

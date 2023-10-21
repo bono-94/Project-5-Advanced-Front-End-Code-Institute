@@ -5,6 +5,11 @@
   animation: fadeIn 3s forwards; 
 }
 
+.ProfilePageTitle h4 {
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
+}
+
 .PostEffect {
   opacity: 0;
   animation: fadeIn 3s forwards; 

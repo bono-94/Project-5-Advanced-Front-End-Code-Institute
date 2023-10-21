@@ -83,6 +83,6 @@ figure {
 }
 
 
-::after, ::before {
+::after {
   color: orange !important;
 }

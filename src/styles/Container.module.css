@@ -8,6 +8,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
+.Container i {
+  color: orange;
+}
+
   /* Style for the user's avatar and owner name */
   .Container .media {
     align-items: center;

@@ -48,7 +48,7 @@ const Comment = (props) => {
   return (
     <>
       <hr className="w-100 my-4" />
-      <div>
+      <div className={styles.CommentPage}>
       <Media>
         <Link to={`/profile/${profile_id}`} className="mt-0">
           <Avatar src={profile_image} className={styles.AvatarCommentCreate}/>
