@@ -13,10 +13,13 @@ import PopularProfiles from "../profiles/PopularProfiles";
 
 import styles from "../../styles/Container.module.css";
 
+import Asset from "../../components/Asset";
+
 function ContainerPage() {
   const { id } = useParams();
   const [container, setContainer] = useState({});
   const [posts, setPosts] = useState({ results: [] });
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -32,6 +35,7 @@ function ContainerPage() {
         ]);
         setContainer(container);
         setPosts(posts);
+        setHasLoaded(true);
       } catch (err) {
         console.error(err);
       }
@@ -44,11 +48,17 @@ function ContainerPage() {
     <Row className="h-100 justify-content-between">
       <Col className="py-2 p-0 p-lg-2" lg={7} xxl={4}>
         <PopularProfiles mobile />
-        <Col className="mt-5">
-          <ContainerComponent {...container} setContainer={setContainer} />
-        </Col>
+        {hasLoaded ? (
+          <Col className="mt-5">
+            <ContainerComponent {...container} setContainer={setContainer} hasLoaded={hasLoaded} />
+          </Col>
+        ) : (
+          <Container className={appStyles.Content}>
+            <Asset spinner />
+          </Container>
+        )}
       </Col>
-      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5">
+      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5 mb-5">
         <PopularProfiles />
       </Col>
     </Row>

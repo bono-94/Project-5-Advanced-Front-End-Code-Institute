@@ -1,3 +1,8 @@
+.ContainersInfoPage {
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
+}
+
 .additionalContent h2 {
   font-size: 28px;
   margin-bottom: 32px;
@@ -212,6 +217,15 @@
   border-radius: 10px;
   margin-top: 0px;
 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 400px) {

@@ -9,7 +9,7 @@ function Containers() {
   window.scrollTo(0, 0);
   return (
     <>
-      <div className="container">
+      <div className={`container ${styles.ContainersInfoPage}`}>
       <section className={styles.additionalContent}>
         <h2>Create and Organize</h2>
         <p>

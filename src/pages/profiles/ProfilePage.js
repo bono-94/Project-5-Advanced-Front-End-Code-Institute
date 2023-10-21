@@ -218,7 +218,7 @@ function ProfilePage() {
     <Row fluid className="m-lg-5 mb-5">
       <Col className="py-0 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Container className={`pt-1 mt-5 mt-lg-0 `}>
+        <Container className={`pt-1 mt-5 mt-lg-0 ${styles.PostEffect}`}>
           {hasLoaded ? (
             <>
               <div className={`${styles.ProfilePage} ${appStyles.Content}`}>{mainProfile}</div>
