@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
+
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
+import Modal from "react-bootstrap/Modal"; 
+
 import Asset from "../../components/Asset";
 import Sidebar from "../../components/Sidebar";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/ContainersPublic.module.css";
+// import styles from "../../styles/ContainersPublic.module.css";
+import styles from "../../styles/PostsPage.module.css";
+
+import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useLocation } from "react-router";
 
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const sortingOptions = [
   { field: "owner__username", label: "Sort by Owner (Ascending)" },
@@ -36,6 +42,10 @@ function ContainersPublic({ message, filter = "" }) {
   const currentUser = useCurrentUser();
   const [showSortingOptions, setShowSortingOptions] = useState(false);
   const [ordering, setOrdering] = useState(""); 
+
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   window.scrollTo(0, 0);
 
@@ -64,25 +74,38 @@ function ContainersPublic({ message, filter = "" }) {
   }, [filter, query, ordering, pathname, currentUser]);
 
   return (
-    <div className={styles.ScrollableContainer} fluid>
-      <Container className={styles.ContainersPublic} fluid>
-        <Row>
-          <Col>
+    <div className={`p-0 ${styles.ScrollableContainer}`} fluid>
+      <Container className={`p-0 ${styles.PostsPage}`} fluid>
+        <Row fluid>
+          <Col lg={3} xl={3} className="d-none d-lg-block ps-0 ms-0">
             <Sidebar />
           </Col>
-          <Col xs={8}>
-            <Row className="h-100">
-              <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
-                <PopularProfiles mobile />
-                <div className="mt-3">
-                  <Row>
-                    <Col lg={1}>
+          <Col lg={9} xl={9} xxl={10}>
+            <Row fluid className="justify-content-between">
+              <div className={`p-0 ${styles.TopNav}`}>
+                <button
+                  className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
+                  onClick={handleShowModal}
+                >
+                  <i className="fas fa-compass fa-3x" />
+                </button>
+              </div>
+              <Col className={`ps-1 ${styles.ContainerList}`} lg={8}>
+                <div className="ms-sm-0 me-sm-0">
+                  <PopularProfiles mobile />
+                </div>
+                <div className={`mt-0 mb-0 ${styles.SearchBarContainer}`}>
+                  <Row fluid className={`mt-0 mb-0 ${styles.SortRow}`}>
+                    <h4 className="mt-1 mt-lg-0 pt-1">Public Containers</h4>
                     <i
-                      className={`fas fa-sort ${styles.SortIcon}`}
-                      onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
+                      className={`fas fa-sort mb-0 ${styles.SortIcon}`}
+                      onClick={() => setShowSortingOptions(!showSortingOptions)}
                     />
-                    </Col>
-                    <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}>
+                  </Row>
+                  <Row className={`mb-0 mt-0 ${styles.SearchRow}`} fluid>
+                    <Col className="p-0">
+                    {/* <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}> */}
+                      {/* sm=4 */}
                       <i className={`fas fa-search ${styles.SearchIcon}`} />
                       <Form
                         className={styles.SearchBar}
@@ -92,7 +115,7 @@ function ContainersPublic({ message, filter = "" }) {
                           value={query}
                           onChange={(event) => setQuery(event.target.value)}
                           type="text"
-                          className="mr-sm-2"
+                          // className="mr-sm-2"
                           placeholder="Search containers..."
                         />
                       </Form>
@@ -101,11 +124,11 @@ function ContainersPublic({ message, filter = "" }) {
                 </div>
                 {/* End of search bar */}
                 {/* Sorting options */}
-                <div className="mt-3">
+                <div>
                   <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
                     {/* Dropdown for sorting options */}
                     {showSortingOptions && (
-                      <ListGroup className={styles.SortingDropdown}>
+                      <ListGroup className={`bg-dark ${styles.SortingDropdown}`}>
                         {sortingOptions.map((option) => (
                           <ListGroup.Item
                             key={option.field}
@@ -125,7 +148,6 @@ function ContainersPublic({ message, filter = "" }) {
                   </Col>
                 </div>
                 {/* End of sorting options */}
-
                 {hasLoaded ? (
                   <>
                     {containers.results.length ? (
@@ -182,13 +204,26 @@ function ContainersPublic({ message, filter = "" }) {
                   </Container>
                 )}
               </Col>
-              <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+              <Col lg={4} className="d-none d-lg-block p-0 mt-lg-4">
                 <PopularProfiles />
               </Col>
             </Row>
           </Col>
         </Row>
       </Container>
+      {/* Modal for Mobile Navigation */}
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Explore Content</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="pt-0">
+        <Sidebar />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

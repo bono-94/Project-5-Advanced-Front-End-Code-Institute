@@ -13,6 +13,7 @@ import Sidebar from '../../components/Sidebar';
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsPage.module.css";
+
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -101,14 +102,14 @@ function PostsPage({ message, filter = "" }) {
               </div>
               <Col className="ps-1" lg={8}>
                 <div className="ms-sm-0 me-sm-0">
-                <PopularProfiles mobile />
+                  <PopularProfiles mobile />
                 </div>
                 <div className={`mt-3 ${styles.SearchBarContainer}`}>
                   <Row fluid className={styles.SortRow}>
                     <h4 className="mt-3 pt-1">Knowl3dg3 Posts</h4>
                     <i
                       className={`fas fa-sort mt-3 ${styles.SortIcon}`}
-                      onClick={() => setShowSortingOptions(!showSortingOptions)} // Toggle dropdown visibility
+                      onClick={() => setShowSortingOptions(!showSortingOptions)}
                     />
                   </Row>
                   <Row className={styles.SearchRow} fluid>
@@ -137,7 +138,7 @@ function PostsPage({ message, filter = "" }) {
                   <Col className={`py-2 p-0 p-lg-1 ${styles.ContainerList}`} lg={8}>
                     {/* Dropdown for sorting options */}
                     {showSortingOptions && (
-                      <ListGroup className={styles.SortingDropdown}>
+                      <ListGroup className={`bg-dark ${styles.SortingDropdown}`}>
                         {sortingOptions.map((option) => (
                           <ListGroup.Item
                             key={option.field}
