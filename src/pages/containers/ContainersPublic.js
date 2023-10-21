@@ -11,7 +11,7 @@ import Asset from "../../components/Asset";
 import Sidebar from "../../components/Sidebar";
 
 import appStyles from "../../App.module.css";
-// import styles from "../../styles/ContainersPublic.module.css";
+import stylesTwo from "../../styles/ContainersPublic.module.css";
 import styles from "../../styles/PostsPage.module.css";
 
 import { useLocation } from "react-router";
@@ -94,9 +94,9 @@ function ContainersPublic({ message, filter = "" }) {
                 <div className="ms-sm-0 me-sm-0">
                   <PopularProfiles mobile />
                 </div>
-                <div className={`mt-0 mb-0 ${styles.SearchBarContainer}`}>
+                <div className={`mt-5 mt-lg-0 mb-0 ${styles.SearchBarContainer}`}>
                   <Row fluid className={`mt-0 mb-0 ${styles.SortRow}`}>
-                    <h4 className="mt-1 mt-lg-0 pt-1">Public Containers</h4>
+                    <h4 className="mt-0 mt-lg-0 pt-1">Public Containers</h4>
                     <i
                       className={`fas fa-sort mb-0 ${styles.SortIcon}`}
                       onClick={() => setShowSortingOptions(!showSortingOptions)}
@@ -166,28 +166,51 @@ function ContainersPublic({ message, filter = "" }) {
                             to={`/container/${container.id}`}
                             style={{ textDecoration: "none" }}
                           >
-                            <ListGroup.Item action className={styles.ContainerItem}>
-                            <div className={styles.ContainerHeader}>
-                              <h4>{container.container_name}</h4>
-
-                       
-                              <span className={styles.ContainerOwner}>
-                                {container.owner ? `Owner: ${container.owner}` : 'Owner: Unknown'}
-                                {container.is_owner ? (
-                                  <i className="fas fa-user" title="Owner"></i>
-                                ) : (
-                                  <i className="fas fa-globe" title="Public"></i>
-                                )}
-                              </span>
+                            <ListGroup.Item action className={`p-4 ${stylesTwo.ContainerItem}`}>
+                            <div className={`text-break pt-0 mb-4 {styles.ContainerHeader}`}>
+                              <Row fluid className="d-flex justify-content-between">
+                                <Col xs={8} sm={10}>
+                                <div>
+                                  <h4>{container.container_name}</h4>
+                                </div>
+                                <div>
+                                  <span className={styles.ContainerInfo}>{container.container_info}</span>
+                                </div> 
+                                </Col>
+                                <Col xs={4} sm={2} className="d-flex justify-content-end">
+                                <i className={`fas fa-box fa-4x ${stylesTwo.HoverBox}`}></i> {/* Regular icon */}
+                                <i className={`fas fa-box-open fa-4x ${stylesTwo.HoverBoxOpen}`}></i> {/* Icon to show on hover */}
+                                </Col>
+                              </Row>  
                             </div>
-                              <p>{container.description}</p>
-                              <div className={styles.ContainerFooter}>
-                                <span className={styles.ContainerInfo}>{container.container_info}</span>
-                                <span className={styles.ContainerCreatedAt}>
-                                  <i className="far fa-clock" title="Created At"></i>
-                                  {new Date(container.created_at).toLocaleDateString()}
-                                </span>
-                              </div>
+                            <div className={stylesTwo.ContainerFooter}>
+                              <Row fluid>
+                                <Col xs={12}>
+                                  <div className="ps-0">
+                                    <span className={`ps-0 ${stylesTwo.ContainerCreatedAt}`}>
+                                      <i className="far fa-user" title="Author"></i>
+                                      {container.is_owner ? (
+                                        <span style={{ fontWeight: 'bold', textShadow: '0px 0px 1px orange' }}>
+                                          {container.owner}
+                                        </span>
+                                      ) : (
+                                        <span>{container.owner}</span>
+                                      )}
+                                    </span>
+                                  </div>
+                                </Col>
+                                <Col xs={12}>
+                                  <div>
+                                    <span className={stylesTwo.ContainerCreatedAt}>
+                                      <i className="far fa-clock" title="Created At"></i>
+                                      {new Date(container.created_at).toLocaleDateString()}
+                                    </span>
+                                  </div>
+                                </Col>
+                              </Row>
+                            </div>
+                       
+                            {/* <i className="fas fa-globe" title="Public"></i> */}
                             </ListGroup.Item>
                           </Link>
                         ))}

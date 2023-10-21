@@ -59,6 +59,31 @@
 
 /* ContainerPage.module.css */
 
+.HoverBoxOpen {
+  display: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(0.9);
+}
+
+.HoverBox {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1);
+}
+
+/* Show the "fa-box-open" icon on hover */
+.ContainerItem:hover .HoverBoxOpen {
+  display: inline-block;
+  transform: scale(1);
+}
+
+.ContainerItem:hover .HoverBox {
+  display: none;
+  transform: scale(0.9);
+}
+
+
+
+
 .containerPage {
   background-color: #f7f7f7;
   padding: 20px;
@@ -97,6 +122,13 @@
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
+.ContainerFooter i {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
+}
+
 
 .SearchBar input {
   border-radius: 20px;
