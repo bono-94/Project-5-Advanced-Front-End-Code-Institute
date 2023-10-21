@@ -127,6 +127,11 @@
   font-size: small;
 }
 
+.SmallText {
+  font-size: small;
+}
+
+
 
 @keyframes fadeIn {
   0% {
@@ -207,6 +212,10 @@
   .Upload {
     margin: auto;
     width: 40%;
+  }
+
+  .SmallText {
+    width: 50% !important;
   }
   
 }

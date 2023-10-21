@@ -379,6 +379,7 @@ function PostEditForm() {
     <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
       Save
     </Button>
+    <p className={`m-auto w-75 text-small text-center ${styles.SmallText}`}> Important! If you would like to change structural connection form post to containers such as removing or adding bridges, please contact us throught the support form.</p> 
   </div>
 );
 
