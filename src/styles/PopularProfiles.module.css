@@ -170,7 +170,7 @@
 .MobileNavIcon {
   position: fixed;
   bottom: 5px; 
-  right: 1px; 
+  right: 4px; 
   z-index: 999;
   padding: 0;
   border: none;

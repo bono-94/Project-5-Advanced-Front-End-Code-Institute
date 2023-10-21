@@ -87,7 +87,7 @@ function ContainersPublic({ message, filter = "" }) {
                   className={`d-lg-none p-0 ${styles.SortIcon} ${styles.MobileNavIcon}`}
                   onClick={handleShowModal}
                 >
-                  <i className="fas fa-compass fa-3x" />
+                  <i className="fas fa-compass fa-3x me-1" />
                 </button>
               </div>
               <Col className={`ps-1 ${styles.ContainerList}`} lg={8}>
