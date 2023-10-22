@@ -46,7 +46,7 @@ function ContainerPage() {
             {container.is_public ? (
               <ContainerComponent {...container} setContainer={setContainer} hasLoaded={hasLoaded} />
             ) : (
-              <div>
+              <div className="mt-2 mb-4">
                 <h6>No results. Unfortunately, you tried accessing a private container.</h6>
               </div>
             )}
