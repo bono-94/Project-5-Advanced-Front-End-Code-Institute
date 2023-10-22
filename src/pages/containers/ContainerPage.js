@@ -50,12 +50,16 @@ function ContainerPage() {
         <PopularProfiles mobile />
         {hasLoaded ? (
           <Col className="mt-5">
-            <ContainerComponent {...container} setContainer={setContainer} hasLoaded={hasLoaded} />
+            {container.is_public ? (
+              <ContainerComponent {...container} setContainer={setContainer} hasLoaded={hasLoaded} />
+            ) : (
+              <div>
+                <h6>No results. Unfortunately, you tried accessing a private container.</h6>
+              </div>
+            )}
           </Col>
         ) : (
-          <Container className={appStyles.Content}>
             <Asset spinner />
-          </Container>
         )}
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5 mb-5">

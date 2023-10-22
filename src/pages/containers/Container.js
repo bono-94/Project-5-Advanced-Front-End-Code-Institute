@@ -26,12 +26,12 @@ const Container = (props) => {
     container_name,
     container_info,
     created_at,
-    is_public
-    /* Add other props specific to Container model here */
+    is_public,
+    is_owner,
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  const is_owner_user = currentUser?.username === owner;
   const history = useHistory();
   const [containerNames, setContainerNames] = useState([]);
   const [knowledgeItems, setKnowledgeItems] = useState([]);
@@ -94,7 +94,7 @@ const Container = (props) => {
           <i className="fas fa-lock"></i>
         </OverlayTrigger>
       )}
-      {is_owner && (
+      {is_owner_user && (
           <MoreDropdown
             handleEdit={handleEdit}
             handleDelete={handleDelete}

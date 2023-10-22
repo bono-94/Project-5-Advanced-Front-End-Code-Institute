@@ -51,6 +51,7 @@ const Post = (props) => {
   const [containerNames, setContainerNames] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showFullContent, setShowFullContent] = useState(false);
+  const visibleContainersCount = containerNames.length;
 
   const handleEdit = () => {
     history.push(`/knowledge/${id}/edit`);
@@ -149,6 +150,7 @@ const Post = (props) => {
         const filteredContainerNames = containerNameResults.filter(name => name !== null);
   
         setContainerNames(filteredContainerNames);
+        
       } catch (err) {
         console.error(err);
       }
@@ -158,7 +160,7 @@ const Post = (props) => {
   }, [containers]);
   
   
-  const visibleContainersCount = containerNames.length;
+
   
 
   return (
