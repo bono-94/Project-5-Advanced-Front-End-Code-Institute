@@ -1,11 +1,8 @@
 import "./api/axiosDefaults";
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from "./App.module.css";
-
 import { Route, Switch } from "react-router-dom";
-
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 import Home from "./pages/home/Home";
 import Containers from "./pages/containers/Containers";
 import ContainerCreateForm from "./pages/containers/ContainerCreateForm";
@@ -24,17 +21,12 @@ import SignInForm from "./pages/auth/SignInForm";
 import Support from "./pages/support/Support";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
-
-import { useCurrentUser } from "./contexts/CurrentUserContext";
-
 import NotFound from "./components/NotFound";
-
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-
 import Container from "react-bootstrap/Container";
 import PopularProfiles from "./pages/profiles/PopularProfiles";
-
+import styles from "./App.module.css";
 
 
 function App() {

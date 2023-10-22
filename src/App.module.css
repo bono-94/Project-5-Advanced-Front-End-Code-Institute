@@ -68,7 +68,6 @@ figure {
   display: inline-block;
 }
 
-/* scrollbar */
 *::-webkit-scrollbar {
   width: 5px;
 }
@@ -81,7 +80,6 @@ figure {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
 
 ::after {
   color: orange !important;
