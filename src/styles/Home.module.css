@@ -287,7 +287,6 @@ a h4 {
 }
 .successAlert {
   width: 80%;
-  margin-right: 0px !important;
 }
 
 .closeButton {
@@ -317,7 +316,7 @@ a h4 {
   @media (min-width: 1400px) {
     .successAlert {
       width: 60%;
-      
+      margin-right: 0px !important;
     }
     }
 

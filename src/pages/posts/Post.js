@@ -127,30 +127,39 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    // Fetch container names based on the container IDs
     const fetchContainerNames = async () => {
       try {
         const containerNamePromises = containers.map(async (containerId) => {
           const response = await axiosRes.get(`/container/${containerId}/`);
-          return response.data.container_name;
+          const containerData = response.data;
+  
+          if (containerData.is_public || (!containerData.is_public && containerData.is_owner)) {
+            return containerData.container_name;
+          }
+          return null;
         });
-
+  
         const containerNameResults = await Promise.all(containerNamePromises);
-        setContainerNames(containerNameResults);
+  
+        const filteredContainerNames = containerNameResults.filter(name => name !== null);
+  
+        setContainerNames(filteredContainerNames);
       } catch (err) {
-        // Handle errors if necessary
         console.error(err);
       }
     };
 
-    // Call the function to fetch container names
     fetchContainerNames();
   }, [containers]);
+  
+  
+  const visibleContainersCount = containerNames.length;
+  
 
   return (
     <Card className={styles.Post}>
@@ -264,7 +273,7 @@ const Post = (props) => {
           </Link>
           <Link to="#" onClick={() => setShowModal(true)}>
             <i className="fas fa-cubes" />
-            {containers_count}
+            {visibleContainersCount}
           </Link>
         </div>
       
