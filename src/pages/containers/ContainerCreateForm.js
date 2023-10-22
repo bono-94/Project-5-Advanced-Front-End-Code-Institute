@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-
-
 import styles from "../../styles/ContainerCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
 
 function ContainerCreateForm() {
+
   window.scrollTo(0, 0);
+
   useRedirect("loggedOut");
+
   const [errors, setErrors] = useState({});
 
   const [containerData, setContainerData] = useState({
@@ -26,6 +26,7 @@ function ContainerCreateForm() {
     container_info: "",
     is_public: false,
   });
+
   const { container_name, container_info, is_public } = containerData;
 
   const history = useHistory();
@@ -113,7 +114,7 @@ function ContainerCreateForm() {
     <Row className={styles.Row}>
       <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
         <Container  className={`${appStyles.Content} p-4 ${styles.Container}`}>
-        <h1 className={styles.Header}>Create Container</h1>
+          <h1 className={styles.Header}>Create Container</h1>
           <Form onSubmit={handleSubmit}>
             {allFields}
           </Form>

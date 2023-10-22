@@ -1,10 +1,8 @@
 import React from "react";
+import { useHistory } from "react-router";
 import Dropdown from "react-bootstrap/Dropdown";
 import styles from "../styles/MoreDropdown.module.css";
-import { useHistory } from "react-router";
 
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fas fa-ellipsis-v"
@@ -17,10 +15,10 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 ));
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+
   return (
     <Dropdown className={`ml-auto ${styles.CenteredDropdown}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-
       <Dropdown.Menu
         className="text-center"
         popperConfig={{ strategy: "fixed" }}
@@ -45,7 +43,9 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 };
 
 export const ProfileEditDropdown = ({ id }) => {
+
   const history = useHistory();
+
   return (
     <Dropdown className={`ml-auto ${styles.CenteredDropdown}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />

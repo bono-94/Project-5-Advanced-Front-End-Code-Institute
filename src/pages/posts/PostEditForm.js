@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import { useHistory, useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import Asset from "../../components/Asset";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,18 +9,13 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory, useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import Select from "react-dropdown-select";
-import Asset from "../../components/Asset";
-
 
 function PostEditForm() {
+
   const [errors, setErrors] = useState({});
   const [availableContainers, setAvailableContainers] = useState([]);
   const [selectedContainers, setSelectedContainers] = useState([]); 
@@ -38,6 +35,7 @@ function PostEditForm() {
     source: "",
     image: "",
   });
+
   const { 
     containers,
     post_category,
@@ -74,7 +72,6 @@ function PostEditForm() {
           is_owner
         } = data;
         
-
         is_owner ? setPostData({ 
           containers: selectedContainerIds,
           post_category,
@@ -87,14 +84,13 @@ function PostEditForm() {
           source,
           image }) : history.push("/");
           
-        setSelectedContainers(selectedContainerIds); // Set selected containers
+        setSelectedContainers(selectedContainerIds);
         setIsLoading(false);
       } catch (err) {
         setIsLoading(false);
       }
     };
   
-
     handleMount();
   }, [history, id]);
 
@@ -108,8 +104,6 @@ function PostEditForm() {
         console.error("Error fetching available containers:", error);
       });
   }, []);
-
-  console.log("availableContainers:", availableContainers);
 
   if (isLoading) {
     return (
@@ -142,8 +136,6 @@ function PostEditForm() {
     const selectedContainerIds = selectedOptions.map((option) => option.id);
     const selectedContainerNames = selectedOptions.map((option) => option.container_name); 
 
-    console.log("Selected Container IDs:", selectedContainerIds); 
-    console.log("Selected Container Names:", selectedContainerNames); 
     setPostData({
       ...postData,
       containers: selectedContainerIds, 
@@ -186,15 +178,12 @@ function PostEditForm() {
     formData.append("image", imageInput?.current?.files[0]);
   
     try {
-      // Update the image directly without navigating
-      await axiosReq.patch(`/post/${id}/`, formData); // Use PATCH instead of PUT
-      // Update the image state to reflect changes
+      await axiosReq.patch(`/post/${id}/`, formData);
       setPostData({
         ...postData,
         image: URL.createObjectURL(imageInput?.current?.files[0]),
       });
       setImageSaved(true);
-      // Redirect or show a success message if needed
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
@@ -202,42 +191,8 @@ function PostEditForm() {
     }
   };
 
-
   const textFields = (
     <div className="text-center">
-      {/* <Form.Group>
-        <Form.Label>Select Containers</Form.Label>
-        <Form.Control
-          as="select"
-          name="containers"
-          value={containers}
-          onChange={handleChangeContainers}
-          multiple  // Add the multiple attribute
-        >
-        {/* Remove the default "Select a Container" option 
-        {availableContainers.results && availableContainers.results.map((container) => (
-          <option key={container.id} value={container.id}>
-            {container.container_name}
-          </option>
-        ))}
-      </Form.Control>
-      </Form.Group> */}
-
-      {/* <Form.Group>
-        <Form.Label>Select Containers</Form.Label>
-        <Select
-          name="containers"
-          multi
-          options={availableContainers.results || []}
-          values={containers.map((containerId) => ({
-            id: containerId,
-          }))}
-          labelField="container_name"
-          valueField="id"
-          onChange={(values) => setSelectedContainers(values.map((v) => v.id))}
-          className={styles.InputSelect}
-        />
-      </Form.Group> */}
       <Form.Group>
         <Form.Label>Select a Category</Form.Label>
         <Form.Control
@@ -262,126 +217,124 @@ function PostEditForm() {
         </Form.Control>
       </Form.Group>
       <Form.Group>
-          <Form.Label>Topic</Form.Label>
-          <Form.Control
-            type="text"
-            name="topic"
-            value={topic}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the topic?"
-          />
-        </Form.Group>
-        {errors?.topic?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        
-        <Form.Group>
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the title?"
-          />
-        </Form.Group>
-        {errors?.title?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Sub Title</Form.Label>
-          <Form.Control
-            type="text"
-            name="sub_title"
-            value={sub_title}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the sub-title?"
-          />
-        </Form.Group>
-        {errors?.sub_title?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Location</Form.Label>
-          <Form.Control
-            type="text"
-            name="location"
-            value={location}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="Where can it be found?"
-          />
-        </Form.Group>
-        {errors?.location?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-      <Form.Label>Content</Form.Label>
-      <Form.Control
-        as="textarea"
-        rows={6}
-        name="content"
-        value={content}
-        onChange={handleChange}
-        className={styles.Input}
-        placeholder="Knowledge details..."
-      />
-    </Form.Group>
-    {errors?.content?.map((message, idx) => (
-      <Alert variant="warning" key={idx}>
-        {message}
-      </Alert>
-    ))}
-        <Form.Group>
-          <Form.Label>Inspiration</Form.Label>
-          <Form.Control
-            type="text"
-            name="inspiration"
-            value={inspiration}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="Inspiration for knowledge..."
-          />
-        </Form.Group>
-        {errors?.inspiration?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Source</Form.Label>
-          <Form.Control
-            type="text"
-            name="source"
-            value={source}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="Sources of knowledge..."
-          />
-        </Form.Group>
-        {errors?.source?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-     
-    <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-      Save
-    </Button>
-    <p className={`m-auto w-75 text-small text-center ${styles.SmallText}`}> Important! If you would like to change structural connection form post to containers such as removing or adding bridges, please contact us throught the support form.</p> 
-  </div>
-);
+        <Form.Label>Topic</Form.Label>
+        <Form.Control
+          type="text"
+          name="topic"
+          value={topic}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the topic?"
+        />
+      </Form.Group>
+      {errors?.topic?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          name="title"
+          value={title}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the title?"
+        />
+      </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Sub Title</Form.Label>
+        <Form.Control
+          type="text"
+          name="sub_title"
+          value={sub_title}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the sub-title?"
+        />
+      </Form.Group>
+      {errors?.sub_title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="Where can it be found?"
+        />
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Content</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={6}
+          name="content"
+          value={content}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="Knowledge details..."
+        />
+      </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Inspiration</Form.Label>
+        <Form.Control
+          type="text"
+          name="inspiration"
+          value={inspiration}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="Inspiration for knowledge..."
+        />
+      </Form.Group>
+      {errors?.inspiration?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Source</Form.Label>
+        <Form.Control
+          type="text"
+          name="source"
+          value={source}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="Sources of knowledge..."
+        />
+      </Form.Group>
+      {errors?.source?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+        Save
+      </Button>
+      <p className={`m-auto w-75 text-small text-center ${styles.SmallText}`}> Important! If you would like to change structural connection form post to containers such as removing or adding bridges, please contact us throught the support form.</p> 
+    </div>
+  );
 
 return (
   <Row className={styles.Row}>
@@ -389,7 +342,7 @@ return (
       <Container
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
       >
-      <h1 className={styles.Header}>Edit Knowledge</h1>
+        <h1 className={styles.Header}>Edit Knowledge</h1>
         <Form onSubmit={handleSubmitImage} encType="multipart/form-data">
           <Form.Group className="text-center">
             <figure>
@@ -429,7 +382,6 @@ return (
           ))}
           {!imageSaved && (
             <>
-
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 type="submit"

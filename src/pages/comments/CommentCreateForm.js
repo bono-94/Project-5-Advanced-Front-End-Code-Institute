@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { axiosRes } from "../../api/axiosDefaults";
+import Avatar from "../../components/Avatar";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
 import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+
 
 function CommentCreateForm(props) {
+
   const { post, setPost, setComments, owner, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
-  const [error, setError] = useState(null); // State to handle errors
+  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -53,44 +52,42 @@ function CommentCreateForm(props) {
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
-        <Col xs={12} sm={5} lg={2} className={`mt-4 ${styles.CreateFormCol}`}>
-          {/* Avatar column */}
-          <Link to={`/profile/${profile_id}`}>
-            <Avatar src={profileImage}/>
-          </Link>
-          <p>{owner}</p>
-        </Col>
-        <Col xs={12} sm={9} xl={6}>
-          {/* Title and content column */}
-          <Form.Group>
+      <Col xs={12} sm={5} lg={2} className={`mt-4 ${styles.CreateFormCol}`}>
+        <Link to={`/profile/${profile_id}`}>
+          <Avatar src={profileImage}/>
+        </Link>
+        <p>{owner}</p>
+      </Col>
+      <Col xs={12} sm={9} xl={6}>
+        <Form.Group>
+          <Form.Control
+            className={styles.Form}
+            type="text"
+            placeholder="Comment title"
+            value={title}
+            onChange={handleChangeTitle}
+          />
+        </Form.Group>
+        <Form.Group>
+          <InputGroup>
             <Form.Control
               className={styles.Form}
-              type="text"
-              placeholder="Comment title"
-              value={title}
-              onChange={handleChangeTitle}
+              placeholder="Share your opinion here..."
+              as="textarea"
+              value={content}
+              onChange={handleChange}
+              rows={2}
             />
-          </Form.Group>
-          <Form.Group>
-            <InputGroup>
-              <Form.Control
-                className={styles.Form}
-                placeholder="Share your opinion here..."
-                as="textarea"
-                value={content}
-                onChange={handleChange}
-                rows={2}
-              />
-            </InputGroup>
-          </Form.Group>
-          <button
-            className={`${styles.Button} btn d-block ml-auto`}
-            disabled={!content.trim()}
-            type="submit"
-          >
-            Post
-          </button>
-        </Col>
+          </InputGroup>
+        </Form.Group>
+        <button
+          className={`${styles.Button} btn d-block ml-auto`}
+          disabled={!content.trim()}
+          type="submit"
+        >
+          Post
+        </button>
+      </Col>
     </Form>
   );
 }

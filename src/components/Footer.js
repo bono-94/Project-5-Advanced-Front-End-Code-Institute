@@ -5,31 +5,31 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import logo from "../assets/logo.png";
 import styles from "../styles/Footer.module.css";
-import { NavLink } from "react-bootstrap";
+
 
 function Footer() {
   return (
     <footer className={styles.Footer}>
       <Container fluid>
-      <Row fluid>
-  <Col className={`d-flex align-items-center justify-content-between ${styles.LogoButtonContainer}`}>
-    <img
-      src={logo}
-      alt="Brand Logo"
-      width="100"
-      className={styles.Spinner}
-    />
-    <Button
-      variant="link"
-      className={`text-light align-self-start`}
-      onClick={() => window.scrollTo(0, 0)}
-    >
-      <i className="fas fa-arrow-circle-up"></i>
-    </Button>
-  </Col>
-</Row>
-      <Row fluid>
-       <Col className={`${styles.Contact}`}>
+        <Row fluid>
+          <Col className={`d-flex align-items-center justify-content-between ${styles.LogoButtonContainer}`}>
+            <img
+              src={logo}
+              alt="Brand Logo"
+              width="100"
+              className={styles.Spinner}
+            />
+            <Button
+              variant="link"
+              className={`text-light align-self-start`}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <i className="fas fa-arrow-circle-up"></i>
+            </Button>
+          </Col>
+        </Row>
+        <Row fluid>
+          <Col className={`${styles.Contact}`}>
             <h5>KNOWL3DG3 CONTAINERS</h5>
             <p>
               <i className="fas fa-map-marker-alt"></i> 123 Main St, New York, USA
@@ -42,7 +42,6 @@ function Footer() {
             </p>
           </Col>
         </Row>
-        
         <hr className="bg-light" />
         <Row>
           <Col className={`${styles.Social}`}>

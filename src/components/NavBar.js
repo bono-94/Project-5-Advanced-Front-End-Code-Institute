@@ -1,24 +1,25 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import logo from "../assets/logo.png";
-import styles from "../styles/NavBar.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Avatar from "./Avatar";
+import logo from "../assets/logo.png";
+import styles from "../styles/NavBar.module.css";
+
 
 const NavBar = () => {
+
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const location = useLocation();
-
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
@@ -32,7 +33,6 @@ const NavBar = () => {
   };
 
   const isActiveLink = (match, location) => {
-
     if (location.pathname.startsWith("/knowledge")) {
       return true; 
     }
@@ -40,7 +40,6 @@ const NavBar = () => {
   };
 
   const isActiveLinkContainers = (match, location) => {
-
     if (location.pathname.startsWith("/container")) {
       return true; 
     }
@@ -61,7 +60,7 @@ const NavBar = () => {
         </span>
       </NavLink>
       <NavLink
-      isActive={isActiveLinkContainers}
+        isActive={isActiveLinkContainers}
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/containers"

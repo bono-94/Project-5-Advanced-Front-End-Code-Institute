@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
-import appStyles from "../../App.module.css";
-
 import { useParams, Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import ContainerComponent from "./Container";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PopularProfiles from "../profiles/PopularProfiles";
-
-import styles from "../../styles/Container.module.css";
-
+import ContainerComponent from "./Container";
 import Asset from "../../components/Asset";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 
 function ContainerPage() {
   const { id } = useParams();
   const [container, setContainer] = useState({});
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
-
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
 
@@ -31,7 +24,7 @@ function ContainerPage() {
       try {
         const [{ data: container }, { data: posts }] = await Promise.all([
           axiosReq.get(`/container/${id}`),
-          axiosReq.get(`/posts/?containers=${id}`), // Include containers parameter
+          axiosReq.get(`/posts/?containers=${id}`),
         ]);
         setContainer(container);
         setPosts(posts);
@@ -59,7 +52,7 @@ function ContainerPage() {
             )}
           </Col>
         ) : (
-            <Asset spinner />
+          <Asset spinner />
         )}
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2 mt-5 mr-lg-3 mr-xl-5 mb-5">

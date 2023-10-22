@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+import axios from "axios";
+import { useRedirect } from "../../hooks/useRedirect";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-import axios from "axios";
-import { useRedirect } from "../../hooks/useRedirect";
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 
 const SignUpForm = () => {
+
   window.scrollTo(0, 0);
+
   useRedirect("loggedIn");
+
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -49,7 +52,6 @@ const SignUpForm = () => {
       <Col className={`my-auto py-2 p-md-2 ${styles.SignUpCol}`}>
         <Container className={`${appStyles.Content} p-4 ${styles.Container}`}>
           <h1 className={styles.Header}>REGISTRATION</h1>
-
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
@@ -67,7 +69,6 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -84,7 +85,6 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
@@ -101,7 +101,6 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-
             <Button
               className={`${btnStyles.Button} ${btnStyles.Warning} SignUpButton`}
               type="submit"
@@ -116,8 +115,7 @@ const SignUpForm = () => {
             <Link className={styles.Link} to="/signin">
               Already have an account? <span>Login</span>
             </Link>
-          </Form>
-          
+          </Form>  
         </Container>
       </Col>
     </Row>

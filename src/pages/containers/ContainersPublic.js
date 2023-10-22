@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from "react";
-
+import { useLocation } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchMoreData } from "../../utils/utils";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset";
+import Sidebar from "../../components/Sidebar";
+import PopularProfiles from "../profiles/PopularProfiles";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal"; 
-
-import Asset from "../../components/Asset";
-import Sidebar from "../../components/Sidebar";
-
+import NoResults from "../../assets/no-results.png";
 import appStyles from "../../App.module.css";
 import stylesTwo from "../../styles/ContainersPublic.module.css";
 import styles from "../../styles/PostsPage.module.css";
 
-import { useLocation } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-
-import NoResults from "../../assets/no-results.png";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const sortingOptions = [
   { field: "owner__username", label: "Sort by Owner (Ascending)" },
@@ -35,6 +30,7 @@ const sortingOptions = [
 ];
 
 function ContainersPublic({ message, filter = "" }) {
+
   const [containers, setContainers] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
@@ -42,7 +38,6 @@ function ContainersPublic({ message, filter = "" }) {
   const currentUser = useCurrentUser();
   const [showSortingOptions, setShowSortingOptions] = useState(false);
   const [ordering, setOrdering] = useState(""); 
-
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -53,12 +48,10 @@ function ContainersPublic({ message, filter = "" }) {
     const fetchContainers = async () => {
       try {
         const { data } = await axiosReq.get(`/containers/public/?${filter}search=${query}&ordering=${ordering}`);
-        console.log('API Response:', data);
         setContainers(data);
         setHasLoaded(true);
         
       } catch (err) {
-        // Handle errors if necessary
         console.error(err);
       }
     };
@@ -104,8 +97,6 @@ function ContainersPublic({ message, filter = "" }) {
                   </Row>
                   <Row className={`mb-0 mt-0 ${styles.SearchRow}`} fluid>
                     <Col className="p-0">
-                    {/* <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} sm={4} lg={8}> */}
-                      {/* sm=4 */}
                       <i className={`fas fa-search ${styles.SearchIcon}`} />
                       <Form
                         className={styles.SearchBar}
@@ -115,18 +106,14 @@ function ContainersPublic({ message, filter = "" }) {
                           value={query}
                           onChange={(event) => setQuery(event.target.value)}
                           type="text"
-                          // className="mr-sm-2"
                           placeholder="Search containers..."
                         />
                       </Form>
                     </Col>
                   </Row>
                 </div>
-                {/* End of search bar */}
-                {/* Sorting options */}
                 <div>
                   <Col className={`py-2 p-0 p-lg-2 ${styles.ContainerList}`} lg={8}>
-                    {/* Dropdown for sorting options */}
                     {showSortingOptions && (
                       <ListGroup className={`bg-dark ${styles.SortingDropdown}`}>
                         {sortingOptions.map((option) => (
@@ -134,8 +121,8 @@ function ContainersPublic({ message, filter = "" }) {
                             key={option.field}
                             className={ordering === option.field ? styles.ActiveSortOption : styles.SortOption}
                             onClick={() => {
-                              setOrdering(ordering === option.field ? `-${option.field}` : option.field); // Toggle sorting order
-                              setShowSortingOptions(false); // Close dropdown
+                              setOrdering(ordering === option.field ? `-${option.field}` : option.field); 
+                              setShowSortingOptions(false);
                             }}
                           >
                             <i className={`fas fa-sort-${ordering === option.field ? 'down' : 'up'}`} />
@@ -144,10 +131,8 @@ function ContainersPublic({ message, filter = "" }) {
                         ))}
                       </ListGroup>
                     )}
-                    {/* End of dropdown */}
                   </Col>
                 </div>
-                {/* End of sorting options */}
                 {hasLoaded ? (
                   <>
                     {containers.results.length ? (
@@ -170,16 +155,16 @@ function ContainersPublic({ message, filter = "" }) {
                             <div className={`text-break pt-0 mb-4 {styles.ContainerHeader}`}>
                               <Row fluid className="d-flex justify-content-between">
                                 <Col xs={8} sm={10}>
-                                <div>
-                                  <h4>{container.container_name}</h4>
-                                </div>
-                                <div>
-                                  <span className={styles.ContainerInfo}>{container.container_info}</span>
-                                </div> 
+                                  <div>
+                                    <h4>{container.container_name}</h4>
+                                  </div>
+                                  <div>
+                                    <span className={styles.ContainerInfo}>{container.container_info}</span>
+                                  </div> 
                                 </Col>
                                 <Col xs={4} sm={2} className="d-flex justify-content-end">
-                                <i className={`fas fa-box fa-4x ${stylesTwo.HoverBox}`}></i>
-                                <i className={`fas fa-box-open fa-4x ${stylesTwo.HoverBoxOpen}`}></i> 
+                                  <i className={`fas fa-box fa-4x ${stylesTwo.HoverBox}`}></i>
+                                  <i className={`fas fa-box-open fa-4x ${stylesTwo.HoverBoxOpen}`}></i> 
                                 </Col>
                               </Row>  
                             </div>
@@ -209,8 +194,6 @@ function ContainersPublic({ message, filter = "" }) {
                                 </Col>
                               </Row>
                             </div>
-                       
-                            {/* <i className="fas fa-globe" title="Public"></i> */}
                             </ListGroup.Item>
                           </Link>
                         ))}
@@ -234,7 +217,6 @@ function ContainersPublic({ message, filter = "" }) {
           </Col>
         </Row>
       </Container>
-      {/* Modal for Mobile Navigation */}
       <Modal
         show={showModal}
         onHide={handleCloseModal}

@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from "../styles/Sidebar.module.css";
 import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
+import styles from "../styles/Sidebar.module.css";
+
 
 function Sidebar() {
 
@@ -28,7 +29,6 @@ function Sidebar() {
     >
     </NavLink>
   );
-
 
   return (
     <div className={styles.sidebar} id="sidebar">

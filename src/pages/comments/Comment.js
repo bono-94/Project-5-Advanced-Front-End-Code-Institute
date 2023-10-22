@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import Media from "react-bootstrap/Media";
+import { axiosRes } from "../../api/axiosDefaults";
 import { Link } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import CommentEditForm from "./CommentEditForm";
-
+import Media from "react-bootstrap/Media";
 import styles from "../../styles/Comment.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
+
 
 const Comment = (props) => {
+
   const {
     profile_id,
     profile_image,
@@ -49,41 +50,41 @@ const Comment = (props) => {
     <>
       <hr className="w-100 my-4" />
       <div className={styles.CommentPage}>
-      <Media>
-        <Link to={`/profile/${profile_id}`} className="mt-0">
-          <Avatar src={profile_image} className={styles.AvatarCommentCreate}/>
-        </Link>
-        <Media.Body className="align-self-center ml-2">
-          <div>
-          <span className={styles.Owner}>{owner}</span>
-          </div>
-          <div>
-          <span className={styles.Date}>{updated_at}</span>
-          </div>
-          {showEditForm ? (
-            <CommentEditForm
-              id={id}
-              profile_id={profile_id}
-              content={content}
-              title={title}
-              profileImage={profile_image}
-              setComments={setComments}
-              setShowEditForm={setShowEditForm}
+        <Media>
+          <Link to={`/profile/${profile_id}`} className="mt-0">
+            <Avatar src={profile_image} className={styles.AvatarCommentCreate}/>
+          </Link>
+          <Media.Body className="align-self-center ml-2">
+            <div>
+            <span className={styles.Owner}>{owner}</span>
+            </div>
+            <div>
+            <span className={styles.Date}>{updated_at}</span>
+            </div>
+            {showEditForm ? (
+              <CommentEditForm
+                id={id}
+                profile_id={profile_id}
+                content={content}
+                title={title}
+                profileImage={profile_image}
+                setComments={setComments}
+                setShowEditForm={setShowEditForm}
+              />
+            ) : (
+              <>
+                <h5 className="mt-3 mb-1">{title}</h5>
+                <p>{content}</p>
+              </>
+            )}
+          </Media.Body>
+          {is_owner && !showEditForm && (
+            <MoreDropdown
+              handleEdit={() => setShowEditForm(true)}
+              handleDelete={handleDelete}
             />
-          ) : (
-            <>
-              <h5 className="mt-3 mb-1">{title}</h5>
-              <p>{content}</p>
-            </>
           )}
-        </Media.Body>
-        {is_owner && !showEditForm && (
-          <MoreDropdown
-            handleEdit={() => setShowEditForm(true)}
-            handleDelete={handleDelete}
-          />
-        )}
-      </Media>
+        </Media>
       </div>
     </>
   );

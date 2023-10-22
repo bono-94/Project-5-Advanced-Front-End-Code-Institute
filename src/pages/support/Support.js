@@ -1,34 +1,28 @@
 import React, { useState } from "react";
-// import React, { useRef, useState } from "react";
-
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-// import Image from "react-bootstrap/Image";
-
-// import Asset from "../../components/Asset";
-
-// import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/Support.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
 
 function Support() {
+
   window.scrollTo(0, 0);
+
   useRedirect("loggedOut");
+
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const [supportId, setSupportId] = useState(null);
   
-
   const [supportData, setSupportData] = useState({
     support_type: "support",
     title: "",
@@ -36,6 +30,7 @@ function Support() {
     container_name: "",
     knowledge_name: "",
   });
+
   const { 
     support_type,
     title,
@@ -43,7 +38,6 @@ function Support() {
     container_name,
     knowledge_name } = supportData;
 
-  // const imageInput = useRef(null);
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -52,7 +46,6 @@ function Support() {
       [event.target.name]: event.target.value,
     });
   };
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -63,17 +56,14 @@ function Support() {
     formData.append("title", title);
     formData.append("container_name", container_name);
     formData.append("knowledge_name", knowledge_name);
-    // formData.append("is_public", is_public);
-    // formData.append("image", imageInput.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/support/", formData);
       setSuccessMessage(`Successfully sent request! Your request ID is: ${data.id}`);
       history.push("/", { successMessage: "Your support request has been sent! We will email you as soon as possible." });
       window.scrollTo(0, 0);
-      //   history.push(`/support/${data.id}`);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -174,7 +164,6 @@ function Support() {
           Create
         </Button>
       </Form.Group>
-      
     </div>
   );
 
@@ -182,7 +171,7 @@ function Support() {
     <Row className={styles.Row}>
       <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
         <Container  className={`${appStyles.Content} p-4 ${styles.Container}`}>
-        <h1 className={styles.Header}>Support Request</h1>
+          <h1 className={styles.Header}>Support Request</h1>
           <Form onSubmit={handleSubmit}>
             {allFields}
           </Form>

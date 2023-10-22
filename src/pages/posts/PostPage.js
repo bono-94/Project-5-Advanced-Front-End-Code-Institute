@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
-
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
-import styles from "../../styles/Post.module.css"
-import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { fetchMoreData } from "../../utils/utils";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset";
 import Post from "./Post";
 import Comment from "../comments/Comment";
 import CommentCreateForm from "../comments/CommentCreateForm";
-
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
-import InfiniteScroll from "react-infinite-scroll-component";
-import Asset from "../../components/Asset";
-import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import styles from "../../styles/Post.module.css"
+import appStyles from "../../App.module.css";
+
 
 function PostPage() {
+
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
-
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
@@ -41,7 +38,7 @@ function PostPage() {
         setComments(comments);
         setIsLoading(false);
       } catch (err) {
-        // console.log(err);
+        console.log(err);
         setIsLoading(false);
       }
     };
@@ -68,8 +65,8 @@ function PostPage() {
       <Col className="py-2 p-0 p-lg-2 m-auto" md={8} lg={5} xxl={4}>
         <PopularProfiles mobile className="p-2" />
         <Col className={styles.postPostPage}>
-        <Post {...post.results[0]} setPosts={setPost} postPage />
-      </Col>
+          <Post {...post.results[0]} setPosts={setPost} postPage />
+        </Col>
         <Container className={`mb-4 mb-md-5 border-1 border-solid border-warning ${appStyles.Content}`}>
           {currentUser ? (
             <CommentCreateForm

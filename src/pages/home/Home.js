@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import styles from "../../styles/Home.module.css"; // Import the CSS module
-import { Col, Row } from "react-bootstrap";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import { Col, Row } from "react-bootstrap";
+import styles from "../../styles/Home.module.css";
+
 
 function Home() {
+
   const location = useLocation();
   const { state } = location;
   const [successMessage, setSuccessMessage] = useState(state?.successMessage || "");
@@ -25,8 +27,8 @@ function Home() {
       }, 8000);
   
       return () => clearTimeout(timeout);
+
     } else {
-      console.log("Scrolling to the top")
       window.scrollTo(0, 0);
     }
   }, [successMessage]);
@@ -35,7 +37,6 @@ function Home() {
     setVisible(false);
     setSuccessMessage("");
   };
-
 
   const loggedInHomeButtonContainers = (
     <>
@@ -61,7 +62,6 @@ function Home() {
     </>
   );
 
-
   return (
     <div className={styles.Home}>
       {visible && (
@@ -81,8 +81,7 @@ function Home() {
             </button>
           </Col>
         </Row>
-      )}
-      
+      )} 
       <section id={styles.jumbotron} className={styles.jumbotron}>
         <div className={styles.containerJumbo}>
           <h2 className={styles.jumbotronTitle}>
@@ -172,7 +171,6 @@ function Home() {
           </div>
         </Col>
       </Row>
-
       <Row className={styles.homeSupport}>
         <div className="container">
           <h3 className="section-title">Customer Support</h3>
@@ -213,12 +211,10 @@ function Home() {
                 </p>
               </div>
             </div>
-          </div>
-          
+          </div> 
         </div>
       </Row>
     </div>
-
   );
 }
 

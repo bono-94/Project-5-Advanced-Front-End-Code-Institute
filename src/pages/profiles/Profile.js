@@ -1,19 +1,19 @@
 import React from "react";
-import styles from "../../styles/ProfilePage.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import Button from "react-bootstrap/Button";
-import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import styles from "../../styles/ProfilePage.module.css";
+import btnStyles from "../../styles/Button.module.css";
+
 
 const Profile = (props) => {
+
   const { profile, mobile, imageSize = 55, showButtons } = props;
   const { id, following_id, image, owner } = profile;
-
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-
   const { handleFollow, handleUnfollow } = useSetProfileData();
 
   window.scrollTo(0, 0);
@@ -31,7 +31,7 @@ const Profile = (props) => {
         <strong>{owner}</strong>
       </div>
       <div className={`text-right ${!mobile && "ml-auto"}`}>
-        {showButtons && // Conditionally render the buttons based on the showButtons prop
+        {showButtons &&
           !mobile &&
           currentUser &&
           !is_owner &&

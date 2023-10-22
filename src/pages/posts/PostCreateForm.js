@@ -1,25 +1,21 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
+import Select from "react-dropdown-select";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
-
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
-import Select from "react-dropdown-select";
 
 function PostCreateForm() {
+
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [selectedContainers, setSelectedContainers] = useState([]);
@@ -38,6 +34,7 @@ function PostCreateForm() {
     inspiration: "",
     source: "",
   });
+
   const {
     containers,
     post_category,
@@ -108,7 +105,6 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const selectedContainerIds = selectedContainers.map((id) => parseInt(id, 10));
 
     const requestData = {
@@ -173,125 +169,120 @@ function PostCreateForm() {
         </Form.Control>
       </Form.Group>
       <Form.Group>
-          <Form.Label>Topic</Form.Label>
-          <Form.Control
-            type="text"
-            name="topic"
-            value={topic}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the topic?"
-          />
-        </Form.Group>
-        {errors?.topic?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the title?"
-          />
-        </Form.Group>
-        {errors?.title?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Sub-title</Form.Label>
-          <Form.Control
-            type="text"
-            name="sub_title"
-            value={sub_title}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="What is the sub-title?"
-          />
-        </Form.Group>
-        {errors?.sub_title?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        
-
-        <Form.Group>
-          <Form.Label>Location</Form.Label>
-          <Form.Control
-            type="text"
-            name="location"
-            value={location}
-            onChange={handleChange}
-            className={styles.Input}
-            placeholder="Where can it be found?"
-          />
-        </Form.Group>
-        {errors?.location?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group>
-          <Form.Label>Content</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="content"
-            value={content}
-            onChange={handleChange}
-            rows={8}
-            className={styles.Input}
-            placeholder="Knowledge details..."
-          />
-        </Form.Group>
-        {errors?.content?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-
-        <Form.Group>
-          <Form.Label>Inspiration</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="inspiration"
-            value={inspiration}
-            onChange={handleChange}
-            rows={4}
-            className={styles.Input}
-            placeholder="Inspiration for knowledge..."
-          />
-        </Form.Group>
-        {errors?.inspiration?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-
-        <Form.Group>
-          <Form.Label>Source</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="source"
-            value={source}
-            onChange={handleChange}
-            rows={4}
-            className={styles.Input}
-            placeholder="Sources of knowledge..."
-          />
-        </Form.Group>
-        {errors?.source?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        
+        <Form.Label>Topic</Form.Label>
+        <Form.Control
+          type="text"
+          name="topic"
+          value={topic}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the topic?"
+        />
+      </Form.Group>
+      {errors?.topic?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          name="title"
+          value={title}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the title?"
+        />
+      </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Sub-title</Form.Label>
+        <Form.Control
+          type="text"
+          name="sub_title"
+          value={sub_title}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="What is the sub-title?"
+        />
+      </Form.Group>
+      {errors?.sub_title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+          className={styles.Input}
+          placeholder="Where can it be found?"
+        />
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Content</Form.Label>
+        <Form.Control
+          as="textarea"
+          name="content"
+          value={content}
+          onChange={handleChange}
+          rows={8}
+          className={styles.Input}
+          placeholder="Knowledge details..."
+        />
+      </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Inspiration</Form.Label>
+        <Form.Control
+          as="textarea"
+          name="inspiration"
+          value={inspiration}
+          onChange={handleChange}
+          rows={4}
+          className={styles.Input}
+          placeholder="Inspiration for knowledge..."
+        />
+      </Form.Group>
+      {errors?.inspiration?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label>Source</Form.Label>
+        <Form.Control
+          as="textarea"
+          name="source"
+          value={source}
+          onChange={handleChange}
+          rows={4}
+          className={styles.Input}
+          placeholder="Sources of knowledge..."
+        />
+      </Form.Group>
+      {errors?.source?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         Create
       </Button>
@@ -304,7 +295,7 @@ function PostCreateForm() {
         <Container
           className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
         >
-        <h1 className={styles.Header}>Create Knowledge</h1>
+          <h1 className={styles.Header}>Create Knowledge</h1>
           <Form onSubmit={handleSubmit} encType="multipart/form-data">
             {allFields}
           </Form>

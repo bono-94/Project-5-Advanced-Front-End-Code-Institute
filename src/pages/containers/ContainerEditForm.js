@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,13 +7,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/ContainerCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
+
 function ContainerEditForm() {
+
   const [errors, setErrors] = useState({});
+
   const [containerData, setContainerData] = useState({
     container_name: "",
   container_info: "",
@@ -23,7 +26,6 @@ function ContainerEditForm() {
     container_name,
     container_info,
     is_public,
-    // Add other missing fields here
   } = containerData;
 
   const history = useHistory();
@@ -45,7 +47,7 @@ function ContainerEditForm() {
             })
           : history.push("/");
       } catch (err) {
-        // Handle errors
+        console.log(err);
       }
     };
 
@@ -63,11 +65,9 @@ function ContainerEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    // Append container fields to formData
     formData.append("is_public", is_public);
     formData.append("container_name", container_name);
     formData.append("container_info", container_info);
-    // Add other container fields here
 
     try {
       await axiosReq.put(`/container/${id}/`, formData);
@@ -109,7 +109,6 @@ function ContainerEditForm() {
           {message}
         </Alert>
       ))}
-
       <Form.Group>
         <Form.Label>Container Description</Form.Label>
         <Form.Control
@@ -137,7 +136,7 @@ function ContainerEditForm() {
     <Row className={styles.Row}>
       <Col className={` py-2 p-md-2 ${styles.SupportCol}`}>
         <Container  className={`${appStyles.Content} p-4 ${styles.Container}`}>
-        <h1 className={styles.Header}>Edit Container</h1>
+          <h1 className={styles.Header}>Edit Container</h1>
           <Form onSubmit={handleSubmit}>
             {allFields}
           </Form>

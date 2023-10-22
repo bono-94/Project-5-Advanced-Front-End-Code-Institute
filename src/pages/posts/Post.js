@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Post.module.css";
+import { axiosRes } from "../../api/axiosDefaults";
+import { Link, useHistory } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 import Badge from 'react-bootstrap/Badge';
 import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import ListGroup from "react-bootstrap/ListGroup";
-import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-
-import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
+import styles from "../../styles/Post.module.css";
+
 
 const Post = (props) => {
+
   const {
     id,
     owner,
@@ -64,7 +62,7 @@ const Post = (props) => {
       history.push("/", { successMessage: "Successfully deleted your post!" });
       window.scrollTo(0, 0);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -80,7 +78,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -96,7 +94,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -112,7 +110,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -159,10 +157,6 @@ const Post = (props) => {
     fetchContainerNames();
   }, [containers]);
   
-  
-
-  
-
   return (
     <Card className={styles.Post}>
       <Card.Body className={styles.PostBody}>
@@ -187,123 +181,117 @@ const Post = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body className="p-4">
-      {title && <Card.Title className="text-center">{title}</Card.Title>}
-    {sub_title && <div className="text-center mb-3">{sub_title}</div>}
-    {topic && (
-  <div>
-    <strong>Topic:</strong>{" "}
-    <Badge className={styles.Badge} variant="dark">
-      <span>{topic}</span>
-    </Badge>
-  </div>
-)}
-    {post_category && <div><strong>Post Category:</strong> {post_category}</div>}
-    
-    {location && <div><strong>Location:</strong> {location}</div>}
-    <div className="w-100">
-  <span className={styles.Date}><strong>Created:</strong> <span>{created_at}</span></span>
-</div>
-<div className="w-100">
-  <span className={styles.Date}><strong>Updated:</strong> <span>{updated_at}</span></span>
-</div>
-    <hr></hr>
-    <div className={styles.ButtonReadMore}>
-    {showFullContent ? (
-        <div><strong>Content:</strong> <span>{content}</span></div>
-      ) : (
-        <div><strong>Content:</strong> <span>{content.slice(0, 0)}</span>
-        ...
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {sub_title && <div className="text-center mb-3">{sub_title}</div>}
+        {topic && (
+        <div>
+          <strong>Topic:</strong>{" "}
+          <Badge className={styles.Badge} variant="dark">
+            <span>{topic}</span>
+          </Badge>
         </div>
-      )}
-      <button className="mt-2" onClick={() => setShowFullContent(!showFullContent)}>
-        {showFullContent ? "Collapse" : "Read more"}
-      </button>
-    </div>
-    <hr></hr>
-    {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
-    {source && <div><strong>Source:</strong> {source}</div>}
-    
-    </Card.Body>
-    <Card.Footer className={styles.PostCardFooter}>
-        <div className={styles.PostBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          ) : like_id ? (
-            <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          )}
-          {likes_count}
-
-          {favourite_id ? (
-            <span onClick={handleUnFavourite}>
-              <i className={`fas fa-star ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleFavourite}>
-              <i className={`far fa-star ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
-            >
-              <i className="far fa-star" />
-            </OverlayTrigger>
-          )}
-          {favourites_count}
-
-          <Link to={`/knowledge/${id}`}>
-            <i className="far fa-comments" />
-            {comments_count}
-          </Link>
-          <Link to="#" onClick={() => setShowModal(true)}>
-            <i className="fas fa-cubes" />
-            {visibleContainersCount}
-          </Link>
+        )}
+        {post_category && <div><strong>Post Category:</strong> {post_category}</div>} 
+        {location && <div><strong>Location:</strong> {location}</div>}
+        <div className="w-100">
+          <span className={styles.Date}><strong>Created:</strong> <span>{created_at}</span></span>
         </div>
-      
+        <div className="w-100">
+          <span className={styles.Date}><strong>Updated:</strong> <span>{updated_at}</span></span>
+        </div>
+        <hr></hr>
+        <div className={styles.ButtonReadMore}>
+          {showFullContent ? (
+            <div><strong>Content:</strong> <span>{content}</span></div>
+          ) : (
+            <div><strong>Content:</strong> <span>{content.slice(0, 0)}</span>
+            ...
+            </div>
+          )}
+          <button className="mt-2" onClick={() => setShowFullContent(!showFullContent)}>
+            {showFullContent ? "Collapse" : "Read more"}
+          </button>
+        </div>
+        <hr></hr>
+        {inspiration && <div><strong>Inspiration:</strong> {inspiration}</div>}
+        {source && <div><strong>Source:</strong> {source}</div>}
+      </Card.Body>
+      <Card.Footer className={styles.PostCardFooter}>
+          <div className={styles.PostBar}>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              >
+                <i className="far fa-heart" />
+              </OverlayTrigger>
+            ) : like_id ? (
+              <span onClick={handleUnlike}>
+                <i className={`fas fa-heart ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleLike}>
+                <i className={`far fa-heart ${styles.HeartOutline}`} />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              >
+                <i className="far fa-heart" />
+              </OverlayTrigger>
+            )}
+            {likes_count}
+            {favourite_id ? (
+              <span onClick={handleUnFavourite}>
+                <i className={`fas fa-star ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleFavourite}>
+                <i className={`far fa-star ${styles.HeartOutline}`} />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to favourite posts!</Tooltip>}
+              >
+                <i className="far fa-star" />
+              </OverlayTrigger>
+            )}
+            {favourites_count}
+            <Link to={`/knowledge/${id}`}>
+              <i className="far fa-comments" />
+              {comments_count}
+            </Link>
+            <Link to="#" onClick={() => setShowModal(true)}>
+              <i className="fas fa-cubes" />
+              {visibleContainersCount}
+            </Link>
+          </div>
       </Card.Footer>
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Containers</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <ul className={styles.UnstyledList}>
-              {containerNames.map((containerName, index) => (
-                <li
-                  key={containers[index]}
-                  onClick={() => {
-                    // Handle the click action here (e.g., navigate to container)
-                    history.push(`/container/${containers[index]}`);
-                    setShowModal(false); // Close the modal
-                  }}
-                >
-                  <i className={`fas fa-box ${styles.HoverBox}`}></i> {/* Regular icon */}
-                  <i className={`fas fa-box-open ${styles.HoverBoxOpen}`}></i> {/* Icon to show on hover */}
-                  {containerName}
-                </li>
-              ))}
-            </ul>
-          </Modal.Body>
-        </Modal>
-      
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Containers</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ul className={styles.UnstyledList}>
+            {containerNames.map((containerName, index) => (
+              <li
+                key={containers[index]}
+                onClick={() => {
+                
+                  history.push(`/container/${containers[index]}`);
+                  setShowModal(false);
+                }}
+              >
+                <i className={`fas fa-box ${styles.HoverBox}`}></i>
+                <i className={`fas fa-box-open ${styles.HoverBoxOpen}`}></i>
+                {containerName}
+              </li>
+            ))}
+          </ul>
+        </Modal.Body>
+      </Modal>
     </Card>
   );
 };
