@@ -101,6 +101,7 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+  
   const loggedOutIcons = (
     <>
       <NavLink

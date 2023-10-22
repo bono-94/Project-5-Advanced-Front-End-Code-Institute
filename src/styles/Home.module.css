@@ -159,6 +159,33 @@ a h4 {
   color: black;
 }
 
+.successAlert {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid orange; /* Bootstrap success alert border color */
+  padding: 0.75rem 1.25rem; 
+  /* Bootstrap success alert padding */
+  border-radius: 0.25rem; /* Bootstrap success alert border radius */
+  margin-top: 20px; /* Adjust the margin-top as needed */
+  text-align: left; /* Center the text horizontally */
+  font-weight: bold;
+  background-color: black;
+  color: orange;
+}
+
+.closeButton {
+  right: 0px;
+  background: none;
+  border: none;
+  color: orange; /* Match the success message text color */
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: white; /* Change color on hover, if desired */
+}
+
 @keyframes beat {
   0% {
     transform: scale(0.9);
@@ -258,6 +285,14 @@ a h4 {
     margin-left: auto;
     margin-right: auto;
 }
+.successAlert {
+  width: 80%;
+  margin-right: 0px !important;
+}
+
+.closeButton {
+  font-size: 2rem; /* Adjust the font size as needed */
+}
 }
 
 @media (min-width: 900px) {
@@ -279,6 +314,13 @@ a h4 {
   
   }
 
+  @media (min-width: 1400px) {
+    .successAlert {
+      width: 60%;
+      
+    }
+    }
+
 
 @media (min-width: 1900px) {
 
@@ -298,6 +340,11 @@ a h4 {
     width: 80%;
     margin: auto;
     margin-bottom: 80px;
+  }
+
+  .successAlert {
+    width: 40%;
+    
   }
   
 }

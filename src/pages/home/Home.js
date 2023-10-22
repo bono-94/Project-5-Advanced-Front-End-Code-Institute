@@ -2,21 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "../../styles/Home.module.css"; // Import the CSS module
 import { Col, Row } from "react-bootstrap";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 
 function Home() {
   const location = useLocation();
   const { state } = location;
   const [successMessage, setSuccessMessage] = useState(state?.successMessage || "");
   const [visible, setVisible] = useState(!!successMessage);
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
   window.scrollTo(0, 0);
 
   useEffect(() => {
     if (successMessage) {
-      // Automatically hide the alert after 8 seconds
       const timeout = setTimeout(() => {
         setVisible(false);
-        setSuccessMessage(""); // Clear the success message after hiding
+        setSuccessMessage(""); 
       }, 8000);
   
       return () => clearTimeout(timeout);
@@ -28,25 +33,56 @@ function Home() {
 
   const handleAlertClose = () => {
     setVisible(false);
-    setSuccessMessage(""); // Clear the success message on close
+    setSuccessMessage("");
   };
+
+
+  const loggedInHomeButtonContainers = (
+    <>
+      <a href="containers/" className={styles.cardButton}>Select</a>
+    </>
+  );
+
+  const loggedOutHomeButtonContainers = (
+    <>
+      <div className="d-none">Logged Out</div>
+    </>
+  );
+
+  const loggedInHomeButtonKnowledge = (
+    <>
+      <a href="/knowledge/live" className={styles.cardButton}>Select</a>
+    </>
+  );
+
+  const loggedOutHomeButtonKnowledge = (
+    <>
+      <div className="d-none">Logged Out</div>
+    </>
+  );
+
 
   return (
     <div className={styles.Home}>
       {visible && (
-        <div id="success-alert" className={`${styles.alert} ${styles.successAlert}`}>
-          {decodeURIComponent(successMessage)}
-          <button
-            type="button"
-            className={styles.closeButton}
-            data-dismiss="alert"
-            aria-label="Close"
-            onClick={handleAlertClose}
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        <Row className={`align-items-center justify-content-between ${styles.successAlert}`}>
+          <Col xs={10} className="d-flex justify-content-start">
+            {decodeURIComponent(successMessage)}
+          </Col>
+          <Col xs={1}>
+            <button
+              type="button"
+              className={styles.closeButton}
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={handleAlertClose}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </Col>
+        </Row>
       )}
+      
       <section id={styles.jumbotron} className={styles.jumbotron}>
         <div className={styles.containerJumbo}>
           <h2 className={styles.jumbotronTitle}>
@@ -92,7 +128,7 @@ function Home() {
                     Unlimited storage & connections, user-friendly, privacy setting,
                     public collaboration, labelling, browsing
                   </p>
-                  <a href="containers/" className={styles.cardButton}>Select</a>
+                  {currentUser ? loggedInHomeButtonContainers : loggedOutHomeButtonContainers}
                 </div>
               </div>
             </div>
@@ -129,7 +165,7 @@ function Home() {
                     Ideas capturing, interactive knowledge collaboration, big data organization,
                     learning & teaching, digital life.
                   </p>
-                  <a href="/knowledge/live" className={styles.cardButton}>Select</a>
+                  {currentUser ? loggedInHomeButtonKnowledge : loggedOutHomeButtonKnowledge}
                 </div>
               </div>
             </div>
