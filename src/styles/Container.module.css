@@ -1,67 +1,56 @@
-/* Style for the Container card */
 .Container {
-    margin: 20px;
-    padding: 20px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  margin: 20px;
+  padding: 20px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
   
 .Container i {
   color: orange;
 }
 
-  /* Style for the user's avatar and owner name */
-  .Container .media {
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Style for additional content specific to Container model */
-  .Container .container-info {
-    margin-top: 10px;
-    font-size: 16px;
-  }
-  
-  /* Style for the "Containers" button */
-  .Container .container-button {
-    margin-top: 15px;
-  }
-  
-  /* Style for the modal dialog */
-  .Container .modal-title {
-    font-size: 20px;
-  }
-  
-  /* Style for the list of container names in the modal */
-  .Container .modal-body ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  /* Style for each container name item in the modal */
-  .Container .modal-body li {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the container icon in the modal */
-  .Container .modal-body li i {
-    margin-right: 10px;
-    font-size: 18px;
-    color: #007bff; /* Change color as needed */
-  }
-  
-  /* Hover effect for container name items in the modal */
-  .Container .modal-body li:hover {
-    text-decoration: underline;
-    color: #007bff; /* Change color as needed */
-  }
+.Container .media {
+  align-items: center;
+  justify-content: space-between;
+}
 
-/* ContainerPage.module.css */
+.Container .container-info {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.Container .container-button {
+  margin-top: 15px;
+}
+
+.Container .modal-title {
+  font-size: 20px;
+}
+
+.Container .modal-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Container .modal-body li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.Container .modal-body li i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.Container .modal-body li:hover {
+  text-decoration: underline;
+  color: #007bff; 
+}
 
 .containerPage {
   background-color: #f7f7f7;
@@ -123,8 +112,6 @@
   position: absolute;
   font-size: 1.2rem;
   padding: 9px;
-  /* padding-left: 15px; */
-  /* padding-right: 8px; */
   padding-top: 11px;
   color: black;
 }
@@ -182,5 +169,4 @@
   .Created {
     margin-left: 8px;
   }
-  
 }

@@ -1,75 +1,63 @@
-/* Style for the Container card */
 .Container {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    animation: fadeIn 3s forwards; 
-  }
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fadeIn 3s forwards; 
+}
 
-/* Style for the Container card */
 .ContainerItem i {
   color: orange !important; 
 }
 
-  .ContainerItem {
-    opacity: 0;
-    animation: fadeIn 1s forwards; 
-  }
-  
-  /* Style for the user's avatar and owner name */
-  .Container .media {
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Style for additional content specific to Container model */
-  .Container .container-info {
-    margin-top: 10px;
-    font-size: 16px;
-  }
-  
-  /* Style for the "Containers" button */
-  .Container .container-button {
-    margin-top: 15px;
-  }
-  
-  /* Style for the modal dialog */
-  .Container .modal-title {
-    font-size: 20px;
-  }
-  
-  /* Style for the list of container names in the modal */
-  .Container .modal-body ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  /* Style for each container name item in the modal */
-  .Container .modal-body li {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  /* Style for the container icon in the modal */
-  .Container .modal-body li i {
-    margin-right: 10px;
-    font-size: 18px;
-    color: #007bff; /* Change color as needed */
-  }
-  
-  /* Hover effect for container name items in the modal */
-  .Container .modal-body li:hover {
-    text-decoration: underline;
-    color: #007bff; /* Change color as needed */
-  }
+.ContainerItem {
+  opacity: 0;
+  animation: fadeIn 1s forwards; 
+}
 
-/* ContainerPage.module.css */
+.Container .media {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Container .container-info {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.Container .container-button {
+  margin-top: 15px;
+}
+
+.Container .modal-title {
+  font-size: 20px;
+}
+
+.Container .modal-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Container .modal-body li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.Container .modal-body li i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.Container .modal-body li:hover {
+  text-decoration: underline;
+  color: #007bff; 
+}
 
 .HoverBoxOpen {
   display: none;
@@ -82,7 +70,6 @@
   transform: scale(1);
 }
 
-/* Show the "fa-box-open" icon on hover */
 .ContainerItem:hover .HoverBoxOpen {
   display: inline-block;
   transform: scale(1);
@@ -92,9 +79,6 @@
   display: none;
   transform: scale(0.9);
 }
-
-
-
 
 .containerPage {
   background-color: #f7f7f7;
@@ -141,7 +125,6 @@
   margin-right: 10px;
 }
 
-
 .SearchBar input {
   border-radius: 20px;
   color:black;
@@ -186,62 +169,61 @@
   color:black
 }
 
-
 .SortIcon{
-    margin-top: 7px;
-    margin-left: 5px;
-    color: black;
-  }
-  
-  .SortIcon:hover {
-    margin-top: 7px;
-    margin-left: 5px;
-    padding-right: 5px;
-    color: orange;
-  }
-  
-  .SortingDropdown {
-    position: absolute;
-    top: 42%;
-    left: 0;
-    right:0;
-    z-index: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    list-style: none;
-    max-height: 400px; 
-    overflow-y: auto; 
-    min-width: 400px;
-  }
-  
-  .SortingDropdown:hover {
-    background-color: #f8f8f8;
-  }
-  
-  .SortOption {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .SortOption i {
-    color: black;
-    font-size: 12px; 
-  }
-  
-  .SortOption:hover {
-    background-color: #e8e8e8;
-  }
-  
-  .ActiveSortOption {
-    font-weight: bold; 
-  }
+  margin-top: 7px;
+  margin-left: 5px;
+  color: black;
+}
 
+.SortIcon:hover {
+  margin-top: 7px;
+  margin-left: 5px;
+  padding-right: 5px;
+  color: orange;
+}
+
+.SortingDropdown {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  right:0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  list-style: none;
+  max-height: 400px; 
+  overflow-y: auto; 
+  min-width: 400px;
+}
+
+.SortingDropdown:hover {
+  background-color: #f8f8f8;
+}
+
+.SortOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SortOption i {
+  color: black;
+  font-size: 12px; 
+}
+
+.SortOption:hover {
+  background-color: #e8e8e8;
+}
+
+.ActiveSortOption {
+  font-weight: bold; 
+}
   
 @keyframes fadeIn {
+  
   0% {
     opacity: 0;
   }

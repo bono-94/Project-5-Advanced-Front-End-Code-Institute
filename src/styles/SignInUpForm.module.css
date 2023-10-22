@@ -69,7 +69,6 @@
   height: 375px;
 }
 
-
 .SignUpCol button {
   background-color: black !important;
   color: orange !important;
@@ -101,6 +100,7 @@
 }
 
 @keyframes fadeIn {
+
   0% {
     opacity: 0;
   }
@@ -109,74 +109,80 @@
   }
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 450px) {
+
   .Header {
     font-size: 27px;
     text-transform: uppercase;
     margin-bottom: 60px;
     margin-top: 40px;
   }
+
   .SignUpCol input {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
+
   .SignUpCol button {
     width: 44%;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
   }
+
   .Form a {
     padding-bottom: 20px;
   }
 }
 
-
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 768px) {
+
   .SignUpCol button {
     width: 24%;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
   }
+
   .SignUpCol input {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
   }
+
   h1 {
     margin-bottom: 60px !important;
     margin-top: 50px !important;
   }
-  
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 990px) {
+
   .SignUpCol button {
     margin-top: 50px;
   }
+
   .Header {
     font-size: 32px;
   }
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 1400px) {
+  
   .SignUpCol input {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
   }
+
   .SignUpCol button {
     width: 21%;
     margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
   }
+  
   .Header {
     font-size: 34px;
   }

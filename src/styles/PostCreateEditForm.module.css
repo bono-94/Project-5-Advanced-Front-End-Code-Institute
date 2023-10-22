@@ -8,7 +8,6 @@
 .Form {
   padding-top: 21px !important;
   padding-bottom: 18px !important;
-  
 }
 
 .Container hr {
@@ -30,7 +29,6 @@
   padding: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
 }
-
 
 .InputSelect {
   background: #ffffff !important;
@@ -119,10 +117,6 @@
   box-shadow: 0px 0px 10px black; 
 }
 
-/* .InputSelect:focus option {
-  background-color: orange !important;
-} */
-
 ::placeholder {
   font-size: small;
 }
@@ -134,6 +128,7 @@
 
 
 @keyframes fadeIn {
+
   0% {
     opacity: 0;
   }
@@ -142,33 +137,37 @@
   }
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 450px) {
+
   .Row {
     margin: 52px 0px !important;
   }
+
   .Header {
     font-size: 27px;
     text-transform: uppercase;
-
     margin-bottom: 60px;
     margin-top: 40px;
   }
+
   .Input {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
+
   .InputSelect {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
   .Container label {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
+
   .SupportCol button {
     width: 44%;
     margin-top: 40px;
@@ -177,15 +176,16 @@
   }
 }
 
-
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 768px) {
+
   .Row {
     margin: 72px 0px !important;
   }
+
   .Container hr {
     width: 70% !important;
   }
+
   .SupportCol button {
     width: 24%;
     margin-left: auto;
@@ -197,18 +197,22 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   .InputSelect {
     width: 70% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
   .Container label {
     width: 70%;
   }
+
   h1 {
     margin-bottom: 60px !important;
     margin-top: 50px !important;
   }
+
   .Upload {
     margin: auto;
     width: 40%;
@@ -217,14 +221,14 @@
   .SmallText {
     width: 50% !important;
   }
-  
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 990px) {
+
   .Row {
     margin: 82px 0px !important;
   }
+
   .SupportCol button {
     margin-top: 50px;
   }
@@ -234,27 +238,32 @@
   }
 }
 
-/* Media query for screens larger than or equal to 768px width */
 @media (min-width: 1400px) {
+
   .Row {
     margin: 92px 0px !important;
   }
+
   .Container hr {
     width: 4% !important;
   }
+
   .Input {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
   }
+
   .InputSelect {
     width: 60% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
   .Container label {
     width: 60%;
   }
+
   .SupportCol button {
     width: 21%;
     margin-top: 45px;
@@ -265,6 +274,7 @@
   .Header {
     font-size: 34px;
   }
+  
   ::placeholder {
     font-size: medium;
   }

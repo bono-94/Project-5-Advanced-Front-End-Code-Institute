@@ -48,16 +48,16 @@
   margin-top: 2px;
 }
 
-
 .ProfileLink:hover img {
   box-shadow: 0 0 5px orange; 
 }
 
-.NavLink #profile-pic{
+.NavLink #profile-pic {
  border: 4px orange solid;
 }
 
 @media (max-width: 768px) {
+  
   .logo-home {
     padding-left: 50px !important;
   }

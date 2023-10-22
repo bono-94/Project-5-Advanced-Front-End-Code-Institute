@@ -1,8 +1,3 @@
-/* 
-.ContainerList {
-  margin-left: 10px;
-  margin-right: 10px;
-} */
 .ProfileContainer {
   padding: 5px 20px;
 }
@@ -43,15 +38,12 @@
 
 .SortIcon {
   margin-top: 7px;
-  /* margin-left: 5px; */
   color: black;
 }
 
 .SortIcon:hover {
   color: orange;
 }
-
-
 
 .SearchBar input {
   border-radius: 20px;
@@ -62,61 +54,51 @@
   margin-left: 5px;
 }
 
-
-
 .SortRow {
   margin-bottom: 4px;
 }
 
-
-
 .SortingDropdown {
-    /* position: absolute; */
-    top: 42%;
-    left: 0;
-    z-index: 1000;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    list-style: none;
-    /* max-height: 400px;  */
-    /* overflow-y: auto;  */
-    /* min-width: 400px; */
-  }
-  
-  .SortingDropdown:hover {
-    background-color: #f8f8f8;
-  }
-  
-  .SortOption {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .SortOption i {
-    color: black;
-    font-size: 12px; 
-  }
-  
-  .SortOption:hover {
-    background-color: #e8e8e8;
-  }
-  
-  .ActiveSortOption {
-    font-weight: bold; 
-  }
+  top: 42%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  list-style: none;
+}
 
-/* SEARCH BAR */
+.SortingDropdown:hover {
+  background-color: #f8f8f8;
+}
+
+.SortOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SortOption i {
+  color: black;
+  font-size: 12px; 
+}
+
+.SortOption:hover {
+  background-color: #e8e8e8;
+}
+
+.ActiveSortOption {
+  font-weight: bold; 
+}
+
 .SearchRow {
   margin-top: 10px;
   margin-left: 3px;
   margin-right: 7px;
   margin-bottom: 10px;
 }
-
 
 .SearchRow input {
   border-radius: 20px;
@@ -156,7 +138,6 @@
   color:black
 }
 
-/* SCROLLABLE CONTAINER */
 .ScrollableContainer {
   min-height: 100vh;
   overflow-y: auto; 
@@ -166,7 +147,6 @@
   margin: 10px auto;
 }
 
-/* MOBILE NAVIGATION */
 .MobileNavIcon {
   position: fixed;
   bottom: 5px; 
@@ -191,6 +171,7 @@
 }
 
 @keyframes fadeIn {
+
   0% {
     opacity: 0;
   }
@@ -199,18 +180,20 @@
   }
 }
 
-
-/* DEVICES VIEWS */
 @media (min-width: 400px) {
+
   .SearchRow {
     margin-bottom: 20px;
   }
+
   .SortRow {
     margin-top: 30px;
   }
+
   .SearchBarContainer {
     margin-bottom: 30px;
   }
+
   .ContainerList div{
     padding: 1px;
     background-color: white;
@@ -219,6 +202,7 @@
 }
 
 @media (min-width: 767px) {
+
   .SortRow {
     margin-top: 30px;
     margin-bottom: 15px;
@@ -226,10 +210,12 @@
 }
 
 @media (min-width: 992px) {
+
   .SortRow {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .SearchRow {
     margin-bottom: 25px;
     margin-right: 7px;
@@ -237,13 +223,14 @@
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
+
   .SortRow h4 {
     font-size: 22px !important;
   }
 }
 
-
 @media (min-width: 1400px) {
+  
   .SearchRow {
     margin-bottom: 35px;
   }

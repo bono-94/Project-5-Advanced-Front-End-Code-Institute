@@ -28,14 +28,12 @@
 .ProfilePage a.drop {
   color: black;
   text-decoration: none;
-
 }
 
 .ProfileImage {
   object-fit: cover;
   height: 100px;
   width: 100px;
-  /* margin: 4px; */
   box-shadow: 0px 0px 15px orange;
   border: 1px solid orange;
 }
@@ -52,6 +50,7 @@
 }
 
 @keyframes fadeIn {
+
   0% {
     opacity: 0;
   }
@@ -60,16 +59,16 @@
   }
 }
 
-
 @media screen and (min-width: 991px) {
+
   .ProfileImage {
     width: 121px;
     height: 121px;
   }
-
 }
 
 @media screen and (min-width: 1600px) {
+  
   .ProfileImage {
     height: 150px;
     width: 150px;

@@ -42,7 +42,6 @@ const PopularProfiles = ({ message, filter = "", mobile }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showSortingOptions, setShowSortingOptions] = useState(false);
   
-
   useEffect(() => {
     const fetchContainers = async () => {
       try {
