@@ -47,7 +47,7 @@ function ContainersPrivate({ message, filter = "" }) {
   useEffect(() => {
     const fetchContainers = async () => {
       try {
-        const { data } = await axiosReq.get(`/containers/public/?${filter}search=${query}&ordering=${ordering}`);
+        const { data } = await axiosReq.get(`/containers/private/?${filter}search=${query}&ordering=${ordering}`);
         setContainers(data);
         setHasLoaded(true);
       } catch (err) {
